@@ -12,6 +12,8 @@ import { HighlightDirective } from './highlight.directive';
 import { StockService } from './stock.service';
 import { DateFormatterPipe } from './date-formatter.pipe'
 import { routing } from './app.routing'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RepairComponent } from './repair/repair.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { routing } from './app.routing'
     DashboardComponent,
     MutualfundsComponent,
     StockDirectiveDirective,
-    DateFormatterPipe
+    DateFormatterPipe,
+    RepairComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    NgbModule.forRoot()
   ],
   providers: [StockService],
   bootstrap: [AppComponent]
