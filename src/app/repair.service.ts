@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http,Response } from '@angular/http';
+import { Http,Response,URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Repair } from './repair';
 
@@ -9,13 +9,20 @@ export class RepairService {
   constructor(private http: Http) { 
 
   }
+  
+
   getRepairAPI(): Observable<any> {
     return this.http.get("http://localhost:8888/CarpetmakerApi/Repairs")
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
-  getEquipmentTypeAPI(): Observable<any> {
-    return this.http.get("http://localhost:8888/CarpetmakerApi/EquipmentTypes")
+  getEquipmentTypeAPI(type:string): Observable<any> {
+     let params = new URLSearchParams();
+      params.set('type', type); 
+
+    return this.http.get("http://localhost:8888/CarpetmakerApi/EquipmentTypes",{
+      search : params
+    })
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
