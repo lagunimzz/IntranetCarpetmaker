@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Repair } from '../repair'
+import { Repair } from '../repair';
+import { RepairService } from '../repair.service';
 
 @Component({
   selector: 'app-repair',
@@ -7,12 +8,37 @@ import { Repair } from '../repair'
   styleUrls: ['./repair.component.css']
 })
 export class RepairComponent implements OnInit {
-  title = 'InRepairApp';
 
   newRepair = new Repair('','','','','','','','','','');
-  constructor() { }
-
-  ngOnInit() {
+  
+  ngOnInit() {   
+    this.getAllRepair(); 
+    this.getAllEquipmentType();
   }
+  constructor(private repairService: RepairService) { }
+  repairType = '';
+  repairs = [];
+  equipmentTypes = [];
+  getAllRepair(){
+    this.repairService.getRepairAPI()
+    .subscribe(
+      data => this.repairs = data,
+      error => console.log()
+    );
+  }
+
+  getAllEquipmentType(){
+     this.repairService.getEquipmentTypeAPI()
+    .subscribe(
+      data => this.equipmentTypes = data,
+      error => console.log()
+    );   
+  }
+
+  createRepair(newRepair : Repair){
+    this.repairService.createRepair(newRepair).subscribe();
+  }
+
+  
 
 }

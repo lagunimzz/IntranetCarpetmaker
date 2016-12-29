@@ -17,8 +17,13 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "mobile": false,
+      "styleUrls":[
+        "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800",
+        "http://fonts.googleapis.com/css?family=Oswald:400,300,700"
+      ],
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../src/assets/css/fonts/font-awesome/css/font-awesome.css",
         "../src/assets/css/superfish.css",
         "../src/assets/css/prettyPhoto.css",
         "../src/assets/css/animations.css",

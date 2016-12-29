@@ -1,24 +1,33 @@
-<!--<div class="container-fluid">
 
-<nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Angular App</a>
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/stocks">STOCKS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/repairs">ระบบแจ้งซ่อม</a>
-    </li>
-  </ul>
-</nav>-->
-
-  <div class="wrap">   
+      <div class="wrap">   
         <!-- Header Start -->
         <header id="header">
         <!-- Header Top Bar Start -->
+         <div class="top-bar">
+               <div class="slidedown collapse">
+                  <div class="container">
+                     <marquee>Basic Marquee Tag</marquee>
+                     <div class="phone-email pull-left">
+                        <a><i class="icon-phone"></i> Call Us : +880 41 723 272</a>
+                        <a href="http://demo.fifothemes.com/pixma/mail@example.com"><i class="icon-envelope"></i> Email : mail@example.com</a>
+                     </div>
+                     <div class="pull-right">
+                        <ul class="social pull-left">
+                           <li class="facebook"><a href="index.html#"><i class="icon-facebook"></i></a></li>
+                           <li class="twitter"><a href="index.html#"><i class="icon-twitter"></i></a></li>
+                           <li class="dribbble"><a href="index.html#"><i class="icon-dribbble"></i></a></li>
+                           <li class="linkedin"><a href="index.html#"><i class="icon-linkedin"></i></a></li>
+                           <li class="rss"><a href="index.html#"><i class="icon-rss"></i></a></li>
+                        </ul>
+                        <div id="search-form" class="pull-right">
+                           <form action="#" method="get">
+                              <input type="text" class="search-text-box">
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
         <!-- Header Top Bar End -->
         <!-- Main Header Start -->
         <div class="main-header">
@@ -26,7 +35,7 @@
               <!-- TopNav Start -->
               <div class="topnav navbar-header">
                   <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                  <i class="icon-angle-down icon-current"></i>
+                  <!--<i class="icon-angle-down icon-current"></i>-->
                   </a> 
               </div>
               <!-- TopNav End -->
@@ -34,7 +43,7 @@
               <div class="logo pull-left">
                   <h1>
                     <a href="index.html">
-                    <img src="assets/img/cmt.png" alt="pixma" width="250" height="68">
+                    <img src="assets/img/cmt.png" alt="pixma" width="200" height="55">
                     </a>
                   </h1>
               </div>
@@ -42,57 +51,13 @@
               <!-- Mobile Menu Start -->
               <div class="mobile navbar-header">
                   <a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">
-                  <i class="icon-reorder icon-2x"></i>
+                  <!--<i class="icon-reorder icon-2x"></i>-->
                   </a> 
               </div>
               <!-- Mobile Menu End -->
               <!-- Menu Start -->
-              <!--<nav class="collapse navbar-collapse menu">
-                  <ul class="nav navbar-nav sf-menu">
-                    <li>
-                        <a id="current" href="index.html">
-                        หน้าหลัก
-                        <span class="sf-sub-indicator">
-                        <i class="icon-angle-down "></i>
-                        </span>
-                        </a>
-                        
-                    </li>
-                    <li>
-                        <a href="index.html#" class="sf-with-ul">
-                        ระบบภายใน 
-                        <span class="sf-sub-indicator">
-                        <i class="icon-angle-down "></i>
-                        </span>
-                        </a>
-                        <ul>
-                          <li><a href="./#/MeetingRoom" class="sf-with-ul">ระบบจองห้องประชุม</a></li>
-                          <li><a href="./#/RepairingSystem" class="sf-with-ul">ระบบซ่อม</a></li>
-                          <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>
-                          
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="index.html#" class="sf-with-ul">
-                        การบริการ
-                        <span class="sf-sub-indicator">
-                        <i class="icon-angle-down "></i>
-                        </span>
-                        </a>
-                        <ul>
-                          <li><a href="about.html" class="sf-with-ul">ดาวน์โหลดใบลา</a></li>
-                          <li><a href="services.html" class="sf-with-ul">Services</a></li>
-                          
-                        </ul>
-                    </li>
-                    
-                    
-                    <li><a href="contact.html">ติดต่อ</a></li>
-                       <li><a href="./#/LoginSystem">เข้าสู่ระบบ</a></li>
-                  </ul>
-              </nav>-->
               <nav class="navbar menu">
-                <ul class="nav nav-inline sf-menu">
+                  <ul class="nav nav-inline sf-menu">
                     <li class="nav-item">
                         <a id="current" href="index.html">
                         หน้าหลัก
@@ -102,7 +67,7 @@
                         </a>
                         
                     </li>
-                  <li class="nav-item">
+                    <li class="nav-item">
                         <a href="index.html#" class="sf-with-ul">
                         ระบบภายใน 
                         <span class="sf-sub-indicator">
@@ -111,7 +76,7 @@
                         </a>
                         <ul>
                           <li><a href="./#/MeetingRoom" class="sf-with-ul">ระบบจองห้องประชุม</a></li>
-                          <li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
+                          <li><a  routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
                           <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>
                           
                         </ul>
@@ -132,26 +97,28 @@
                     
                     
                     <li class="nav-item"><a href="contact.html">ติดต่อ</a></li>
+                    <li class="nav-item"><a href="./#/AdminSystem">ส่วนเจ้าหน้าที่</a></li>
                     <li class="nav-item"><a href="./#/LoginSystem">เข้าสู่ระบบ</a></li>
-                 
-              </ul>
+                  </ul>
               </nav>
               <!-- Menu End --> 
             </div>
         </div>
         </header>
         <!-- Header End -->  
-        <div class="breadcrumb-wrapper">
+        <!--<div class="breadcrumb-wrapper">
           <div class="container">
             <div class="row">
               <h2 class="title">ระบบภายใน</h2>
               <marquee>Basic Marquee Tag</marquee>
             </div>
           </div>
-        </div>
+        </div>-->
         <!-- Content Start -->
-        <div class="container">
-        <router-outlet></router-outlet>
+        <div class="content">
+          <div class="container">
+            <router-outlet></router-outlet>
+          </div>
         </div>
         <!-- Content End -->
         <!-- Footer Start -->
@@ -163,7 +130,7 @@
           <div class="footer-bottom">
             <div class="container">
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 "> &copy; Copyright 2015 by <a href="full-width.html#">Carpet Maker</a>. All Rights Reserved. </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 "> &copy; Copyright 2016 by <a href="full-width.html#">Carpet Maker</a>. All Rights Reserved. </div>
               </div>
             </div>
           </div>
@@ -172,4 +139,3 @@
         <!-- Scroll To Top --> 
         <!-- <a href="blog-left-sidebar.html#" class="scrollup"><i class="icon-angle-up"></i></a> -->
     </div>
-

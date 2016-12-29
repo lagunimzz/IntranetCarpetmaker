@@ -1,29 +1,91 @@
-<table class="table table-sm table-inverse">
-  <thead>
+<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อม</button>-->
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    แจ้งซ่อม
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a (click)="repairType = 'คอมพิวเตอร์'" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมคอมพิวเตอร์</a>
+    <a (click)="repairType = 'สาธารณูปโภค'" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมสาธรณูปโภค</a>
+    <a (click)="repairType = 'เครื่องจักร'" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมเครื่องจักร</a>
+  </div>
+</div>
+<div class="modal fade" id="create-repair-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">บันทึกข้อมูลแจ้งซ่อม : {{repairType}}</h4>
+      </div>
+      <div class="modal-body">
+        <!--<form>-->
+          <div class="form-group">
+            <label for="name">ชื่อผู้แจ้ง</label>
+            <input type="text" class="form-control" id="name" #name>
+          </div>
+          <div class="form-group">
+            <label for="detail">รายละเอียด</label>
+            <textarea class="form-control" id="detail" rows="3" #detail></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+          </div>
+          <fieldset class="form-group">
+            <legend>Radio buttons</legend>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+              </label>
+            </div>
+            <div class="form-check disabled">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                Option three is disabled
+              </label>
+            </div>
+          </fieldset>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              Check me out
+            </label>
+          </div>
+        <!--</form>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)="test(repairNo.value)">บันทึก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<table class="table">
+  <thead class="thead-inverse">
     <tr>
-      <th>#</th>
+      <th>เลขที่</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Username</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+    <tr *ngFor="let repair of repairs">
+      <td>{{repair.repairNo}}</td>
+      <td>{{repair.name}}</td>
+      <td></td>
+      <td></td>
     </tr>
   </tbody>
 </table>
