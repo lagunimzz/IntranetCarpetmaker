@@ -8,6 +8,4 @@ import { StocksComponent } from './stocks.component';
 })
 
 export class AppComponent {
-  title = 'Hello World !!!!!!!!';
-  today = new Date();
 }

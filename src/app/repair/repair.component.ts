@@ -11,14 +11,30 @@ export class RepairComponent implements OnInit {
 
   newRepair = new Repair('','','','','','','','','','');
   
-  ngOnInit() {   
+  ngOnInit() { 
+    //Form Load  
     this.getAllRepair(); 
-    this.getAllEquipmentType();
   }
   constructor(private repairService: RepairService) { }
   repairType = '';
   repairs = [];
   equipmentTypes = [];
+
+  changeRepairType(type:string){
+    this.repairType = type;
+    switch(type){
+      case 'คอมพิวเตอร์':
+        this.getAllEquipmentType('IT');
+      break;
+      case 'สาธารณูปโภค':
+        this.getAllEquipmentType('Public');
+      break;
+      default:
+        this.equipmentTypes = [];
+      break;
+    }
+  }
+
   getAllRepair(){
     this.repairService.getRepairAPI()
     .subscribe(
@@ -27,8 +43,8 @@ export class RepairComponent implements OnInit {
     );
   }
 
-  getAllEquipmentType(){
-     this.repairService.getEquipmentTypeAPI()
+  getAllEquipmentType(type:string){
+     this.repairService.getEquipmentTypeAPI(type)
     .subscribe(
       data => this.equipmentTypes = data,
       error => console.log()
