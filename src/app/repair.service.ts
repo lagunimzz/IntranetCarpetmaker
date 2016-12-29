@@ -10,17 +10,17 @@ export class RepairService {
 
   }
   getRepairAPI(): Observable<any> {
-    return this.http.get("http://localhost:8888/CarpetmakerApi/Repairs")
+    return this.http.get("http://localhost:8080/CarpetmakerApi/Repairs")
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
   getEquipmentTypeAPI(): Observable<any> {
-    return this.http.get("http://localhost:8888/CarpetmakerApi/EquipmentTypes")
+    return this.http.get("http://localhost:8080/CarpetmakerApi/EquipmentTypes")
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
   createRepair(repair : Repair): Observable<any>{
-    return this.http.post("http://localhost:8888/CarpetmakerApi/Repair",{
+    return this.http.post("http://localhost:8080/CarpetmakerApi/Repair",{
       repair
     })
     .map((res: Response)=>res.json())
