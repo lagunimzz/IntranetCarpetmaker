@@ -1,0 +1,37 @@
+<table class="table table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Action</th>
+      <th>เลขที่</th>
+      <th>ประเภท</th>
+      <th>ชื่อผู้แจ้ง</th>
+      <th>อุปการณ์</th>
+      <th>หมายเหตุ</th>
+      <th>เบอร์โทร</th>
+      <th>สถานะ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of repairs">
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            จัดการ
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a (click)="changeRepairType('คอมพิวเตอร์')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">รับเรื่อง</a>
+            <a (click)="changeRepairType('สาธารณูปโภค')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">ปิดงาน</a>
+            <a (click)="changeRepairType('เครื่องจักร')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">ยกเลิก</a>
+          </div>
+        </div>
+      </td>
+      <td>{{r.repairNo}}</td>
+      <td>{{r.repairType}}</td>
+      <td>{{r.name}}</td>
+      <td>{{r.equipmentType}}</td>
+      <td>{{r.remark}}</td>
+      <td>{{r.telephone}}</td>
+      <td>{{r.status}}</td>
+    </tr>
+  </tbody>
+</table>

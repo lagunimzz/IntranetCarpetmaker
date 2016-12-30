@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Repair } from '../repair';
-import { RepairService } from '../repair.service';
+import { Repair } from './shared/repair.model';
+import { RepairService } from './shared/repair.service';
 
 @Component({
   selector: 'app-repair',
@@ -10,13 +10,18 @@ import { RepairService } from '../repair.service';
 export class RepairComponent implements OnInit {
   summitted = false;
   newRepair = new Repair('','','','--- กรุณาเลือก ---','','','','','','','');
-
-  ngOnInit() { 
-    this.getAllRepair(); 
-  }
-  constructor(private repairService: RepairService) { }
+  closeResult: string;
   repairs = [];
   equipmentTypes = [];
+
+  constructor(
+    private repairService: RepairService
+    ) { }
+
+  ngOnInit() { 
+    
+  }  
+
 
   onSubmit(){
     this.createRepair(this.newRepair);
