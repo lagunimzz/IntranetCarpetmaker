@@ -9,6 +9,7 @@ export class Repair {
         public department:string,
         public equipmentNumber:string,
         public place:string, 
+        public remark:string, 
         public user:string
     ){
         
