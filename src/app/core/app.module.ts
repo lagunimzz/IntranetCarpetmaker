@@ -12,13 +12,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { RepairComponent } from '../repairs/repair.component';
 import { RepairListComponent } from '../repairs/repair-list/repair-list.component';
-
+import { RepairCreateFormComponent } from '../repairs/repair-create-form/repair-create-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     RepairComponent,
-    RepairListComponent
+    RepairListComponent,
+    RepairCreateFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+<form>
+        <div class="form-group">
+        <label for="name">ชื่อผู้แจ้ง</label>
+        <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
+        </div>
+        <div *ngIf="equipmentTypes.length > 0" class="form-group">           
+        <label *ngIf="newRepair.repairType == 'IT'" for="equipmentType">ประเภทอุปกรณ์</label>
+        <label *ngIf="newRepair.repairType == 'Public'" for="equipmentType">ประเภท</label>
+        <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
+            <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="symptoms">อาการที่พบ</label>
+        <textarea rows="3" class="form-control" id="symptoms" name="symptoms" [(ngModel)]="newRepair.symptoms" required>"</textarea>
+        </div>          
+        <div *ngIf="newRepair.repairType == 'IT'" class="form-group">
+        <label for="equipmentNumber">เลขที่เครื่อง</label>
+        <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber" required>
+        </div>
+        <div *ngIf="newRepair.repairType == 'Public'" class="form-group">
+        <label for="place">สถานที่</label>
+        <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
+        </div>
+        <div class="form-group">
+        <label for="telephone">เบอร์โทร</label>
+        <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
+        </div>
+        <div class="form-group">
+        <label for="remark">หมายเหตุ</label>
+        <input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>
+        </div>  
+
+</form>  

@@ -4,12 +4,12 @@
     แจ้งซ่อม
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a (click)="changeRepairType('คอมพิวเตอร์')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมคอมพิวเตอร์</a>
-    <a (click)="changeRepairType('สาธารณูปโภค')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมสาธรณูปโภค</a>
-    <a (click)="changeRepairType('เครื่องจักร')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมเครื่องจักร</a>
+    <a [routerLink]="['/repairCreateForm','IT']" class="dropdown-item">แจ้งซ่อมคอมพิวเตอร์</a>
+    <a [routerLink]="['/repairCreateForm','Public']"  class="dropdown-item">แจ้งซ่อมสาธรณูปโภค</a>
+    <!--<a (click)="changeRepairType('เครื่องจักร')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมเครื่องจักร</a>-->
   </div>
 </div>
-<div class="modal fade" id="create-repair-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="create-repair-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,7 +61,7 @@
       </form>   
     </div>
   </div>
-</div>
+</div>-->
 
 <br>
 <repair-list></repair-list>
