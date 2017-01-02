@@ -5,6 +5,8 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {RepairComponent} from '../repairs/repair.component';
 import {RepairCreateFormComponent} from '../repairs/repair-create-form/repair-create-form.component';
 
+import { ProfileComponent } from '../profiles/profile.component';
+import { AuthGuard } from './auth.guard';
 const appRoutes: Routes = [
     {
         path: '',
@@ -12,11 +14,18 @@ const appRoutes: Routes = [
     },
     {
         path:'repairs',
-        component: RepairComponent  
+        component: RepairComponent,
+        canActivate: [AuthGuard]
     },
     {
         path:'repairCreateForm/:repairType',
-        component: RepairCreateFormComponent  
+        component: RepairCreateFormComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'profiles',
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

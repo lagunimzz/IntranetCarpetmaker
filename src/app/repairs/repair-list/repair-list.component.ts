@@ -8,7 +8,9 @@ import { RepairService } from '../shared/repair.service';
 })
 export class RepairListComponent implements OnInit{
     repairs = [];
-    constructor(private repairService: RepairService) { }
+    constructor(private repairService: RepairService) { 
+      this.getAllRepair();
+    }
 
     ngOnInit(){
         this.getAllRepair();    

@@ -6,63 +6,8 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a [routerLink]="['/repairCreateForm','IT']" class="dropdown-item">แจ้งซ่อมคอมพิวเตอร์</a>
     <a [routerLink]="['/repairCreateForm','Public']"  class="dropdown-item">แจ้งซ่อมสาธรณูปโภค</a>
-    <!--<a (click)="changeRepairType('เครื่องจักร')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อมเครื่องจักร</a>-->
-  </div>
-</div>
-<!--<div class="modal fade" id="create-repair-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">บันทึกข้อมูลแจ้งซ่อม : {{newRepair.repairType}}</h4>
-      </div>
-      <form>
-      <div class="modal-body">
-        
-          <div class="form-group">
-            <label for="name">ชื่อผู้แจ้ง</label>
-            <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
-          </div>
-          <div *ngIf="equipmentTypes.length > 0" class="form-group">           
-            <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
-            <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType">ประเภท</label>
-            <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
-              <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="symptoms">อาการที่พบ</label>
-            <textarea rows="3" class="form-control" id="symptoms" name="symptoms" [(ngModel)]="newRepair.symptoms" required>"</textarea>
-          </div>          
-          <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group">
-            <label for="equipmentNumber">เลขที่เครื่อง</label>
-            <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber" required>
-          </div>
-          <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
-            <label for="place">สถานที่</label>
-            <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
-          </div>
-          <div class="form-group">
-            <label for="telephone">เบอร์โทร</label>
-            <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
-          </div>
-          <div class="form-group">
-            <label for="remark">หมายเหตุ</label>
-            <input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>
-          </div>  
-                       
-      </div> 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" (click)="onSubmit()" data-dismiss="modal">บันทึก</button>
-      </div>
-      </form>   
     </div>
-  </div>
-</div>-->
-
+</div>
 <br>
 <repair-list></repair-list>
 <br>

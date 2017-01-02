@@ -1,23 +1,26 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Repair } from '../shared/repair.model';
 import { RepairService } from '../shared/repair.service';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Auth } from '../../core/auth.service';
 @Component({
   selector: 'repair-create-form',
   templateUrl: './repair-create-form.component.html',
 })
 export class RepairCreateFormComponent implements OnInit {
   summitted = false;
-  newRepair = new Repair('','','','','','','','','','','');
-
+  newRepair = new Repair('','','','','','',this.auth.userProfile['user_metadata']['department'],'','','',this.auth.userProfile['email']);
+  profile:any;
   repairs = [];
   equipmentTypes = [];
   
   constructor(
     private repairService: RepairService,
     private route: ActivatedRoute,
-    ) { }
+    private router: Router,
+    private auth: Auth
+    ) { 
+    }
 
   ngOnInit() { 
     this.route.params
@@ -27,10 +30,11 @@ export class RepairCreateFormComponent implements OnInit {
 
   onSubmit(){
     this.createRepair(this.newRepair);
+    this.router.navigate(['/repairs']);
   }
 
-  cancle(){
-    this.newRepair = new Repair('','','','--- กรุณาเลือก ---','','','','','','','');
+  cancle(){ 
+    this.newRepair = new Repair('','','','','','',this.auth.userProfile['user_metadata']['department'],'','','',this.auth.userProfile['email']);
   }
 
   getAllEquipmentType(repairType:string){
