@@ -1,5 +1,11 @@
 export const options = {
-    allowedConnections : ['Username-Password-Authentication'],
+    theme: {
+        logo: "../../favicon.ico",
+    },
+    languageDictionary: {
+        title: "Carpet Maker (Thailand)"
+    },
+    allowedConnections : ['Username-Password-Authentication','facebook'],
     additionalSignUpFields: [{
         name: "department",
         placeholder: "enter your department",

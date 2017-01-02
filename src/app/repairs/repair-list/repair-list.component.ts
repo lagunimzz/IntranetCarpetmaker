@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Repair } from '../shared/repair.model';
 import { RepairService } from '../shared/repair.service';
+import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'repair-list',
@@ -8,8 +9,10 @@ import { RepairService } from '../shared/repair.service';
 })
 export class RepairListComponent implements OnInit{
     repairs = [];
-    constructor(private repairService: RepairService) { 
+    constructor(private repairService: RepairService,config: NgbPaginationConfig) { 
       this.getAllRepair();
+      config.size = 'sm';
+      config.boundaryLinks = true;
     }
 
     ngOnInit(){

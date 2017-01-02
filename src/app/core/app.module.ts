@@ -8,7 +8,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 
 import { RepairService } from '../repairs/shared/repair.service';
 import { routing } from './app.routing'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule,NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from './auth.service';
 
 import { RepairComponent } from '../repairs/repair.component';
@@ -19,6 +19,8 @@ import { ProfileComponent} from '../profiles/profile.component';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { AuthGuard } from './auth.guard';
     routing,
     NgbModule.forRoot()
   ],
-  providers: [RepairService,AUTH_PROVIDERS,Auth,AuthGuard],
+  providers: [RepairService,AUTH_PROVIDERS,Auth,AuthGuard,NgbPaginationConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

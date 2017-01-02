@@ -48,24 +48,16 @@
         </div>
         <!-- Logo End -->
         <!-- Mobile Menu Start -->
-        <div class="mobile navbar-header">
-          <a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">
+        <!--<div class="mobile navbar-header">-->
+          <!--<a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">-->
             <!--<i class="icon-reorder icon-2x"></i>-->
-          </a>
-        </div>
+          <!--</a>
+        </div>-->
         <!-- Mobile Menu End -->
         <!-- Menu Start -->
         <nav class="navbar menu">
           <ul class="nav nav-inline sf-menu">
-            <li class="nav-item">
-              <a id="current" href="index.html">
-                        หน้าหลัก
-                        <span class="sf-sub-indicator">
-                        <i class="icon-angle-down "></i>
-                        </span>
-                        </a>
-
-            </li>
+            <li class="nav-item"><a routerLink="/">หน้าหลัก</a></li>
             <li *ngIf="auth.authenticated()" class="nav-item">
               <a href="index.html#" class="sf-with-ul">
                         ระบบภายใน 
@@ -107,7 +99,7 @@
                         </span>
               </a>
               <ul>
-                <li><a href="/profiles" class="sf-with-ul">ข้อมูลผู้ใช้งาน</a></li>
+                <li><a routerLink="/profiles" class="sf-with-ul">ข้อมูลผู้ใช้งาน</a></li>
                 <!--<li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
                 <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>-->
                 <li><a href="#" class="sf-with-ul" (click)="auth.logout()" >ออกจากระบบ</a></li>

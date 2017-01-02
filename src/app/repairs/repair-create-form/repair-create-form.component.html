@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
+  <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
+  <li class="breadcrumb-item active">บันทึกแจ้งซ่อม {{newRepair.repairType}}</li>
+</ol>
 <div class="card">
   <div class="card-header card-primary" style="color:white"> บันทึกแจ้งซ่อม : {{newRepair.repairType}}
 </div>
@@ -8,8 +13,8 @@
       <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
     </div>
     <div *ngIf="equipmentTypes.length > 0" class="form-group">
-      <label *ngIf="newRepair.repairType == 'IT'" for="equipmentType">ประเภทอุปกรณ์</label>
-      <label *ngIf="newRepair.repairType == 'Public'" for="equipmentType">ประเภท</label>
+      <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
+      <label *ngIf="newRepair.repairType == 'สาธรณูปโภค'" for="equipmentType">ประเภท</label>
       <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
             <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
         </select>
@@ -18,12 +23,12 @@
       <label for="symptoms">อาการที่พบ</label>
       <textarea rows="3" class="form-control" id="symptoms" name="symptoms" [(ngModel)]="newRepair.symptoms" required>"</textarea>
     </div>
-    <div *ngIf="newRepair.repairType == 'IT'" class="form-group">
+    <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group">
       <label for="equipmentNumber">เลขที่เครื่อง</label>
       <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"
         required>
     </div>
-    <div *ngIf="newRepair.repairType == 'Public'" class="form-group">
+    <div *ngIf="newRepair.repairType == 'สาธรณูปโภค'" class="form-group">
       <label for="place">สถานที่</label>
       <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
     </div>

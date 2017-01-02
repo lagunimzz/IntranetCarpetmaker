@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let r of repairs">
+    <tr *ngFor="let r of repairs ">
       <td>
         <div class="dropdown">
           <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,3 +35,6 @@
     </tr>
   </tbody>
 </table>
+<ngb-pagination [collectionSize]="repairs.length" [(page)]="page"></ngb-pagination>
+
+

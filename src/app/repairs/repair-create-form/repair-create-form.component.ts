@@ -26,11 +26,19 @@ export class RepairCreateFormComponent implements OnInit {
     this.route.params
     this.newRepair.repairType = this.route.snapshot.params['repairType'];
     this.getAllEquipmentType(this.newRepair.repairType);
+    switch(this.newRepair.repairType){
+      case 'IT':
+        this.newRepair.repairType = 'คอมพิวเตอร์';
+      break;
+      case 'Public':
+        this.newRepair.repairType = 'สาธรณูปโภค';
+      break;
+      default:
+    }
   }  
 
   onSubmit(){
-    this.createRepair(this.newRepair);
-    this.router.navigate(['/repairs']);
+    this.createRepair(this.newRepair)
   }
 
   cancle(){ 
@@ -46,9 +54,13 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   createRepair(repair : Repair){
-    this.repairService.createRepair(repair).subscribe();
+    this.repairService.createRepair(repair).subscribe(
+      data => {
+        if(data.message === '1'){
+          this.router.navigate(['/repairs']);
+        }  
+      },
+      error => console.log()
+    );
   }
-
-  
-
 }
