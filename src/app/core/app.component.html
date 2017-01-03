@@ -12,11 +12,11 @@
           </div>
           <div class="pull-right">
             <ul class="social pull-left">
-              <li class="facebook"><a href="index.html#"><i class="icon-facebook"></i></a></li>
-              <li class="twitter"><a href="index.html#"><i class="icon-twitter"></i></a></li>
-              <li class="dribbble"><a href="index.html#"><i class="icon-dribbble"></i></a></li>
-              <li class="linkedin"><a href="index.html#"><i class="icon-linkedin"></i></a></li>
-              <li class="rss"><a href="index.html#"><i class="icon-rss"></i></a></li>
+              <li class="facebook"><a routerLink="/"><i class="icon-facebook"></i></a></li>
+              <li class="twitter"><a routerLink="/"><i class="icon-twitter"></i></a></li>
+              <li class="dribbble"><a routerLink="/"><i class="icon-dribbble"></i></a></li>
+              <li class="linkedin"><a routerLink="/"><i class="icon-linkedin"></i></a></li>
+              <li class="rss"><a routerLink="/"><i class="icon-rss"></i></a></li>
             </ul>
             <div id="search-form" class="pull-right">
               <form action="#" method="get">
@@ -41,7 +41,7 @@
         <!-- Logo Start -->
         <div class="logo pull-left">
           <h1>
-            <a href="index.html">
+            <a routerLink="/">
               <img src="assets/img/cmt.png" alt="pixma" width="200" height="55">
             </a>
           </h1>
@@ -59,7 +59,7 @@
           <ul class="nav nav-inline sf-menu">
             <li class="nav-item"><a routerLink="/">หน้าหลัก</a></li>
             <li *ngIf="auth.authenticated()" class="nav-item">
-              <a href="index.html#" class="sf-with-ul">
+              <a routerLink="/" class="sf-with-ul">
                         ระบบภายใน 
                         <span class="sf-sub-indicator">
                         <i class="icon-angle-down "></i>
@@ -73,7 +73,7 @@
               </ul>
             </li>
             <li *ngIf="auth.authenticated()" class="nav-item">
-              <a href="index.html#" class="sf-with-ul">
+              <a routerLink="/" class="sf-with-ul">
                         การบริการ
                         <span class="sf-sub-indicator">
                         <i class="icon-angle-down "></i>

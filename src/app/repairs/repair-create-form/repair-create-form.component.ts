@@ -17,13 +17,12 @@ export class RepairCreateFormComponent implements OnInit {
   constructor(
     private repairService: RepairService,
     private route: ActivatedRoute,
-    private router: Router,
-    private auth: Auth
+    private auth: Auth,
+    private router: Router
     ) { 
     }
 
   ngOnInit() { 
-    this.route.params
     this.newRepair.repairType = this.route.snapshot.params['repairType'];
     this.getAllEquipmentType(this.newRepair.repairType);
     switch(this.newRepair.repairType){
@@ -46,7 +45,7 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   getAllEquipmentType(repairType:string){
-     this.repairService.getEquipmentTypeAPI(repairType)
+     this.repairService.getEquipments(repairType)
     .subscribe(
       data => this.equipmentTypes = data,
       error => console.log()

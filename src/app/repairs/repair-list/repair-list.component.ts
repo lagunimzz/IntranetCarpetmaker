@@ -9,10 +9,12 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RepairListComponent implements OnInit{
     repairs = [];
-    constructor(private repairService: RepairService,config: NgbPaginationConfig) { 
+    constructor(private repairService: RepairService
+    //,config: NgbPaginationConfig
+    ) { 
       this.getAllRepair();
-      config.size = 'sm';
-      config.boundaryLinks = true;
+      // config.size = 'sm';
+      // config.boundaryLinks = true;
     }
 
     ngOnInit(){
@@ -20,10 +22,10 @@ export class RepairListComponent implements OnInit{
     }
     
     getAllRepair(){
-    this.repairService.getRepairAPI()
-    .subscribe(
-      data => this.repairs = data,
-      error => console.log()
-    );
-  }
+    this.repairService.getRepairs()
+      .subscribe(
+        data => this.repairs = data,
+        error => console.log()
+      );
+    }
 };

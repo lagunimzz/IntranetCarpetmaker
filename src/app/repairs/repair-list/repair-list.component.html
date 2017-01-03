@@ -19,7 +19,7 @@
             จัดการ
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a (click)="changeRepairType('คอมพิวเตอร์')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">รับเรื่อง</a>
+            <a class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]">รับเรื่อง</a>
             <a (click)="changeRepairType('สาธารณูปโภค')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">ปิดงาน</a>
             <a (click)="changeRepairType('เครื่องจักร')" class="dropdown-item" href="#" data-toggle="modal" data-target="#create-repair-modal">ยกเลิก</a>
           </div>
