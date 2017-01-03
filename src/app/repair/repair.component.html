@@ -1,4 +1,4 @@
-<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-repair-modal">แจ้งซ่อม</button>-->
+
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     แจ้งซ่อม
@@ -16,48 +16,49 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">บันทึกข้อมูลแจ้งซ่อม : {{repairType}}</h4>
+        <h4 class="modal-title">บันทึกข้อมูลแจ้งซ่อม : {{newRepair.repairType}}</h4>
       </div>
+      <form>
       <div class="modal-body">
-
+        
           <div class="form-group">
             <label for="name">ชื่อผู้แจ้ง</label>
-            <input type="text" class="form-control" id="name" #name>
+            <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
           </div>
-          <div *ngIf="equipmentTypes.length > 0" class="form-group">
-            
-            <label *ngIf="repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
-            <label *ngIf="repairType == 'สาธารณูปโภค'" for="equipmentType">ประเภท</label>
-            <select class="form-control" #equipmentType>
-              <option>--- กรุณาเลือก ---</option>
-              <option *ngFor="let equipmentType of equipmentTypes" value="equipmentType.TypeName">{{equipmentType.TypeName}}</option>
+          <div *ngIf="equipmentTypes.length > 0" class="form-group">           
+            <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
+            <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType">ประเภท</label>
+            <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
+              <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="symptoms">อาการที่พบ</label>
-            <textarea rows="3" class="form-control" id="symptoms" #symptoms></textarea>
+            <textarea rows="3" class="form-control" id="symptoms" name="symptoms" [(ngModel)]="newRepair.symptoms" required>"</textarea>
           </div>          
-          <div *ngIf="repairType == 'คอมพิวเตอร์'" class="form-group">
-            <label for="equipmentNO">เลขที่เครื่อง</label>
-            <input type="text" class="form-control" id="equipmentNO" #equipmentNO>
+          <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group">
+            <label for="equipmentNumber">เลขที่เครื่อง</label>
+            <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber" required>
           </div>
-          <div *ngIf="repairType == 'สาธารณูปโภค'" class="form-group">
+          <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
             <label for="place">สถานที่</label>
-            <input type="text" class="form-control" id="place" #place>
+            <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
           </div>
           <div class="form-group">
             <label for="telephone">เบอร์โทร</label>
-            <input type="text" class="form-control" id="telephone" #telephone>
+            <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
           </div>
           <div class="form-group">
             <label for="remark">หมายเหตุ</label>
-            <input type="text" class="form-control" id="remark" #remark>
-          </div>                    
-      </div>
+            <input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>
+          </div>  
+                       
+      </div> 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" (click)="test(repairNo.value)">บันทึก</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()" data-dismiss="modal">บันทึก</button>
       </div>
+      </form>   
     </div>
   </div>
 </div>

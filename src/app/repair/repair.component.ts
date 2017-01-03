@@ -8,20 +8,27 @@ import { RepairService } from '../repair.service';
   styleUrls: ['./repair.component.css']
 })
 export class RepairComponent implements OnInit {
+  summitted = false;
+  newRepair = new Repair('','','','--- กรุณาเลือก ---','','','','','','','');
 
-  newRepair = new Repair('','','','','','','','','','');
-  
   ngOnInit() { 
-    //Form Load  
     this.getAllRepair(); 
   }
   constructor(private repairService: RepairService) { }
-  repairType = '';
   repairs = [];
   equipmentTypes = [];
 
+  onSubmit(){
+    this.createRepair(this.newRepair);
+    this.getAllRepair();
+  }
+
+  cancle(){
+    this.newRepair = new Repair('','','','--- กรุณาเลือก ---','','','','','','','');
+  }
+
   changeRepairType(type:string){
-    this.repairType = type;
+    this.newRepair.repairType = type;
     switch(type){
       case 'คอมพิวเตอร์':
         this.getAllEquipmentType('IT');
@@ -51,8 +58,12 @@ export class RepairComponent implements OnInit {
     );   
   }
 
-  createRepair(newRepair : Repair){
-    this.repairService.createRepair(newRepair).subscribe();
+  createRepair(repair : Repair){
+    this.repairService.createRepair(repair).subscribe(
+      data => {
+        this.getAllRepair();
+      }
+    );
   }
 
   
