@@ -15,6 +15,7 @@ import { RepairComponent } from '../repairs/repair.component';
 import { RepairListComponent } from '../repairs/repair-list/repair-list.component';
 import { RepairCreateFormComponent } from '../repairs/repair-create-form/repair-create-form.component';
 import { RepairReceiveFormComponent } from '../repairs/repair-receive-form/repair-receive-form.component';
+import { RepairViewComponent } from '../repairs/repair-view/repair-view.component';
 
 import { ProfileComponent} from '../profiles/profile.component';
 
@@ -31,6 +32,7 @@ import { AdminComponent } from '../admins/admin.component';
     RepairListComponent,
     RepairCreateFormComponent,
     RepairReceiveFormComponent,
+    RepairViewComponent,
     ProfileComponent,
     AdminComponent
   ],

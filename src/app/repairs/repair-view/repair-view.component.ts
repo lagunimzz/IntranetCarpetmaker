@@ -6,10 +6,10 @@ import { Auth } from '../../core/auth.service';
 
 @Component({
   selector: 'repair-recive-form',
-  templateUrl: './repair-receive-form.component.html',
-  styleUrls: ['./repair-receive-form.component.css']
+  templateUrl: './repair-view.component.html',
+  styleUrls: ['./repair-view.component.css']
 })
-export class RepairReceiveFormComponent implements OnInit{
+export class RepairViewComponent implements OnInit{
     repair = {};
     
     constructor(

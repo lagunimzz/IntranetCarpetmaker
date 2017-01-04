@@ -4,57 +4,128 @@
   <li class="breadcrumb-item active">รับเรื่อง</li>
 </ol>
 
-Admin Component
+<div class="card">
+  <div class="card-header card-primary" style="color:white"> บันทึกรับเรื่อง เลขที่ใบแจ้งซ่อม: {{repair.repairNo}} / ประเภท: {{repair.repairType}}</div>
+<div class="card-block">
 
-<form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">เลขที่ใบแจ้งซ่อม :</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="เลขที่ใบแจ้งซ่อม">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">อุปกรณ์ :</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="อุปกรณ์">
-  </div>
-
-   <div class="form-group">
-    <label for="exampleInputEmail2">ผู้แจ้งซ่อม</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="ผู้แจ้งซ่อม">
-  </div>
-  <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+  <form>
+    <fieldset disabled>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="repairNo">เลขที่ใบแจ้งซ่อม :</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="repairNo" placeholder="เลขที่ใบแจ้งซ่อม" name="repairNo" [(ngModel)]="repair.repairNo">
+        </div>
       </div>
-        
-  <div class="form-group">
-    <label for="exampleInputEmail2">เบอร์โทร :</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="ผู้แจ้งซ่อม">
-  </div>
-   <div class="form-group">
-    <label for="exampleInputEmail2">Email :</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="ผู้แจ้งซ่อม">
-  </div>
-  
-   <div class="form-group">
-    <label for="exampleTextarea">ปัญหา/ความต้องการ :</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </div>
-    <div class="form-group">
-    <label for="exampleTextarea">วันที่แจ้ง :</label>
-    <input type="email" class="form-control" id="exampleTextarea" placeholder="ผู้แจ้งซ่อม">
-  </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="equipmentType">อุปกรณ์ :</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="equipmentType" placeholder="อุปกรณ์" name="equipmentType" [(ngModel)]="repair.equipmentType">
+        </div>
+      </div>
 
-  -----------------------------------------------------------------------
-     <div class="form-group">
-    <label for="exampleTextarea">ประเภทการซ่อม :</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </div>
-    <div class="form-group">
-    <label for="exampleTextarea">สาเหตุอาการเสีย :</label>
-    <input type="email" class="form-control" id="exampleTextarea" placeholder="ผู้แจ้งซ่อม">
-  </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="name">ผู้แจ้งซ่อม</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" placeholder="ผู้แจ้งซ่อม" name="name" [(ngModel)]="repair.name">
+        </div>
+      </div>
 
- 
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="telephone">เบอร์โทร :</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="telephone" placeholder="เบอร์โทร" name="telephone" [(ngModel)]="repair.telephone">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="symptoms">ปัญหา/ความต้องการ :</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="symptoms" rows="3" name="symptoms" [(ngModel)]="repair.symptoms"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="createDate">วันที่แจ้ง :</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="createDate" placeholder="ผู้แจ้งซ่อม" name="createDate" [(ngModel)]="repair.createDate">
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <legend>ส่วนของเจ้าหน้าที่</legend>
+    <hr>
+    
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="repairType">ประเภทการซ่อม :</label>
+      <div class="col-sm-10">
+        <select class="form-control">
+         <option>1</option>
+         <option>2</option>
+       </select>
+      </div>
     </div>
-</form>
-
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="exampleTextarea">สาเหตุอาการเสีย :</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="repairType" rows="3"></textarea>
+      </div>
+    </div>
+    <fieldset class="form-group row">
+      <legend class="col-form-legend col-sm-2">วิธีการซ่อม</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            ซ่อมเอง
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            ส่งซ่อมภายนอก
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+            ซื้อทดแทน
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="ss">ค่าใช้จ่าย :</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ss" placeholder="ผู้แจ้งซ่อม" name="ss">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="exampleTextarea">รายละเอียดการซ่อม :</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="repairType" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="ss">หมายเหตุ :</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ss" placeholder="ผู้แจ้งซ่อม" name="ss">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2">สถานะ : </label>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> ซ่อมเสร็จแล้ว
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="card-footer text-mute">
+  <div class="pull-right">
+    <button (click)="cancle()" type="button" class="btn btn-secondary">ยกเลิก</button>
+    <button type="submit" class="btn btn-primary">บันทึก</button>
+  </div>
+</div>
+</div>
