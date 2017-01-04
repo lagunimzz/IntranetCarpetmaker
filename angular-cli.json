@@ -34,6 +34,9 @@
         "../src/assets/css/style.css",
         "styles.css"
       ],
+      "scriptUrls":[
+        "https://cdn.auth0.com/js/lock/10.6/lock.min.js"
+      ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StocksComponent } from './stocks.component';
+import { Auth } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +8,5 @@ import { StocksComponent } from './stocks.component';
 })
 
 export class AppComponent {
+  constructor(private auth: Auth){}
 }

@@ -1,0 +1,150 @@
+<div class="wrap">
+  <!-- Header Start -->
+  <header id="header">
+    <!-- Header Top Bar Start -->
+    <div class="top-bar">
+      <div class="slidedown collapse">
+        <div class="container">
+          <marquee>Basic Marquee Tag</marquee>
+          <div class="phone-email pull-left">
+            <a><i class="icon-phone"></i> Call Us : +880 41 723 272</a>
+            <a href="http://demo.fifothemes.com/pixma/mail@example.com"><i class="icon-envelope"></i> Email : mail@example.com</a>
+          </div>
+          <div class="pull-right">
+            <ul class="social pull-left">
+              <li class="facebook"><a routerLink="/"><i class="icon-facebook"></i></a></li>
+              <li class="twitter"><a routerLink="/"><i class="icon-twitter"></i></a></li>
+              <li class="dribbble"><a routerLink="/"><i class="icon-dribbble"></i></a></li>
+              <li class="linkedin"><a routerLink="/"><i class="icon-linkedin"></i></a></li>
+              <li class="rss"><a routerLink="/"><i class="icon-rss"></i></a></li>
+            </ul>
+            <div id="search-form" class="pull-right">
+              <form action="#" method="get">
+                <input type="text" class="search-text-box">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header Top Bar End -->
+    <!-- Main Header Start -->
+    <div class="main-header">
+      <div class="container">
+        <!-- TopNav Start -->
+        <div class="topnav navbar-header">
+          <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
+            <!--<i class="icon-angle-down icon-current"></i>-->
+          </a>
+        </div>
+        <!-- TopNav End -->
+        <!-- Logo Start -->
+        <div class="logo pull-left">
+          <h1>
+            <a routerLink="/">
+              <img src="assets/img/cmt.png" alt="pixma" width="200" height="55">
+            </a>
+          </h1>
+        </div>
+        <!-- Logo End -->
+        <!-- Mobile Menu Start -->
+        <!--<div class="mobile navbar-header">-->
+          <!--<a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">-->
+            <!--<i class="icon-reorder icon-2x"></i>-->
+          <!--</a>
+        </div>-->
+        <!-- Mobile Menu End -->
+        <!-- Menu Start -->
+        <nav class="navbar menu">
+          <ul class="nav nav-inline sf-menu">
+            <li class="nav-item"><a routerLink="/">หน้าหลัก</a></li>
+            <li *ngIf="auth.authenticated()" class="nav-item">
+              <a routerLink="/" class="sf-with-ul">
+                        ระบบภายใน 
+                        <span class="sf-sub-indicator">
+                        <i class="icon-angle-down "></i>
+                        </span>
+                        </a>
+              <ul>
+                <li><a href="./#/MeetingRoom" class="sf-with-ul">ระบบจองห้องประชุม</a></li>
+                <li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
+                <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>
+
+              </ul>
+            </li>
+            <li *ngIf="auth.authenticated()" class="nav-item">
+              <a routerLink="/" class="sf-with-ul">
+                        การบริการ
+                        <span class="sf-sub-indicator">
+                        <i class="icon-angle-down "></i>
+                        </span>
+                        </a>
+              <ul>
+                <li><a href="about.html" class="sf-with-ul">ดาวน์โหลดใบลา</a></li>
+                <li><a href="services.html" class="sf-with-ul">Services</a></li>
+
+              </ul>
+            </li>
+
+
+            <li class="nav-item"><a href="contact.html">ติดต่อ</a></li>
+            <li *ngIf="auth.authenticated()" class="nav-item"><a href="./#/AdminSystem">ส่วนเจ้าหน้าที่</a></li>
+            <!--<li class="nav-item"><a routerLink="/login" >เข้าสู่ระบบ</a></li>-->
+            <li class="nav-item"><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">เข้าสู่ระบบ</a></li>
+            <li *ngIf="auth.authenticated()" class="nav-item">
+              <a href="#" class="sf-with-ul">
+                        {{auth.userProfile.name}} 
+                        <span class="sf-sub-indicator">
+                        <i class="icon-angle-down "></i>
+                        </span>
+              </a>
+              <ul>
+                <li><a routerLink="/profiles" class="sf-with-ul">ข้อมูลผู้ใช้งาน</a></li>
+                <!--<li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
+                <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>-->
+                <li><a href="#" class="sf-with-ul" (click)="auth.logout()" >ออกจากระบบ</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </nav>
+        <!-- Menu End -->
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+  <!--<div class="breadcrumb-wrapper">
+          <div class="container">
+            <div class="row">
+              <h2 class="title">ระบบภายใน</h2>
+              <marquee>Basic Marquee Tag</marquee>
+            </div>
+          </div>
+        </div>-->
+  <!-- Content Start -->
+  <div class="content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- Content End -->
+  <!-- Footer Start -->
+  <footer id="footer">
+    <!-- Footer Top Start -->
+    <div class="footer-top"></div>
+    <!-- Footer Top End -->
+    <!-- Footer Bottom Start -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 "> &copy; Copyright 2016 by <a href="full-width.html#">Carpet Maker</a>. All Rights Reserved. </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Bottom End -->
+  </footer>
+  <!-- Scroll To Top -->
+  <!-- <a href="blog-left-sidebar.html#" class="scrollup"><i class="icon-angle-up"></i></a> -->
+</div>
