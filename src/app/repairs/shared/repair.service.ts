@@ -13,7 +13,7 @@ export class RepairService {
   endPointUrl = 'http://localhost:8080/CarpetmakerApi';
 
 
-  getRepair(repairNo:string): Observable<any>{
+  getRepair(repairNo:string): Observable<Repair>{
      let params = new URLSearchParams();
       params.set('repairNo', repairNo); 
 
@@ -23,7 +23,14 @@ export class RepairService {
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
-  getRepairs(): Observable<any> {
+  editRepair(repair:Repair): Observable<any> {
+    return this.http.put(this.endPointUrl+"/Repair",{
+     repair
+    })
+    .map((res: Response)=>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
+  }
+  getRepairs(): Observable<Repair[]> {
     return this.http.get(this.endPointUrl+"/Repairs")
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));

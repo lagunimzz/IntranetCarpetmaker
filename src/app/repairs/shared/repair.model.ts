@@ -1,17 +1,20 @@
 export class Repair {
-    constructor(
-        public repairNo:string,
-        public name:string,
-        public repairType:string, 
-        public equipmentType:string,
-        public symptoms:string,
-        public telephone:string, 
-        public department:string,
-        public equipmentNumber:string,
-        public place:string, 
-        public remark:string, 
-        public user:string
-    ){
-        
-    }
+    repairNo: string;
+    name: string;
+    repairType: string;
+    equipmentType: string;
+    symptoms: string;
+    telephone: string;
+    department: string;
+    equipmentNumber: string;
+    place: string;
+    remark: string;
+    adminRepairType: string;
+    cause: string;
+    repairMethod: string;
+    expenses : number;
+    repairDetail : string;
+    adminRemark: string;
+    user: string; 
+    status: string;
 }

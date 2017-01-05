@@ -8,7 +8,7 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './repair-list.component.html'
 })
 export class RepairListComponent implements OnInit{
-    repairs = [];
+    repairs:Repair[] = [];
     constructor(private repairService: RepairService
     //,config: NgbPaginationConfig
     ) { 

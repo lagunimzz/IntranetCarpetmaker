@@ -9,9 +9,8 @@ import { Auth } from '../../core/auth.service';
 })
 export class RepairCreateFormComponent implements OnInit {
   summitted = false;
-  newRepair = new Repair('','','','','','',this.auth.userProfile['user_metadata']['department'],'','','',this.auth.userProfile['email']);
+  newRepair = new Repair();
   profile:any;
-  repairs = [];
   equipmentTypes = [];
   
   constructor(
@@ -23,17 +22,25 @@ export class RepairCreateFormComponent implements OnInit {
     }
 
   ngOnInit() { 
+
     this.newRepair.repairType = this.route.snapshot.params['repairType'];
+    this.newRepair.department = this.auth.userProfile['user_metadata']['department'];
+    this.newRepair.user = this.auth.userProfile['email'];
+    this.newRepair.status = 'ส่งข้อมูลให้เจ้าหน้าที่';
     this.getAllEquipmentType(this.newRepair.repairType);
     switch(this.newRepair.repairType){
       case 'IT':
         this.newRepair.repairType = 'คอมพิวเตอร์';
+        this.newRepair.place = '';
       break;
       case 'Public':
         this.newRepair.repairType = 'สาธารณูปโภค';
+        this.newRepair.equipmentNumber = '';
       break;
       default:
     }
+   
+
   }  
 
   onSubmit(){
@@ -41,7 +48,7 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   cancle(){ 
-    this.newRepair = new Repair('','','','','','',this.auth.userProfile['user_metadata']['department'],'','','',this.auth.userProfile['email']);
+    this.newRepair = new Repair();
   }
 
   getAllEquipmentType(repairType:string){
@@ -53,13 +60,14 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   createRepair(repair : Repair){
+
     this.repairService.createRepair(repair).subscribe(
       data => {
         if(data.message === '1'){
           this.router.navigate(['/repairs']);
         }  
       },
-      error => console.log()
+      error => console.log(Error)
     );
   }
 }

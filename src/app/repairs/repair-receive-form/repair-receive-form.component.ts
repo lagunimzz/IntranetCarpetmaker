@@ -9,27 +9,64 @@ import { Auth } from '../../core/auth.service';
   templateUrl: './repair-receive-form.component.html',
   styleUrls: ['./repair-receive-form.component.css']
 })
-export class RepairReceiveFormComponent implements OnInit{
-    repair = {};
-    
-    constructor(
-      private repairService: RepairService,
-      private route: ActivatedRoute,
-      private auth: Auth
-      ) { 
-        
-    }
+export class RepairReceiveFormComponent implements OnInit {
+  repair = new Repair();
+  isComplete: boolean = false;
+  constructor(
+    private repairService: RepairService,
+    private route: ActivatedRoute,
+    private auth: Auth,
+    private router: Router
+  ) {
 
-    ngOnInit(){
-      this.getRepair(this.route.snapshot.params['repairNo']);
+  }
+
+  ngOnInit() {
+    this.getRepair(this.route.snapshot.params['repairNo']);
+
+  }
+  onSubmit() {
+    if (this.isComplete) {
+      this.repair.status = 'ดำเนินการเรียบร้อย';
+    } else {
+      if (this.repair.repairMethod === 'ส่งซ่อมภายนอก') {
+        this.repair.status = 'ส่งซ่อมภายนอก';
+      } else {
+        this.repair.status = 'กำลังดำเนินการ';
+      }
     }
-    
-    getRepair(repairNo:string){
-    this.repairService.getRepair(repairNo)
-    .subscribe(
-      data => this.repair = data,
+    this.editRepair(this.repair);
+  }
+
+  cancle() {
+    this.getRepair(this.route.snapshot.params['repairNo']);
+  }
+
+  editRepair(repair: Repair) {
+    this.repairService.editRepair(repair)
+      .subscribe(
+        data => {
+        if(data.message === '1'){
+          this.router.navigate(['/repairs']);
+        }  
+      },
       error => console.log(Error)
-    );
-    
-    }
+      )
+  }
+
+  getRepair(repairNo: string) {
+    this.repairService.getRepair(repairNo)
+      .subscribe(
+      data => {
+        this.repair = data
+        this.isComplete = false;
+        this.repair.repairMethod = 'ซ่อมเอง';
+        this.repair.expenses = 0;
+        this.repair.user =  this.auth.userProfile['email'];
+      },
+      error => console.log(Error)
+      );
+
+
+  }
 };
