@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Action</th>
+            <th>เลขที่</th>
+            <th>ประเภท</th>
+            <th>ชื่อผู้แจ้ง</th>
+            <th>อุปการณ์</th>
+            <th>หมายเหตุ</th>
+            <th>เบอร์โทร</th>
+            <th>สถานะ</th>
+            <th>สถานะ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of machines ">
+            <td>{{m.Machine_No}}</td>
+            <td>{{m.Machine_Name}}</td>
+            <td>{{m.DateRecieve}}</td>
+            <td>{{m.Qty}}</td>
+            <td>{{m.Brand}}</td>
+            <td>{{m.Generation}}</td>
+            <td>{{m.Energy}}</td>
+            <td>{{m.Location}}</td>
+            <td>{{m.Note}}</td>
+        </tr>
+    </tbody>
+</table>

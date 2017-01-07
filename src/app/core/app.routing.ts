@@ -11,23 +11,26 @@ import { ProfileComponent } from '../profiles/profile.component';
 import { AuthGuard } from './auth.guard';
 import { AdminComponent } from '../admins/admin.component';
 
+
+import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
+
 const appRoutes: Routes = [
     {
         path: '',
         component: DashboardComponent
     },
     {
-        path:'repairs',
+        path: 'repairs',
         component: RepairComponent,
         canActivate: [AuthGuard]
     },
     {
-        path:'repairCreateForm/:repairType',
+        path: 'repairCreateForm/:repairType',
         component: RepairCreateFormComponent,
         canActivate: [AuthGuard]
     },
     {
-        path:'repairReceiveForm/:repairNo',
+        path: 'repairReceiveForm/:repairNo',
         component: RepairReceiveFormComponent,
         canActivate: [AuthGuard]
     },
@@ -37,17 +40,20 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path:'profiles',
+        path: 'profiles',
         component: ProfileComponent,
         canActivate: [AuthGuard]
     },
     {
-        path:'admins',
-        component:AdminComponent,
-         canActivate: [AuthGuard]
-
+        path: 'admins',
+        component: AdminComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'report/machine',
+        component: MachineReportComponent
     }
-   
+
 ];
 
-export const routing : ModuleWithProviders =  RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

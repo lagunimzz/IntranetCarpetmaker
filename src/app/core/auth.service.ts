@@ -1,15 +1,19 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
-import { options } from './auth.option';
+import { AuthOption } from './auth.option';
+
+
 // Avoid name not found warnings
 // declare var Auth0Lock: any;
 let Auth0Lock: any = require('auth0-lock').default;
 @Injectable()
 export class Auth {
-  // Configure Auth0
-  lock = new Auth0Lock('bkyszQoQKb0ry13eQKBbykNjiwtGZz8G', 'smesolution.auth0.com', options);
+  
+  lock = new Auth0Lock('bkyszQoQKb0ry13eQKBbykNjiwtGZz8G', 'smesolution.auth0.com', this.authOption.options);
   userProfile: Object;
-  constructor() {
+
+  constructor(private authOption:AuthOption) {
+
     // Add callback for lock `authenticated` event
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
 

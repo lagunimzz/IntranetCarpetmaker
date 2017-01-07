@@ -20,9 +20,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]">เรียกดู</a>
-            <a *ngIf="isAdmin()" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]">รับเรื่อง</a>
-            <a *ngIf="isAdmin()" class="dropdown-item">ปิดงาน</a>
-            <a *ngIf="isAdmin()" class="dropdown-item">ยกเลิก</a>
+            <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]">รับเรื่อง</a>
           </div>
         </div>
       </td>

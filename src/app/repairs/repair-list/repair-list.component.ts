@@ -33,7 +33,7 @@ export class RepairListComponent implements OnInit {
     this.repairService.getRepairs()
       .subscribe(
       data => this.repairs = data,
-      error => console.log()
+      error => console.log(Error)
       );
   }
 };

@@ -15,6 +15,7 @@
     <div *ngIf="equipmentTypes.length > 0" class="form-group">
       <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
       <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType">ประเภท</label>
+      <label *ngIf="newRepair.repairType == 'เครื่องจักร'" for="equipmentType">ประเภทเครื่องจักร</label>
       <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
             <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
         </select>

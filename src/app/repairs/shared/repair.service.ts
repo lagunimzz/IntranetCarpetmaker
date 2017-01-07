@@ -35,17 +35,7 @@ export class RepairService {
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
-  getEquipments(type:string): Observable<any> {
-     let params = new URLSearchParams();
-      params.set('type', type); 
 
-
-    return this.http.get(this.endPointUrl+"/EquipmentTypes",{
-    search : params
-    })
-    .map((res: Response)=>res.json())
-    .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
-  }
   createRepair(repair : Repair): Observable<any>{
 
     return this.http.post(this.endPointUrl+"/Repair",{
