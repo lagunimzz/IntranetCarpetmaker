@@ -1,3 +1,15 @@
+<style>
+  .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+</style>
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
   <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
@@ -12,13 +24,18 @@
       <label for="name">ชื่อผู้แจ้ง</label>
       <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
     </div>
-    <div *ngIf="equipmentTypes.length > 0" class="form-group">
+    <div *ngIf="newRepair.repairType != 'เครื่องจักร'"  class="form-group">
       <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType">ประเภทอุปกรณ์</label>
       <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType">ประเภท</label>
-      <label *ngIf="newRepair.repairType == 'เครื่องจักร'" for="equipmentType">ประเภทเครื่องจักร</label>
-      <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
+      <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType"
+        required>
             <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
-        </select>
+      </select>
+    </div>
+    <div *ngIf="newRepair.repairType == 'เครื่องจักร'"  class="form-group">    
+      <label for="equipmentType">ประเภทเครื่องจักร</label>
+      <button type="button" class="btn btn-primary btn-sm" (click)="machineModal.show()">เลือกเครื่องจักร</button>
+      <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required />
     </div>
     <div class="form-group">
       <label for="symptoms">อาการที่พบ</label>
@@ -37,6 +54,14 @@
       <label for="telephone">เบอร์โทร</label>
       <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
     </div>
+     <div class="form-group">
+      <label for="wasteDate">วันที่เสีย</label>
+      <input disabled type="text" class="form-control" id="wasteDate" name="wasteDate" [(ngModel)]="newRepair.wasteDate" required>
+     
+    </div>   
+     <div style="display:inline-block; min-height:290px;">
+      <datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate" [minDate]="minDate"  [formatDay]="'D'" [showWeeks]="true"></datepicker>
+      </div>
     <div class="form-group">
       <label for="remark">หมายเหตุ</label>
       <input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>
@@ -49,4 +74,33 @@
     </div>
   </div>
 </form>
+</div>
+
+
+<div class="modal fade" bsModal #machineModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="machineModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">เลือกเครื่องจักร</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead class="thead-inverse">
+            <th>หมายเลขเครื่อง</th>
+            <th>ชื่อเครื่อง</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of machines">
+              <td><a style="color:blue;cursor: pointer; cursor: hand;" (click)="selectedMachine(m.Machine_No+' / '+m.Machine_Name)">{{m.Machine_No}}</a></td>
+              <td>{{m.Machine_Name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

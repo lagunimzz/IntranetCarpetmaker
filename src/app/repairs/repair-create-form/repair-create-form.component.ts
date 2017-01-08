@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ViewChild } from '@angular/core';
 import { Repair } from '../shared/repair.model';
 import { EquipmentType } from '../shared/equipment-type.model';
 import { MachineType } from '../shared/machine.model';
@@ -7,22 +7,31 @@ import { MachineTypeService } from '../shared/machine.service';
 import { EquipmentTypeService } from '../shared/equipment-type.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Auth } from '../../core/auth.service';
+import { ModalModule } from 'ng2-bootstrap/modal';
+import { ModalDirective } from 'ng2-bootstrap';
+import * as moment from 'moment';
+
 @Component({
   selector: 'repair-create-form',
   templateUrl: './repair-create-form.component.html',
 })
 export class RepairCreateFormComponent implements OnInit {
+  @ViewChild('machineModal') public machineModal:ModalDirective;
   summitted = false;
   newRepair = new Repair();
   equipmentTypes: EquipmentType[] = [];
+  machines: MachineType[] = [];
+  minDate: Date = void 0;
+
   constructor(
     private repairService: RepairService,
     private equipmentTypeService: EquipmentTypeService,
-    private machineTypeServie: MachineTypeService,
+    private machineTypeService: MachineTypeService,
     private route: ActivatedRoute,
     private auth: Auth,
     private router: Router
   ) {
+    (this.minDate = new Date()).setDate(this.minDate.getDate() - 1000);
   }
 
   ngOnInit() {
@@ -32,6 +41,7 @@ export class RepairCreateFormComponent implements OnInit {
     this.newRepair.user = this.auth.userProfile['email'];
     this.newRepair.status = 'ส่งข้อมูลให้เจ้าหน้าที่';
     this.getAllEquipmentType(this.newRepair.repairType);
+    this.getAllMachine();
     switch (this.newRepair.repairType) {
       case 'IT':
         this.newRepair.repairType = 'คอมพิวเตอร์';
@@ -50,6 +60,11 @@ export class RepairCreateFormComponent implements OnInit {
 
   }
 
+  selectedMachine(selected:string){
+   this.newRepair.equipmentType = selected;
+   this.machineModal.hide();
+  }
+
   onSubmit() {
     this.createRepair(this.newRepair)
   }
@@ -58,31 +73,21 @@ export class RepairCreateFormComponent implements OnInit {
     this.newRepair = new Repair();
   }
   getAllEquipmentType(repairType: string) {
-    if (repairType == 'Machine') {
-      this.machineTypeServie.getMachines()
-        .subscribe(
-        data => {
-          let equipment:EquipmentType;
-          for (let e of data) {
-            this.equipmentTypes.push({
-              ID:'',
-              TypeName:e.Machine_Name,
-              Category: 'Machine'
-            })
-          }
-        },
-        error => console.log()
-        )
-    }
-    else {
-      this.equipmentTypeService.getEquipments(repairType)
-        .subscribe(
-        data => this.equipmentTypes = data,
-        error => console.log()
-        );
-    }
-  }
+    this.equipmentTypeService.getEquipments(repairType)
+      .subscribe(
+      data => this.equipmentTypes = data,
+      error => console.log()
+      );
 
+  }
+  getAllMachine() {
+    this.machineTypeService.getMachines()
+      .subscribe(
+      data => this.machines = data,
+      error => console.log()
+      );
+  }
+  
   createRepair(repair: Repair) {
 
     this.repairService.createRepair(repair).subscribe(
