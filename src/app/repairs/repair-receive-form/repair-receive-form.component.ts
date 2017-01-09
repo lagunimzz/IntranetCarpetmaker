@@ -23,7 +23,15 @@ export class RepairReceiveFormComponent implements OnInit {
 
   ngOnInit() {
     this.getRepair(this.route.snapshot.params['repairNo']);
-
+  }
+  addSparePaths() {
+    this.repair.sparePaths.push({name:''});
+  }
+  deleteSparePaths(index:number){
+    this.repair.sparePaths.splice(index,1);
+  }
+  addUserRepair(){
+    this.repair.userRepair.push('');
   }
   onSubmit() {
     if (this.isComplete) {
@@ -60,9 +68,9 @@ export class RepairReceiveFormComponent implements OnInit {
       data => {
         this.repair = data
         this.isComplete = false;
-        this.repair.repairMethod = 'ซ่อมเอง';
         this.repair.expenses = 0;
         this.repair.user =  this.auth.userProfile['email'];
+        this.repair.sparePaths = [{name:''}];
       },
       error => console.log(Error)
       );

@@ -18,4 +18,8 @@ export class Repair {
     adminRemark: string;
     user: string; 
     status: string;
+    sparePaths: any;
+    userRepair : any;
+    repairCompleteDate : Date;
+    repairDate : Date
 }

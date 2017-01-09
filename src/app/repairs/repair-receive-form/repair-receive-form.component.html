@@ -35,7 +35,12 @@
           <input type="text" class="form-control" id="telephone" placeholder="เบอร์โทร" name="telephone" [(ngModel)]="repair.telephone">
         </div>
       </div>
-
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="wasteDate">วันที่เสีย :</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="telephone" placeholder="เบอร์โทร" name="telephone" [(ngModel)]="repair.wasteDate">
+        </div>
+      </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="symptoms">ปัญหา/ความต้องการ :</label>
         <div class="col-sm-10">
@@ -71,26 +76,20 @@
     <hr>
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="adminRepairType">ประเภทการซ่อม :</label>
-      <div class="col-sm-10">
-        <select class="form-control" id="adminRepairType" placeholder="ประเภทการซ่อม" name="adminRepairType" [(ngModel)]="repair.adminRepairType">
-         <option>1</option>
-         <option>2</option>
-       </select>
-      </div>
-    </div>
-    <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="cause">สาเหตุอาการเสีย :</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="cause" rows="3" name="cause" [(ngModel)]="repair.cause"></textarea>
       </div>
     </div>
     <fieldset class="form-group row">
-      <legend class="col-form-legend col-sm-2">วิธีการซ่อม</legend>
-      <div class="col-sm-10">
+      <label *ngIf="repair.repairType != 'สาธารณูปโภค'" class="col-sm-2 col-form-label" for="repairMethod">วิธีการซ่อม/การแก้ไข:</label>
+      <div *ngIf="repair.repairType == 'เครื่องจักร'" class="col-sm-10">
+        <textarea class="form-control" id="cause" rows="3" name="repairMethod" [(ngModel)]="repair.repairMethod"></textarea>
+      </div>
+      <div *ngIf="repair.repairType == 'คอมพิวเตอร์'" class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="repairMethod" id="ซ่อมเอง"  value="ซ่อมเอง" [(ngModel)]="repair.repairMethod" checked>
+            <input class="form-check-input" type="radio" name="repairMethod" id="ซ่อมเอง"  value="ซ่อมเอง" [(ngModel)]="repair.repairMethod">
             ซ่อมเอง
           </label>
         </div>
@@ -108,22 +107,53 @@
         </div>
       </div>
     </fieldset>
-    <div *ngIf="repair.repairMethod == 'ซื้อทดแทน'" class="form-group row">
-      <label class="col-sm-2 col-form-label" for="expenses">ค่าใช้จ่าย :</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="expenses" placeholder="ค่าใช้จ่าย" name="expenses" [(ngModel)]="repair.expenses">
-      </div>
-    </div>
-    <div class="form-group row">
+    <div *ngIf="repair.repairType != 'เครื่องจักร'" class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDetail">รายละเอียดการซ่อม :</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="repairDetail" rows="3" name="repairDetail" [(ngModel)]="repair.repairDetail"></textarea>
       </div>
     </div>
+    <div *ngIf="repair.repairMethod == 'ซื้อทดแทน' || repair.repairType == 'เครื่องจักร'" class="form-group row">
+      <label class="col-sm-2 col-form-label" for="expenses">ค่าใช้จ่าย(ถ้ามี) :</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="expenses" placeholder="ค่าใช้จ่าย" name="expenses" [(ngModel)]="repair.expenses">
+      </div>
+    </div>
+    <div *ngIf="repair.repairType == 'เครื่องจักร'" class="form-group row">
+      <label class="col-sm-2 col-form-label" for="sparePaths">อะไหล่ :</label>
+      <div *ngFor="let sp of repair.sparePaths;let i = index" [attr.data-index]="i" class="form-group row">
+        <label *ngIf="i != 0" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-3">
+          <input class="form-control" name="sparePaths" [(ngModel)]="sp.name" />
+        </div>
+        <button *ngIf="i == 0" type="button" (click)="addSparePaths()" class="btn btn-info">เพิ่ม</button>
+        <button *ngIf="i != 0" type="button" (click)="deleteSparePaths(i)" class="btn btn-danger">ลบ</button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="userRepair">ผู้ซ่อม :</label>
+      <div class="col-sm-3">
+        <input class="form-control" id="userRepair" type="text" name="userRepair" [(ngModel)]="repair.userRepair" />
+      </div>
+      <button type="button" (click)="addUserRepair()" class="btn btn-info">เพิ่ม</button>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="repairDate" type="text" name="repairDate" [(ngModel)]="repair.repairDate" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="repairCompleteDate" type="text" name="repairCompleteDate" [(ngModel)]="repair.repairCompleteDate"
+        />
+      </div>
+    </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="adminRemark">หมายเหตุ :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="ss" placeholder="หมายเหตุ" name="adminRemark" [(ngModel)]="repair.adminRemark">
+        <textarea rows="3" type="text" class="form-control" id="ss" placeholder="หมายเหตุ" name="adminRemark" [(ngModel)]="repair.adminRemark"></textarea>
       </div>
     </div>
     <div class="form-group row">
