@@ -26,7 +26,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'repairCreateForm/:repairType',
+        path: 'repairCreateForm/:repairType/:repairNo',
         component: RepairCreateFormComponent,
         canActivate: [AuthGuard]
     },

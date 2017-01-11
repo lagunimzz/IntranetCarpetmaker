@@ -25,20 +25,22 @@
     <tr *ngFor="let r of repairs ">
       <td>
         <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             จัดการ
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item"  [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true">&nbsp; เรียกดูข้อมูล</i></a>
-            <a  *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]" class="dropdown-item" ><i class="fa fa-cog" aria-hidden="true">&nbsp; รับซ่อม/ตรวจสอบ</i></a>
-            <a class="dropdown-item disabled" ><i class="fa fa-power-off" aria-hidden="true">&nbsp; ปิดงานซ่อม</i></a>
-            <a class="dropdown-item" ><i class="fa fa-laptop" aria-hidden="true">&nbsp; รับเครื่องคืน</i></a>
-            <a class="dropdown-item" [routerLink]="'#'"  (click)="showChildModal(r.repairNo)" class="dropdown-item" ><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
-           <!--<li role="presentation" class="divider"></li>-->
-            <a class="dropdown-item" ><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
-            <a class="dropdown-item" ><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
+            <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true">&nbsp; เรียกดูข้อมูล</i></a>
+            <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
+              class="dropdown-item"><i class="fa fa-cog" aria-hidden="true">&nbsp; รับซ่อม/ตรวจสอบ</i></a>
+            <a class="dropdown-item disabled"><i class="fa fa-power-off" aria-hidden="true">&nbsp; ปิดงานซ่อม</i></a>
+            <a class="dropdown-item"><i class="fa fa-laptop" aria-hidden="true">&nbsp; รับเครื่องคืน</i></a>
+            <a class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
+            <!--<li role="presentation" class="divider"></li>-->
+            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'"  class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
+            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)"  class="dropdown-item"><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
 
-  </div>
+          </div>
         </div>
       </td>
       <td>{{r.repairNo}}</td>
@@ -51,11 +53,11 @@
     </tr>
   </tbody>
 </table>
-<ngb-pagination [collectionSize]="repairs.length" [(page)]="page"></ngb-pagination>
+<!--<ngb-pagination [collectionSize]="repairs.length" [(page)]="page"></ngb-pagination>-->
 
 <!--<button type="button" class="btn btn-primary" >ประเมินการซ่อม</button>-->
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,15 +67,13 @@
         <h4 class="modal-title">ประเมินการซ่อม : {{selectedRepairNo}}</h4>
       </div>
       <div class="modal-body">
-        <rating style="font-size: 40px" [(ngModel)]="rate" [max]="max" [readonly]="false"
-                (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"
-                [titles]="['one','two','three']" [ratingStates]="ratingStates">
-                </rating>
-        <span class="label" 
-              [ngClass]="{'btn-warning': percent<30, 'btn-info': percent>=30 && percent<70, 'btn-success': percent>=70}"
-              [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
-        
-        <!--<pre class="card card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+        <rating style="font-size: 40px" [(ngModel)]="rate" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [titles]="['one','two','three']"
+[ratingStates]="ratingStates">
+</rating>
+<span class="label" [ngClass]="{'btn-warning': percent<30, 'btn-info': percent>=30 && percent<70, 'btn-success': percent>=70}"
+  [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+
+<!--<pre class="card card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
         
         <button type="button" class="btn btn-sm btn-danger" (click)="rate = 0"
                 [disabled]="isReadonly">Clear
@@ -81,14 +81,27 @@
         <button type="button" class="btn btn-sm btn-primary"
                 (click)="isReadonly = ! isReadonly">Toggle Readonly
         </button>-->
-        <hr/>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<!--<repiar-evaluation-form></repiar-evaluation-form>-->
+
+<div class="modal fade" bsModal #deleteModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="deleteModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">ลบรายการ : {{selectedRepairNo}}</h4>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">ยกเลิก</button>
+        <button type="button" class="btn btn-danger" (click)="deleteRepair()" >ลบ</button>
       </div>
     </div>
   </div>
 </div>
-<!--<repiar-evaluation-form></repiar-evaluation-form>-->
-
-
-
-
-

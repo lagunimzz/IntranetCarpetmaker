@@ -30,6 +30,16 @@ export class RepairService {
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
+  deleteRepair(repairNo:string):Observable<any> {
+    let params = new URLSearchParams();
+      params.set('repairNo', repairNo); 
+
+    return this.http.delete(this.endPointUrl+"/Repair",{
+      search : params
+    })
+    .map((res: Response)=>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
+  }
   getRepairs(): Observable<Repair[]> {
     return this.http.get(this.endPointUrl+"/Repairs")
     .map((res: Response)=>res.json())

@@ -34,17 +34,38 @@ export class RepairListComponent implements OnInit {
   getAllRepair() {
     this.repairService.getRepairs()
       .subscribe(
-      data => this.repairs = data,
+      data => { 
+        this.repairs = data
+      },
       error => console.log(Error)
       );
   }
-
+  selectedRepairNo:string;
   @ViewChild('staticModal') public staticModal:ModalDirective;
-   selectedRepairNo:string;
+   
    public showChildModal(selectedRepairNo:string):void {
     this.selectedRepairNo = selectedRepairNo;
     this.staticModal.show();
   }
+
+  @ViewChild('deleteModal') public deleteModal:ModalDirective;
+   public showDeleteModal(selectedRepairNo:string):void {
+    this.selectedRepairNo = selectedRepairNo;
+    this.deleteModal.show();
+  }
+
+  deleteRepair(){
+    this.repairService.deleteRepair(this.selectedRepairNo)
+      .subscribe(
+      data => {
+        if (data.message === '1') {
+          this.deleteModal.hide();
+          this.getAllRepair()
+        }
+      },
+      error => console.log(Error)
+      )
+  }    
 
   public max: number = 10;
   public rate: number = 1;
