@@ -1,3 +1,15 @@
+<style>
+/*.form-control {
+  height: 34px;
+}*/
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+
+
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
   <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
@@ -11,82 +23,86 @@
     <fieldset disabled>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="repairNo">เลขที่ใบแจ้งซ่อม :</label>
-        <div class="col-sm-10">
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="repairNo" placeholder="เลขที่ใบแจ้งซ่อม" name="repairNo" [(ngModel)]="repair.repairNo">
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="equipmentType">อุปกรณ์ :</label>
-        <div class="col-sm-10">
+        <label class="col-xs-2 col-form-label" for="equipmentType">อุปกรณ์ :</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="equipmentType" placeholder="อุปกรณ์" name="equipmentType" [(ngModel)]="repair.equipmentType">
         </div>
       </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="name">ผู้แจ้งซ่อม</label>
-        <div class="col-sm-10">
+      
+       <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="symptoms">ปัญหา/ความต้องการ :</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" id="symptoms" rows="3" name="symptoms" [(ngModel)]="repair.symptoms"></textarea>
+        </div>
+     
+      
+        <label class="col-xs-2 col-form-label" for="name">ผู้แจ้งซ่อม</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="name" placeholder="ผู้แจ้งซ่อม" name="name" [(ngModel)]="repair.name">
         </div>
-      </div>
+       </div>
+
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="telephone">เบอร์โทร :</label>
-        <div class="col-sm-10">
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="telephone" placeholder="เบอร์โทร" name="telephone" [(ngModel)]="repair.telephone">
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="wasteDate">วันที่เสีย :</label>
-        <div class="col-sm-10">
+     
+     
+        <label class="col-xs-2 col-form-label" for="wasteDate">วันที่เสีย :</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="telephone" placeholder="เบอร์โทร" name="telephone" [(ngModel)]="repair.wasteDate">
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="symptoms">ปัญหา/ความต้องการ :</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" id="symptoms" rows="3" name="symptoms" [(ngModel)]="repair.symptoms"></textarea>
-        </div>
-      </div>
+     
 
       <div *ngIf="repair.repairType == 'คอมพิวเตอร์'" class="form-group row">
         <label class="col-sm-2 col-form-label" for="equipmentNumber">เลขที่เครื่อง :</label>
-        <div class="col-sm-10">
+        <div class="col-sm-4">
           <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="repair.equipmentNumber">
         </div>
-      </div>
 
+         
+        <label class="col-xs-2 col-form-label" for="createDate">วันที่แจ้ง :</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="createDate" placeholder="ผู้แจ้งซ่อม" name="createDate" [(ngModel)]="repair.createDate">
+        </div>
+      
+      </div>
+<div class="form-group row">
       <div *ngIf="repair.repairType == 'สาธารณูปโภค'" class="form-group row">
         <label class="col-sm-2 col-form-label" for="place">สถานที่ :</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="place" name="place" [(ngModel)]="repair.place">
         </div>
       </div>
+</div>
 
 
 
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="createDate">วันที่แจ้ง :</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="createDate" placeholder="ผู้แจ้งซ่อม" name="createDate" [(ngModel)]="repair.createDate">
-        </div>
-      </div>
+    
     </fieldset>
     <br>
-    <legend>ส่วนของเจ้าหน้าที่</legend>
+    <!--<h3 class="title">ส่วนของเจ้าหน้าที่</h3>-->
+    <legend >ส่วนของเจ้าหน้าที่</legend>
     <hr>
 
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="cause">สาเหตุอาการเสีย :</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <textarea class="form-control" id="cause" rows="3" name="cause" [(ngModel)]="repair.cause"></textarea>
       </div>
-    </div>
+   
     <fieldset class="form-group row">
-      <label *ngIf="repair.repairType != 'สาธารณูปโภค'" class="col-sm-2 col-form-label" for="repairMethod">วิธีการซ่อม/การแก้ไข:</label>
+      <label *ngIf="repair.repairType != 'สาธารณูปโภค'" class="col-sm-4 col-form-label" for="repairMethod">วิธีการซ่อม/การแก้ไข:</label>
       <div *ngIf="repair.repairType == 'เครื่องจักร'" class="col-sm-10">
         <textarea class="form-control" id="cause" rows="3" name="repairMethod" [(ngModel)]="repair.repairMethod"></textarea>
       </div>
-      <div *ngIf="repair.repairType == 'คอมพิวเตอร์'" class="col-sm-10">
+      <div *ngIf="repair.repairType == 'คอมพิวเตอร์'" >
         <div class="form-check">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="repairMethod" id="ซ่อมเอง"  value="ซ่อมเอง" [(ngModel)]="repair.repairMethod">
@@ -107,18 +123,33 @@
         </div>
       </div>
     </fieldset>
+    </div>
+
+  
     <div *ngIf="repair.repairType != 'เครื่องจักร'" class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDetail">รายละเอียดการซ่อม :</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <textarea class="form-control" id="repairDetail" rows="3" name="repairDetail" [(ngModel)]="repair.repairDetail"></textarea>
       </div>
-    </div>
-    <div *ngIf="repair.repairMethod == 'ซื้อทดแทน' || repair.repairType == 'เครื่องจักร'" class="form-group row">
+    
+    <div *ngIf="repair.repairMethod == 'ซื้อทดแทน' || repair.repairType == 'เครื่องจักร'" >
       <label class="col-sm-2 col-form-label" for="expenses">ค่าใช้จ่าย(ถ้ามี) :</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <input type="text" class="form-control" id="expenses" placeholder="ค่าใช้จ่าย" name="expenses" [(ngModel)]="repair.expenses">
       </div>
     </div>
+
+   
+      <label class="col-xs-2 col-form-label" for="userRepair">ผู้ซ่อม :</label>
+      <div class="col-sm-3">
+        <input class="form-control" id="userRepair" type="text" name="userRepair" [(ngModel)]="repair.userRepair" />
+        <button type="button" (click)="addUserRepair()" class="btn btn-info"><span class="fa fa-plus" aria-hidden="true"> เพิ่ม</span></button>
+   
+      </div>
+      
+    </div>
+
+
     <div *ngIf="repair.repairType == 'เครื่องจักร'" class="form-group row">
       <label class="col-sm-2 col-form-label" for="sparePaths">อะไหล่ :</label>
       <div *ngFor="let sp of repair.sparePaths;let i = index" [attr.data-index]="i" class="form-group row">
@@ -126,39 +157,32 @@
         <div class="col-sm-3">
           <input class="form-control" name="sparePaths" [(ngModel)]="sp.name" />
         </div>
-        <button *ngIf="i == 0" type="button" (click)="addSparePaths()" class="btn btn-info">เพิ่ม</button>
+        <button *ngIf="i == 0" type="button" (click)="addSparePaths()" class="btn btn-info"><span class="fa fa-plus" aria-hidden="true"> เพิ่ม</span></button>
         <button *ngIf="i != 0" type="button" (click)="deleteSparePaths(i)" class="btn btn-danger">ลบ</button>
       </div>
     </div>
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="userRepair">ผู้ซ่อม :</label>
-      <div class="col-sm-3">
-        <input class="form-control" id="userRepair" type="text" name="userRepair" [(ngModel)]="repair.userRepair" />
-      </div>
-      <button type="button" (click)="addUserRepair()" class="btn btn-info">เพิ่ม</button>
-    </div>
+    
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <input class="form-control" id="repairDate" type="text" name="repairDate" [(ngModel)]="repair.repairDate" />
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
-      <div class="col-sm-10">
-        <input class="form-control" id="repairCompleteDate" type="text" name="repairCompleteDate" [(ngModel)]="repair.repairCompleteDate"
-        />
-      </div>
+   
+    
+      <label class="col-xs-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
+      <div class="col-sm-3">
+        <input class="form-control" id="repairCompleteDate" type="text" name="repairCompleteDate" [(ngModel)]="repair.repairCompleteDate"/>
+       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="adminRemark">หมายเหตุ :</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <textarea rows="3" type="text" class="form-control" id="ss" placeholder="หมายเหตุ" name="adminRemark" [(ngModel)]="repair.adminRemark"></textarea>
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2">สถานะ : </label>
-      <div class="col-sm-10">
+   
+   
+      <label class="col-xs-2">สถานะ : </label>
+      <div class="col-sm-4">
         <div class="form-check">
           <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="isComplete" name="isComplete" [(ngModel)]="isComplete"> ซ่อมเสร็จแล้ว
@@ -166,11 +190,13 @@
         </div>
       </div>
     </div>
+
+
   </div>
   <div class="card-footer text-mute">
     <div class="pull-right">
-      <button (click)="cancle()" type="button" class="btn btn-secondary">ยกเลิก</button>
-      <button type="submit" class="btn btn-primary">บันทึก</button>
+      <button (click)="cancle()" type="button" class="btn btn-secondary"><span class="fa fa-times" aria-hidden="true">&nbsp; ยกเลิก</span></button>
+      <button type="submit" class="btn btn-primary" ><span class="fa fa-floppy-o" aria-hidden="true">&nbsp; บันทึก</span></button>
     </div>
   </div>
 </form>

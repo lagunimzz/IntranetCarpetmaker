@@ -36,8 +36,8 @@
             <a class="dropdown-item" ><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
             <a class="dropdown-item" ><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
             <a class="dropdown-item" ><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
-
-            <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]">รับเรื่อง</a>
+<!--isAdmin() &&-->
+            <a *ngIf=" (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]">รับเรื่อง</a>
           </div>
         </div>
       </td>
