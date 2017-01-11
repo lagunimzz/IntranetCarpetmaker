@@ -14,6 +14,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'repair-create-form',
   templateUrl: './repair-create-form.component.html',
+  styleUrls: ['./repair-create-form.component.css']
 })
 export class RepairCreateFormComponent implements OnInit {
   @ViewChild('machineModal') public machineModal:ModalDirective;

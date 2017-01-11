@@ -25,13 +25,16 @@ export class RepairReceiveFormComponent implements OnInit {
     this.getRepair(this.route.snapshot.params['repairNo']);
   }
   addSparePaths() {
-    this.repair.sparePaths.push({name:''});
+    this.repair.sparePaths.push({ name: '' });
   }
-  deleteSparePaths(index:number){
-    this.repair.sparePaths.splice(index,1);
+  deleteSparePaths(index: number) {
+    this.repair.sparePaths.splice(index, 1);
   }
-  addUserRepair(){
-    this.repair.userRepair.push('');
+  addUserRepair() {
+    this.repair.userRepair.push({ name: '' });
+  }
+  deleteUserRepair(index: number) {
+    this.repair.userRepair.splice(index, 1);
   }
   onSubmit() {
     if (this.isComplete) {
@@ -53,10 +56,10 @@ export class RepairReceiveFormComponent implements OnInit {
   editRepair(repair: Repair) {
     this.repairService.editRepair(repair)
       .subscribe(
-        data => {
-        if(data.message === '1'){
+      data => {
+        if (data.message === '1') {
           this.router.navigate(['/repairs']);
-        }  
+        }
       },
       error => console.log(Error)
       )
@@ -69,8 +72,9 @@ export class RepairReceiveFormComponent implements OnInit {
         this.repair = data
         this.isComplete = false;
         this.repair.expenses = 0;
-        this.repair.user =  this.auth.userProfile['email'];
-        this.repair.sparePaths = [{name:''}];
+        this.repair.user = this.auth.userProfile['email'];
+        this.repair.sparePaths = [{ name: '' }];
+        this.repair.userRepair = [{ name: '' }];
       },
       error => console.log(Error)
       );

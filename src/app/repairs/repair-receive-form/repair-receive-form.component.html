@@ -161,7 +161,17 @@
         <button *ngIf="i != 0" type="button" (click)="deleteSparePaths(i)" class="btn btn-danger">ลบ</button>
       </div>
     </div>
-    
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="userRepair">ผู้ซ่อม :</label>
+      <div *ngFor="let u of repair.userRepair;let i = index" [attr.data-index]="i" class="form-group row">
+        <label *ngIf="i != 0" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-3">
+          <input class="form-control" name="userRepair" [(ngModel)]="u.name" />
+        </div>
+        <button *ngIf="i == 0" type="button" (click)="addUserRepair()" class="btn btn-info">เพิ่ม</button>
+        <button *ngIf="i != 0" type="button" (click)="deleteUserRepair(i)" class="btn btn-danger">ลบ</button>
+      </div>
+    </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
       <div class="col-sm-4">

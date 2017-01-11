@@ -10,6 +10,7 @@ import { DatepickerModule } from 'ng2-bootstrap/datepicker';
 
 import { routing } from './app.routing'
 import { NgbModule, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { RatingModule } from 'ng2-bootstrap/rating';
 import { Auth } from './auth.service';
 
 import { RepairComponent } from '../repairs/repair.component';
@@ -17,6 +18,7 @@ import { RepairListComponent } from '../repairs/repair-list/repair-list.componen
 import { RepairCreateFormComponent } from '../repairs/repair-create-form/repair-create-form.component';
 import { RepairReceiveFormComponent } from '../repairs/repair-receive-form/repair-receive-form.component';
 import { RepairViewComponent } from '../repairs/repair-view/repair-view.component';
+// import { RepairEvaluationForm } from '../repairs/repair-evaluation-form/repair-evaluation-form.component';
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
 import { ProfileComponent } from '../profiles/profile.component';
 
@@ -43,6 +45,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairListComponent,
     RepairCreateFormComponent,
     RepairReceiveFormComponent,
+    // RepairEvaluationForm,
     RepairViewComponent,
     MachineReportComponent,
     ProfileComponent,
@@ -56,6 +59,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NgbModule.forRoot(),
     ModalModule.forRoot(),
     DatepickerModule.forRoot(),
+    RatingModule.forRoot()
   ],
   providers: [
     {

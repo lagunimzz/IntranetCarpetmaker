@@ -6,7 +6,8 @@ import { Auth } from '../../core/auth.service';
 
 @Component({
   selector: 'machine-report',
-  templateUrl: './machine-report.component.html'
+  templateUrl: './machine-report.component.html',
+  styleUrls: ['./machine-report.component.css']
 })
 export class MachineReportComponent implements OnInit {
   machines: MachineType[] = [];
