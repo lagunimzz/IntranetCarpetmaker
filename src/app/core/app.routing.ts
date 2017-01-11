@@ -23,17 +23,17 @@ const appRoutes: Routes = [
     {
         path: 'repairs',
         component: RepairComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'repairCreateForm/:repairType',
         component: RepairCreateFormComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'repairReceiveForm/:repairNo',
         component: RepairReceiveFormComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     // {
     //     path: 'repairEvaluationForm/:repairNo',
@@ -43,17 +43,17 @@ const appRoutes: Routes = [
     {
         path: 'repairView/:repairNo',
         component: RepairViewComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'profiles',
         component: ProfileComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'admins',
         component: AdminComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'report/machine',
