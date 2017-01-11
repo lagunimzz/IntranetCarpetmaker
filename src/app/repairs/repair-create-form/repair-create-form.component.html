@@ -20,24 +20,29 @@
 </div>
 <form (ngSubmit)="onSubmit()" #repairForm="ngForm">
   <div class="card-block">
+   <!--แถว 1-->
     <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label" >ชื่อผู้แจ้ง :</label>
-      <div class="form-group row">
-        <div class="col-lg-3">
-      <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
-    </div>
-
-    <div *ngIf="newRepair.repairType != 'เครื่องจักร'"  class="form-group">
-      <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทอุปกรณ์ :</label>
-      <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType" class="col-sm-2 col-form-label">ประเภท :</label>
-      <div class="col-lg-3">
-      <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType"
-        required>
-            <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
-      </select>
+        <label for="name" class="col-sm-2 col-form-label" >ชื่อผู้แจ้ง :</label>
+        
+          <div class="col-md-3">
+        <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
+          </div>
+     <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทอุปกรณ์ :</label>
+        <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทการซ่อม :</label>
+        <div class="col-md-3">
+        <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType"
+          required>
+              <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
+        </select>
+        </div>
+<!--เช็คซ่อมเครื่องจักร-->
+      <div *ngIf="newRepair.repairType != 'เครื่องจักร'"  class="col-sm-6 col-form-label" >
+      
       </div>
+    <!--end-->
+ 
     </div>
-      </div>
+ 
 
       <div class="form-group row">
       <label for="symptoms"  class="col-sm-2 col-form-label">ปัญหา/อาการที่พบ :</label>
@@ -49,31 +54,31 @@
    <!--gmlll-->
     <div class="form-group row">
 
-
-      <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group">
-      <label for="equipmentNumber" class="col-sm-2 col-form-label">เลขที่เครื่อง :</label>
-      <div class="col-lg-3">
-      <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"
-        required>
+ <label for="equipmentNumber" class="col-sm-2 col-form-label">เลขที่เครื่อง :</label>
+      <div class="col-md-3">
+      <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber" required> <p style="color: red;">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU</p>
     </div>
+    <!--ถ้าเป็นคอม-->
+      <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group">
+     
       </div>
+      <!--end-->
 
        <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
-      <label for="place">สถานที่</label>
+      <label for="place">สถานที่ :</label>
       <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
     </div>
    
-      <label for="telephone">เบอร์โทร :</label>
+      <label for="telephone"  class="col-sm-2 col-form-label">เบอร์โทร :</label>
       <div class="col-lg-3">
       <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
       </div>
     
     </div>
 
-    </div>
     
     <div *ngIf="newRepair.repairType == 'เครื่องจักร'"  class="form-group">    
-      <label for="equipmentType">ประเภทเครื่องจักร</label>
+      <label for="equipmentType">ประเภทเครื่องจักร :</label>
       <button type="button" class="btn btn-primary btn-sm" (click)="machineModal.show()">เลือกเครื่องจักร</button>
       <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required />
     </div>
@@ -88,10 +93,17 @@
      <div style="display:inline-block; min-height:290px;">
       <datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate" [minDate]="minDate"  [formatDay]="'D'" [showWeeks]="true"></datepicker>
       </div>
-    <div class="form-group">
-      <label for="remark">หมายเหตุ</label>
-      <input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>
+
+    <div class="form-group row">
+      <label for="remark">หมายเหตุ :</label>
+      <!--<input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>-->
+     <div class="col-lg-6">
+      <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>"</textarea>
+      </div>
     </div>
+     
+
+
   </div>
   <div class="card-footer text-mute">
     <div class="pull-right">

@@ -13,9 +13,9 @@
     <tr>
       <th>Action</th>
       <th>เลขที่</th>
-      <th>ประเภท</th>
+      <th>ประเภทอุปกรณ์</th>
       <th>ชื่อผู้แจ้ง</th>
-      <th>อุปการณ์</th>
+      <th>ปัญหา/อาการที่พบ</th>
       <th>หมายเหตุ</th>
       <th>เบอร์โทร</th>
       <th>สถานะ</th>
@@ -31,9 +31,10 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item"  [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true">&nbsp; เรียกดูข้อมูล</i></a>
             <a  *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]" class="dropdown-item" ><i class="fa fa-cog" aria-hidden="true">&nbsp; รับซ่อม/ตรวจสอบ</i></a>
-            <a class="dropdown-item" ><i class="fa fa-power-off" aria-hidden="true">&nbsp; ปิดงานซ่อม</i></a>
+            <a class="dropdown-item disabled" ><i class="fa fa-power-off" aria-hidden="true">&nbsp; ปิดงานซ่อม</i></a>
             <a class="dropdown-item" ><i class="fa fa-laptop" aria-hidden="true">&nbsp; รับเครื่องคืน</i></a>
             <a class="dropdown-item" [routerLink]="'#'"  (click)="showChildModal(r.repairNo)" class="dropdown-item" ><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
+           <!--<li role="presentation" class="divider"></li>-->
             <a class="dropdown-item" ><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
             <a class="dropdown-item" ><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
 
