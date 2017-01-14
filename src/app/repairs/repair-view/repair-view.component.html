@@ -7,11 +7,13 @@
 <div class="card">
     <div class="card-header card-primary" style="color:white">VIEW</div>
 <div class="card-block">
+    {{repair.repairNo}}
+        
+       
 </div>
 <div class="card-footer text-mute">
     <div class="pull-right">
-        <button (click)="cancle()" type="button" class="btn btn-secondary">ยกเลิก</button>
-        <button type="submit" class="btn btn-primary">บันทึก</button>
+         <button type="button" (click)="genPDF()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> PDF</button>
     </div>
 </div>
 </div>

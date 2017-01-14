@@ -4,7 +4,6 @@ import { RepairService } from '../shared/repair.service';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../core/auth.service';
 import { ModalDirective } from 'ng2-bootstrap';
-
 @Component({
   selector: 'repair-list',
   templateUrl: './repair-list.component.html',
@@ -12,6 +11,7 @@ import { ModalDirective } from 'ng2-bootstrap';
 })
 export class RepairListComponent implements OnInit {
   repairs: Repair[] = [];
+  statusSearch = 'ทั้งหมด';
   constructor(
     private repairService: RepairService,
     private auth: Auth

@@ -18,7 +18,9 @@ import { RepairListComponent } from '../repairs/repair-list/repair-list.componen
 import { RepairCreateFormComponent } from '../repairs/repair-create-form/repair-create-form.component';
 import { RepairReceiveFormComponent } from '../repairs/repair-receive-form/repair-receive-form.component';
 import { RepairViewComponent } from '../repairs/repair-view/repair-view.component';
-// import { RepairEvaluationForm } from '../repairs/repair-evaluation-form/repair-evaluation-form.component';
+import { RepairDepartmentPipe } from '../repairs/shared/repair-department.pipe';
+import { RepairStatusPipe } from '../repairs/shared/repair-status.pipe';
+
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
 import { ProfileComponent } from '../profiles/profile.component';
 
@@ -29,12 +31,12 @@ import { MachineTypeService } from '../repairs/shared/machine.service';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
-import { AuthOption } from './auth.option'
+import { AuthOption } from './auth.option';
 
 import { AdminComponent } from '../admins/admin.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp( new AuthConfig({}), http, options);
+  return new AuthHttp(new AuthConfig({}), http, options);
 }
 
 @NgModule({
@@ -45,11 +47,13 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairListComponent,
     RepairCreateFormComponent,
     RepairReceiveFormComponent,
-    // RepairEvaluationForm,
+    RepairDepartmentPipe,
     RepairViewComponent,
+    RepairStatusPipe,
     MachineReportComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -59,19 +63,20 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NgbModule.forRoot(),
     ModalModule.forRoot(),
     DatepickerModule.forRoot(),
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
   ],
   providers: [
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
-      deps: [ Http, RequestOptions ]
+      deps: [Http, RequestOptions]
     },
+    
     DepartmentService,
     RepairService,
     EquipmentTypeService,
     MachineTypeService,
-     Auth, AuthGuard, NgbPaginationConfig,AuthOption
+    Auth, AuthGuard, NgbPaginationConfig, AuthOption
   ],
   bootstrap: [AppComponent]
 })

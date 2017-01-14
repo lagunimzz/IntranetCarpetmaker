@@ -1,17 +1,16 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<style>
 
-.green-icon{
-  color: green;
-  font-style: normal;
-  size: 300px;
-}
-</style>
-
+  <select name="statusSearch" class="form-control" [(ngModel)]="statusSearch">
+    <option value="ทั้งหมด">ทั้งหมด</option>
+    <option value="ส่งข้อมูลให้เจ้าหน้าที่">ส่งข้อมูลให้เจ้าหน้าที่</option>
+    <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
+    <option value="ส่งซ่อมภายนอก">ส่งซ่อมภายนอก</option>
+    <option value="ดำเนินการเรียบร้อย">ดำเนินการเรียบร้อย</option>
+  </select>
+<br>
 <table class="table table-bordered">
   <thead class="thead-inverse">
     <tr>
-      <th>Action</th>
+      <th></th>
       <th>เลขที่</th>
       <th>ประเภทอุปกรณ์</th>
       <th>ชื่อผู้แจ้ง</th>
@@ -22,7 +21,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let r of repairs ">
+    <tr *ngFor="let r of (repairs | repairDepartment | repairStatus:statusSearch)">
       <td>
         <div class="dropdown">
           <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -33,12 +32,9 @@
             <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true">&nbsp; เรียกดูข้อมูล</i></a>
             <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
               class="dropdown-item"><i class="fa fa-cog" aria-hidden="true">&nbsp; รับซ่อม/ตรวจสอบ</i></a>
-            <a class="dropdown-item disabled"><i class="fa fa-power-off" aria-hidden="true">&nbsp; ปิดงานซ่อม</i></a>
-            <a class="dropdown-item"><i class="fa fa-laptop" aria-hidden="true">&nbsp; รับเครื่องคืน</i></a>
             <a class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
-            <!--<li role="presentation" class="divider"></li>-->
-            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'"  class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
-            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)"  class="dropdown-item"><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
+            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
+            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
 
           </div>
         </div>
@@ -100,7 +96,7 @@
       </div>
       <div class="modal-body">
         <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">ยกเลิก</button>
-        <button type="button" class="btn btn-danger" (click)="deleteRepair()" >ลบ</button>
+        <button type="button" class="btn btn-danger" (click)="deleteRepair()">ลบ</button>
       </div>
     </div>
   </div>

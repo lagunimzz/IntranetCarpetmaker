@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.24",
-    "name": "intranet-carpetmaker2"
+    "name": "intranet-carpetmaker"
   },
   "apps": [
     {
@@ -17,13 +17,9 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "mobile": false,
-      "styleUrls":[
-        "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800",
-        "http://fonts.googleapis.com/css?family=Oswald:400,300,700"
-      ],
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../src/assets/css/fonts/font-awesome/css/font-awesome.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
         "../src/assets/css/superfish.css",
         "../src/assets/css/prettyPhoto.css",
         "../src/assets/css/animations.css",
@@ -34,13 +30,11 @@
         "../src/assets/css/style.css",
         "styles.css"
       ],
-      "scriptUrls":[
-        "https://cdn.auth0.com/js/lock/10.6/lock.min.js"
-      ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/jspdf/dist/jspdf.min.js",
         "../src/assets/js/jquery.parallax.js",
         "../src/assets/js/modernizr-2.6.2.min.js",
         "../src/assets/js/revolution-slider/js/jquery.themepunch.revolution.min.js",
