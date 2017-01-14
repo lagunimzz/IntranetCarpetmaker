@@ -15,7 +15,7 @@ export class RepairDepartmentPipe implements PipeTransform {
     department:string = this.auth.userProfile['user_metadata']['department'];
 
     transform(allRepair: Repair[]) {
-        if(this.department == 'Admin'){
+        if(this.department == 'admin'){
             return allRepair;
         } else {
             return allRepair.filter(repair=>repair.department == this.department);

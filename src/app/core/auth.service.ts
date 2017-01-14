@@ -9,7 +9,7 @@ let Auth0Lock: any = require('auth0-lock').default;
 @Injectable()
 export class Auth {
   
-  lock = new Auth0Lock('bkyszQoQKb0ry13eQKBbykNjiwtGZz8G', 'smesolution.auth0.com', this.authOption.options);
+  lock = new Auth0Lock('AEEwMkFmD1nJSB5Ftbdz5d7Aaq3nvXdV', 'infocmt.auth0.com', this.authOption.options);
   userProfile: Object;
 
   constructor(private authOption:AuthOption) {
