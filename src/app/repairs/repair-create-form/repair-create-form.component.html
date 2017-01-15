@@ -16,15 +16,11 @@
       </div>
       <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทอุปกรณ์ :</label>
       <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทการซ่อม :</label>
-      <div class="col-md-3">
+      <div *ngIf="newRepair.repairType != 'เครื่องจักร'"  class="col-md-3">
         <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
               <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
         </select>
       </div>
-      <div *ngIf="newRepair.repairType != 'เครื่องจักร'" class="col-sm-6 col-form-label">
-
-      </div>
-
     </div>
 
 
@@ -44,8 +40,8 @@
       <label style="color: red;" class="col-sm-4 col-form-label">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU</label>
     </div>
 
-    <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
-      <label for="place">สถานที่ :</label>
+    <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group row">
+      <label for="place" class="col-sm-2 col-form-label">สถานที่ :</label>
       <div class="col-sm-3">
         <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>
       </div>
@@ -69,15 +65,11 @@
     <div class="form-group row">
       <label for="wasteDate" class="col-sm-2 col-form-label">วันที่เสีย :</label>
       <div class="col-sm-3">
-        <ng2-datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
+        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
       </div>
     </div>
+    {{newRepair.wasteDate}}
 
-
- 
-<!--<div style="display:inline-block; min-height:290px;">
-<datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate" [minDate]="minDate" [formatDay]="'D'" [showWeeks]="true"></datepicker>
-</div>-->
 
 <div class="form-group row">
   <label for="remark" class="col-sm-2 col-form-label">หมายเหตุ :</label>

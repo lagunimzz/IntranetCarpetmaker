@@ -23,7 +23,7 @@ export class RepairCreateFormComponent implements OnInit {
   equipmentTypes: EquipmentType[] = [];
   machines: MachineType[] = [];
   minDate: Date = void 0;
-  machineKeyword:string = '';
+  machineKeyword: string = '';
   constructor(
     private repairService: RepairService,
     private equipmentTypeService: EquipmentTypeService,
@@ -38,7 +38,7 @@ export class RepairCreateFormComponent implements OnInit {
   ngOnInit() {
     this.newRepair.repairNo = this.route.snapshot.params['repairNo'];
     this.newRepair.repairType = this.route.snapshot.params['repairType'];
-    if (this.newRepair.repairNo != '') {
+    if (this.newRepair.repairNo != 'new') {
       switch (this.newRepair.repairType) {
         case 'คอมพิวเตอร์':
           this.newRepair.repairType = 'IT';
@@ -53,7 +53,7 @@ export class RepairCreateFormComponent implements OnInit {
         default:
       }
     }
-    this.newRepair.wasteDate =  new Date();
+    this.newRepair.name = '';
     this.newRepair.department = this.auth.userProfile['user_metadata']['department'];
     this.newRepair.user = this.auth.userProfile['email'];
     this.newRepair.status = 'ส่งข้อมูลให้เจ้าหน้าที่';
@@ -75,13 +75,14 @@ export class RepairCreateFormComponent implements OnInit {
       default:
     }
 
-    if (this.newRepair.repairNo != '') {
+    if (this.newRepair.repairNo != 'new') {
       this.getRepair(this.newRepair.repairNo);
+
     }
 
 
   }
- getDate() {
+  getDate() {
     return this.newRepair.wasteDate;
   }
   selectedMachine(selected: string) {
@@ -90,9 +91,7 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   onSubmit() {
-    
-    console.log(this.newRepair.wasteDate.toLocaleDateString());
-    if (this.newRepair.repairNo != '') {
+    if (this.newRepair.repairNo != 'new') {
       this.editRepair(this.newRepair);
     } else {
       this.createRepair(this.newRepair);
@@ -129,16 +128,33 @@ export class RepairCreateFormComponent implements OnInit {
       error => console.log(Error)
     );
   }
+
+  // this.testDate = new DateModel ({
+	// 	day: "28",
+	// 	month: "12",
+	// 	year: "2016",
+	// 	formatted: "2016-12-28",
+	// 	momentObj: this.yesterday
+	// });
   getRepair(repairNo: string) {
     this.repairService.getRepair(repairNo)
       .subscribe(
       data => {
-        this.newRepair = data
+        this.newRepair = data;
+        let wasteDate = moment(data.wasteDate);
+        this.newRepair.wasteDate = {
+          day: wasteDate.day,month: wasteDate.month, year: wasteDate.year,
+          formatted: wasteDate.format('DD/MM/YYYY'),
+          momentObj: wasteDate,
+        }
+
+        //= moment(data.wasteDate);
+
       },
       error => console.log(Error)
       );
   }
-    editRepair(repair: Repair) {
+  editRepair(repair: Repair) {
     this.repairService.editRepair(repair)
       .subscribe(
       data => {
@@ -149,4 +165,6 @@ export class RepairCreateFormComponent implements OnInit {
       error => console.log(Error)
       )
   }
+
+
 }

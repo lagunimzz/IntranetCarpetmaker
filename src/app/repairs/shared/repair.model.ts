@@ -8,7 +8,7 @@ export class Repair {
     department: string;
     equipmentNumber: string;
     place: string;
-    wasteDate: Date;
+    wasteDate: any;
     remark: string;
     adminRepairType: string;
     cause: string;
