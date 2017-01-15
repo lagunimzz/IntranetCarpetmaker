@@ -1,5 +1,4 @@
-
-  <select name="statusSearch" class="form-control" [(ngModel)]="statusSearch">
+<select name="statusSearch" class="form-control" [(ngModel)]="statusSearch">
     <option value="ทั้งหมด">ทั้งหมด</option>
     <option value="ส่งข้อมูลให้เจ้าหน้าที่">ส่งข้อมูลให้เจ้าหน้าที่</option>
     <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
@@ -12,42 +11,52 @@
     <tr>
       <th></th>
       <th style="text-align: center;">เลขที่ใบแจ้งซ่อม</th>
-      <th style="text-align: center;">ประเภทอุปกรณ์</th>
-      <th style="text-align: center;">ชื่อผู้แจ้ง</th>
-      <th style="text-align: center;">ปัญหา/อาการที่พบ</th>
-      <th style="text-align: center;">หมายเหตุ</th>
-      <th style="text-align: center;">เบอร์โทร</th>
-      <th style="text-align: center;">สถานะ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let r of (repairs | repairDepartment | repairStatus:statusSearch)">
-      <td>
-        <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+<th style="text-align: center;">ประเภทอุปกรณ์</th>
+<th style="text-align: center;">ชื่อผู้แจ้ง</th>
+<th style="text-align: center;">ปัญหา/อาการที่พบ</th>
+<th style="text-align: center;">หมายเหตุ</th>
+<th style="text-align: center;">เบอร์โทร</th>
+<th style="text-align: center;">สถานะ</th>
+</tr>
+</thead>
+<tbody>
+  <tr *ngIf="(repairs | repairDepartment | repairStatus:statusSearch).length == 0" class="well">
+    <td colspan="8" style="text-align: center">ไม่พบข้อมูล</td>
+</tr>
+<tr *ngFor="let r of (repairs | repairDepartment | repairStatus:statusSearch)">
+  <td>
+    <div class="dropdown">
+      <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
             จัดการ
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true">&nbsp; เรียกดูข้อมูล</i></a>
-            <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
-              class="dropdown-item"><i class="fa fa-cog" aria-hidden="true">&nbsp; รับซ่อม/ตรวจสอบ</i></a>
-            <a class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true">&nbsp; ประเมินการซ่อม</i></a>
-            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true">&nbsp; แก้ไข</i></a>
-            <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true">&nbsp; ลบรายการ</i></a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true"> เรียกดูข้อมูล</i></a>
+        <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
+          class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"> รับซ่อม/ตรวจสอบ</i></a>
+        <a class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true"> ประเมินการซ่อม</i></a>
+        <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true"> แก้ไข</i></a>
+        <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"> ลบรายการ</i></a>
 
-          </div>
-        </div>
-      </td>
-      <td>{{r.repairNo}}</td>
-      <td>{{r.repairType}}</td>
-      <td>{{r.name}}</td>
-      <td>{{r.equipmentType}}</td>
-      <td>{{r.remark}}</td>
-      <td>{{r.telephone}}</td>
-      <td>{{r.status}}</td>
-    </tr>
-  </tbody>
+      </div>
+    </div>
+  </td>
+  <td>{{r.repairNo}}</td>
+  <td>{{r.repairType}}</td>
+  <td>{{r.name}}</td>
+  <td>{{r.equipmentType}}</td>
+  <td>{{r.remark}}</td>
+  <td>{{r.telephone}}</td>
+  <!--[ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">-->
+  <!--<td style="color: lightgreen"-->
+  <td [ngStyle]="{ background: 
+    (r.status == 'ดำเนินการเรียบร้อย') ? 'lightseagreen' : 
+    (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่') ? 'lightskyblue' : 
+    (r.status == 'กำลังดำเนินการ') ? 'gold' : 
+    (r.status == 'ประเมินเรียบร้อยแล้ว') ? 'lightgreen' : 
+    'white' }">{{r.status}}</td>
+</tr>
+</tbody>
 </table>
 <!--<ngb-pagination [collectionSize]="repairs.length" [(page)]="page"></ngb-pagination>-->
 
@@ -63,22 +72,19 @@
         <h4 class="modal-title">ประเมินการซ่อม : {{selectedRepairNo}}</h4>
       </div>
       <div class="modal-body">
-        <rating style="font-size: 40px" [(ngModel)]="rate" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [titles]="['one','two','three']"
+        <rating style="font-size: 80px" [(ngModel)]="rate" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [titles]="['one','two','three']"
 [ratingStates]="ratingStates">
 </rating>
 <span class="label" [ngClass]="{'btn-warning': percent<30, 'btn-info': percent>=30 && percent<70, 'btn-success': percent>=70}"
-  [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
-
-<!--<pre class="card card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
-        
-        <button type="button" class="btn btn-sm btn-danger" (click)="rate = 0"
-                [disabled]="isReadonly">Clear
-        </button>
-        <button type="button" class="btn btn-sm btn-primary"
-                (click)="isReadonly = ! isReadonly">Toggle Readonly
-        </button>-->
-<hr/>
+  [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">
+  <!--{{percent}}%-->
+  </span>
 </div>
+      <div class="modal-footer">
+
+          <button type="button" class="btn btn-secondary" (click)="staticModal.hide()">ยกเลิก</button>
+          <button type="button" class="btn btn-primary" (click)="saveEvaluation()">บันทึก</button>
+      </div>
 </div>
 </div>
 </div>
@@ -94,9 +100,9 @@
         </button>
         <h4 class="modal-title">ลบรายการ : {{selectedRepairNo}}</h4>
       </div>
-      <div class="modal-body">
-        <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">ยกเลิก</button>
-        <button type="button" class="btn btn-danger" (click)="deleteRepair()">ลบ</button>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">ยกเลิก</button>
+          <button type="button" class="btn btn-danger" (click)="deleteRepair()">ลบ</button>
       </div>
     </div>
   </div>

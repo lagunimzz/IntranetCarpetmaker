@@ -67,31 +67,47 @@ export class RepairListComponent implements OnInit {
       )
   }    
 
-  public max: number = 10;
-  public rate: number = 1;
+   max: number = 5;
+   rate: number = 1;
 
-  public overStar: number;
-  public percent: number;
+   overStar: number;
+   percent: number;
 
-  public ratingStates: any = [
+   ratingStates: any = [
     { stateOn: 'fa fa-star fa-6', stateOff: 'fa fa-star-o' },
     { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
     { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
     { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
-    { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
-    { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
-    { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
-    { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
-    { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
     { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' }
+  //   { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
+  //   { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
+  //   { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
+  //   { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' },
+  //   { stateOn: 'fa fa-star', stateOff: 'fa fa-star-o' }
   ];
 
-  public hoveringOver(value: number): void {
+   hoveringOver(value: number): void {
     this.overStar = value;
     this.percent = 100 * (value / this.max);
   };
 
-  public resetStar(): void {
+   resetStar(): void {
     this.overStar = void 0;
   }
+
+  saveEvaluation() {
+    this.repairService.saveEvaluation(this.selectedRepairNo,this.rate)
+       .subscribe(
+      data => {
+        if (data.message === '1') {
+          this.getAllRepair();
+          this.staticModal.hide();
+        }
+      },
+      error => console.log(Error)
+      )
+  }
+  // statusColor(){
+  //   return "{'color': 'blue', 'font-size': '24px', 'font-weight': 'bold'}";
+  // }
 };

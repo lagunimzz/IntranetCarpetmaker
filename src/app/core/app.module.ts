@@ -20,6 +20,8 @@ import { RepairReceiveFormComponent } from '../repairs/repair-receive-form/repai
 import { RepairViewComponent } from '../repairs/repair-view/repair-view.component';
 import { RepairDepartmentPipe } from '../repairs/shared/repair-department.pipe';
 import { RepairStatusPipe } from '../repairs/shared/repair-status.pipe';
+import { RepairMachinePipe } from '../repairs/shared/repair-machine.pipe';
+
 
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
 import { ProfileComponent } from '../profiles/profile.component';
@@ -50,9 +52,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairDepartmentPipe,
     RepairViewComponent,
     RepairStatusPipe,
+    RepairMachinePipe,
     MachineReportComponent,
     ProfileComponent,
-    AdminComponent,
+    AdminComponent
     
   ],
   imports: [

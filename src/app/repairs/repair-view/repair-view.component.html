@@ -7,13 +7,118 @@
 <div class="card">
     <div class="card-header card-primary" style="color:white">VIEW</div>
 <div class="card-block">
-    {{repair.repairNo}}
-        
-       
-</div>
-<div class="card-footer text-mute">
-    <div class="pull-right">
-         <button type="button" (click)="genPDF()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> PDF</button>
+    <!--{{repair.repairNo}}-->
+
+    <legend>ส่วนที่ 1 ข้อมูลพนักงาน</legend>
+    <div class="row">
+        <!--<div class="col-sm">col-sm</div>-->
+        <div class="col-sm-3">
+            ชื่อแผู้แจ้ง : {{repair.name}}
+        </div>
+        <div class="col-sm-3">
+            เบอร์โทร : {{repair.telephone}}
+        </div>
+        <div class="col-sm-3">
+            แผนก : {{repair.department}}
+        </div>
+
     </div>
+    <div class="row">
+        <!--<div class="col-sm">col-sm</div>-->
+        <div class="col-sm-3">
+            ประเภทอุปกรณ์ : {{repair.equipmenttype}}
+        </div>
+        <div class="col-sm-4">
+            ปัญหา/อาการที่พบ : {{repair.symptoms}}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            เลขที่เครื่อง : {{repair.equipmentNumber}}
+        </div>
+        <div class="col-sm-3">
+            วันที่เสีย : {{repair.wasteDate}}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-5">
+            หมายเหตุ : {{repair.remark}}
+        </div>
+
+    </div>
+
+    <hr>
+
+    <legend>ส่วนที่ 2 ผลการดำเนินการซ่อม (ส่วนของเจ้าหน้าที่)</legend>
+    <div class="row">
+
+        <div class="col-sm-4">
+            สาเหตุอาการที่เสีย : {{repair.cause}}
+        </div>
+        <div class="col-sm-4">
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ซ่อมเอง" [checked]="repair.repairMethod == 'ซ่อมเอง'"> ซ่อมเอง
+            </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="ส่งซ่อมภายนอก" [checked]="repair.repairMethod == 'ส่งซ่อมภายนอก'"> ส่งซ่อมภายนอก
+            </label>
+            </div>
+            <div class="form-check form-check-inline disabled">
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="ซื้อทดแทน" [checked]="repair.repairMethod == 'ซื้อทดแทน'"> ซื้อทดแทน
+            </label>
+            </div>
+
+        </div>
+
+    </div>
+
+     <div class="row">
+
+        <div class="col-sm-3">
+            รายละเอียดการซ่อม : {{repair.equipmentNumber}}
+        </div>
+        <div class="col-sm-3">
+            ผู้ซ่อม : {{repair.wasteDate}}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-3">
+            วันที่ซ่อม : {{repair.equipmentNumber}}
+        </div>
+        <div class="col-sm-3">
+            วันที่ซ่อมเสร็จ : {{repair.wasteDate}}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-3">
+            หมายเหตุ : {{repair.equipmentNumber}}
+        </div>
+        <div class="col-sm-3">
+            สถานะ : {{repair.wasteDate}}
+        </div>
+    </div>
+    <hr>
+
+    <legend> ส่วนที่ 3 : ประเมินการซ่อม</legend>
+    <div  *ngIf=" repair.evaluation != 0" class="row">
+        ประเมินแล้ว :{{repair.evaluation}} 
+    </div>
+    <!--ถ้ายังไม่ประเมินให้ขึ้นข้อความว่า ยังไม่ประเมินการซ่อม บ้อก-->
+<hr>
+   
 </div>
-</div>
+ <div class="card-footer text-mute">
+        <div class="pull-right">
+            <button type="button" (click)="genPDF()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> PDF</button>
+        </div>
+    </div>

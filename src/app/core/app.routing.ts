@@ -35,11 +35,6 @@ const appRoutes: Routes = [
         component: RepairReceiveFormComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'repairEvaluationForm/:repairNo',
-    //     component: RepairEvaluationForm,
-    //     canActivate: [AuthGuard]
-    // },
     {
         path: 'repairView/:repairNo',
         component: RepairViewComponent,

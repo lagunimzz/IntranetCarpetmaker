@@ -102,12 +102,12 @@
 
 
             <!--<li class="nav-item"><a href="contact.html">ติดต่อ</a></li>-->
-            <li *ngIf="auth.authenticated()" class="nav-item"><a href="./#/AdminSystem">ส่วนเจ้าหน้าที่</a></li>
+            <!--<li *ngIf="auth.authenticated()" class="nav-item"><a href="./#/AdminSystem">ส่วนเจ้าหน้าที่</a></li>-->
             <!--<li class="nav-item"><a routerLink="/login" >เข้าสู่ระบบ</a></li>-->
             <li class="nav-item"><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">เข้าสู่ระบบ</a></li>
             <li *ngIf="auth.authenticated()" class="nav-item">
               <a href="#" class="sf-with-ul">
-                        {{auth.userProfile.name}} 
+                        {{auth.userProfile.name}} - {{auth.userProfile.user_metadata.department}}
                         <span class="sf-sub-indicator">
                         <i class="icon-angle-down "></i>
                         </span>

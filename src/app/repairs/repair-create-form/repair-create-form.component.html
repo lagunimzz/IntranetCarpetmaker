@@ -1,26 +1,13 @@
-<style>
-  .full button span {
-    background-color: limegreen;
-    border-radius: 32px;
-    color: black;
-  }
-  .partially button span {
-    background-color: orange;
-    border-radius: 32px;
-    color: black;
-  }
-</style>
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
   <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
   <li class="breadcrumb-item active">บันทึกแจ้งซ่อม {{newRepair.repairType}}</li>
 </ol>
 <div class="card">
-  <div class="card-header card-primary" style="color:white"> บันทึกแจ้งซ่อม : {{newRepair.repairType}}
-</div>
+  <div class="card-header card-primary" style="color:white"> บันทึกแจ้งซ่อม : {{newRepair.repairType}}</div>
 <form (ngSubmit)="onSubmit()" #repairForm="ngForm">
   <div class="card-block">
-    <!--แถว 1-->
+
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">ชื่อผู้แจ้ง :</label>
 
@@ -34,11 +21,9 @@
               <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
         </select>
       </div>
-      <!--เช็คซ่อมเครื่องจักร-->
       <div *ngIf="newRepair.repairType != 'เครื่องจักร'" class="col-sm-6 col-form-label">
 
       </div>
-      <!--end-->
 
     </div>
 
@@ -50,7 +35,6 @@
       </div>
     </div>
 
-    <!--gmlll-->
     <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group row">
 
       <label for="equipmentNumber" class="col-sm-2 col-form-label">เลขที่เครื่อง :</label>
@@ -58,54 +42,47 @@
         <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"
           required>
         <p style="color: red;">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU</p>
-      </div>
-    </div>
-    
+</div>
+</div>
+
 <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
   <label for="place">สถานที่ :</label>
-  <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required>
+  <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>
 </div>
 
 <label for="telephone" class="col-sm-2 col-form-label">เบอร์โทร :</label>
 <div class="col-lg-3">
-  <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required>
+  <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required/>
 </div>
-
-
-
 
 <div *ngIf="newRepair.repairType == 'เครื่องจักร'" class="form-group">
   <label for="equipmentType">ประเภทเครื่องจักร :</label>
   <button type="button" class="btn btn-primary btn-sm" (click)="machineModal.show()">เลือกเครื่องจักร</button>
-  <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required
-  />
+  <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required/>
 </div>
 
 
 
 <div class="form-group">
   <label for="wasteDate">วันที่เสีย :</label>
-   <div class="card card-block card-header"><em *ngIf="newRepair.wasteDate">{{ getDate() | date:'yyyy-MM-dd'}}</em></div>
+  <div class="card card-block card-header"><em *ngIf="newRepair.wasteDate">{{ getDate() | date:'yyyy-MM-dd'}}</em></div>
 </div>
+
 <div style="display:inline-block; min-height:290px;">
 <datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate" [minDate]="minDate" [formatDay]="'D'" [showWeeks]="true"></datepicker>
 </div>
 
 <div class="form-group row">
   <label for="remark">หมายเหตุ :</label>
-  <!--<input type="text" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>-->
-  <div class="col-lg-6">
-    <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark" required>"</textarea>
-  </div>
+  <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark">"</textarea>
 </div>
-
 
 
 </div>
 <div class="card-footer text-mute">
   <div class="pull-right">
-    <button (click)="cancle()" type="button" class="btn btn-secondary">ยกเลิก</button>
-    <button type="submit" class="btn btn-primary">บันทึก</button>
+    <button (click)="cancle()" type="button" class="btn btn-secondary"><span class="fa fa-window-close-o" aria-hidden="true"></span> ยกเลิก</button>
+    <button type="submit" class="btn btn-primary"><span class="fa fa-floppy-o" aria-hidden="true"></span> บัันทึก</button>
   </div>
 </div>
 </form>
@@ -129,7 +106,12 @@
             <th>ชื่อเครื่อง</th>
           </thead>
           <tbody>
-            <tr *ngFor="let m of machines">
+            <tr>
+              <td colspan="2">
+                <input type="text" name="machineKeyword" [(ngModel)]="machineKeyword" class="form-control"/>
+              </td>
+            </tr>
+            <tr *ngFor="let m of (machines | repairMachine:machineKeyword)">
               <td>
                 <a style="color:blue;cursor: pointer; cursor: hand;" (click)="selectedMachine(m.Machine_No+' / '+m.Machine_Name)">{{m.Machine_No}}</a>
 </td>

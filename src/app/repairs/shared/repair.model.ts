@@ -22,4 +22,5 @@ export class Repair {
     userRepair : any;
     repairCompleteDate : Date;
     repairDate : Date
+    evaluation : number;
 }

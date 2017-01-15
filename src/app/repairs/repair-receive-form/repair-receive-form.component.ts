@@ -24,18 +24,20 @@ export class RepairReceiveFormComponent implements OnInit {
   ngOnInit() {
     this.getRepair(this.route.snapshot.params['repairNo']);
   }
-  addSparePaths() {
-    this.repair.sparePaths.push({ name: '' });
-  }
-  deleteSparePaths(index: number) {
-    this.repair.sparePaths.splice(index, 1);
-  }
-  addUserRepair() {
-    this.repair.userRepair.push({ name: '' });
-  }
-  deleteUserRepair(index: number) {
-    this.repair.userRepair.splice(index, 1);
-  }
+  // addSparePaths() {
+  //   this.repair.sparePaths.push({ sparePathsName: '' });
+  // }
+  // deleteSparePaths(index: number) {
+  //   this.repair.sparePaths.splice(index, 1);
+  // }
+  // addUserRepair() {
+  //   let temp = this.repair.userRepair;
+  //   temp.push({ userName: '' });
+  //   this.repair.userRepair = temp;
+  // }
+  // deleteUserRepair(index: number) {
+  //   this.repair.userRepair.splice(index, 1);
+  // }
   onSubmit() {
     if (this.isComplete) {
       this.repair.status = 'ดำเนินการเรียบร้อย';
@@ -73,8 +75,8 @@ export class RepairReceiveFormComponent implements OnInit {
         this.isComplete = false;
         this.repair.expenses = 0;
         this.repair.user = this.auth.userProfile['email'];
-        this.repair.sparePaths = [{ name: '' }];
-        this.repair.userRepair = [{ name: '' }];
+        // this.repair.sparePaths = [{ sparePathsName: '' }];
+        // this.repair.userRepair = [{ userName: '' }];
       },
       error => console.log(Error)
       );

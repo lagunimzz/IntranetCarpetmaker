@@ -54,4 +54,12 @@ export class RepairService {
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
+  
+  saveEvaluation(repairNo:string,rate:number): Observable<any>{
+    return this.http.post(this.endPointUrl+"/Evaluation",{
+      repairNo,rate
+    })
+    .map((res: Response)=>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || ' Server Error ')); 
+  }
 }

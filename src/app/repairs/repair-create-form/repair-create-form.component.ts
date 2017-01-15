@@ -23,7 +23,7 @@ export class RepairCreateFormComponent implements OnInit {
   equipmentTypes: EquipmentType[] = [];
   machines: MachineType[] = [];
   minDate: Date = void 0;
-
+  machineKeyword:string = '';
   constructor(
     private repairService: RepairService,
     private equipmentTypeService: EquipmentTypeService,
