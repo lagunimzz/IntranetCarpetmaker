@@ -36,45 +36,54 @@
     </div>
 
     <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group row">
-
       <label for="equipmentNumber" class="col-sm-2 col-form-label">เลขที่เครื่อง :</label>
-      <div class="col-md-3">
+      <div class="col-sm-3">
         <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"
           required>
-        <p style="color: red;">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU</p>
-</div>
-</div>
+      </div>
+      <label style="color: red;" class="col-sm-4 col-form-label">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU</label>
+    </div>
 
-<div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
-  <label for="place">สถานที่ :</label>
-  <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>
-</div>
+    <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group">
+      <label for="place">สถานที่ :</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="telephone" class="col-sm-2 col-form-label">เบอร์โทร :</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required/>
+      </div>
+    </div>
 
-<label for="telephone" class="col-sm-2 col-form-label">เบอร์โทร :</label>
-<div class="col-lg-3">
-  <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required/>
-</div>
+    <div *ngIf="newRepair.repairType == 'เครื่องจักร'" class="form-group row">
+      <label for="equipmentType" class="col-sm-2 col-form-label">ประเภทเครื่องจักร :</label>
+      <button type="button" class="btn btn-primary btn-sm" (click)="machineModal.show()">เลือกเครื่องจักร</button>
+      <div class="col-sm-3">
+        <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required/>
+      </div>
+    </div>
 
-<div *ngIf="newRepair.repairType == 'เครื่องจักร'" class="form-group">
-  <label for="equipmentType">ประเภทเครื่องจักร :</label>
-  <button type="button" class="btn btn-primary btn-sm" (click)="machineModal.show()">เลือกเครื่องจักร</button>
-  <input disabled class="form-control" name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required/>
-</div>
+    <div class="form-group row">
+      <label for="wasteDate" class="col-sm-2 col-form-label">วันที่เสีย :</label>
+      <div class="col-sm-3">
+        <ng2-datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
+      </div>
+    </div>
 
 
-
-<div class="form-group">
-  <label for="wasteDate">วันที่เสีย :</label>
-  <div class="card card-block card-header"><em *ngIf="newRepair.wasteDate">{{ getDate() | date:'yyyy-MM-dd'}}</em></div>
-</div>
-
-<div style="display:inline-block; min-height:290px;">
+ 
+<!--<div style="display:inline-block; min-height:290px;">
 <datepicker [(ngModel)]="newRepair.wasteDate" name="wasteDate" [minDate]="minDate" [formatDay]="'D'" [showWeeks]="true"></datepicker>
-</div>
+</div>-->
 
 <div class="form-group row">
-  <label for="remark">หมายเหตุ :</label>
-  <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark">"</textarea>
+  <label for="remark" class="col-sm-2 col-form-label">หมายเหตุ :</label>
+  <div class="col-sm-6">
+    <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark"></textarea>
+  </div>
 </div>
 
 
@@ -108,7 +117,7 @@
           <tbody>
             <tr>
               <td colspan="2">
-                <input type="text" name="machineKeyword" [(ngModel)]="machineKeyword" class="form-control"/>
+                <input type="text" name="machineKeyword" [(ngModel)]="machineKeyword" class="form-control" />
               </td>
             </tr>
             <tr *ngFor="let m of (machines | repairMachine:machineKeyword)">

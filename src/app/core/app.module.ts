@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 
 import { ModalModule } from 'ng2-bootstrap/modal';
-import { DatepickerModule } from 'ng2-bootstrap/datepicker';
-
+// import { DatepickerModule } from 'ng2-bootstrap/datepicker';
+import { DatePickerModule } from 'ng2-datepicker';
 import { routing } from './app.routing'
 import { NgbModule, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RatingModule } from 'ng2-bootstrap/rating';
@@ -65,7 +65,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     routing,
     NgbModule.forRoot(),
     ModalModule.forRoot(),
-    DatepickerModule.forRoot(),
+    DatePickerModule,
     RatingModule.forRoot(),
   ],
   providers: [
