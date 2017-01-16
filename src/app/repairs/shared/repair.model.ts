@@ -20,7 +20,7 @@ export class Repair {
     status: string;
     sparePaths: any;
     userRepair : any;
-    repairCompleteDate : Date;
-    repairDate : Date
+    repairCompleteDate : any;
+    repairDate : any;
     evaluation : number;
 }

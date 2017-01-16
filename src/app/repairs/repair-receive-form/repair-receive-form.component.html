@@ -184,7 +184,7 @@
 
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairDate" name="repairDate"></ng2-datepicker>
       </div>
       <!--<div class="col-sm-4">
@@ -193,9 +193,12 @@
    
     
       <label class="col-xs-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
+        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairCompleteDate" name="repairCompleteDate"></ng2-datepicker>
+      </div>
+      <!--<div class="col-sm-3">
         <input class="form-control" id="repairCompleteDate" type="text" name="repairCompleteDate" [(ngModel)]="repair.repairCompleteDate"/>
-       </div>
+       </div>-->
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="adminRemark">หมายเหตุ :</label>

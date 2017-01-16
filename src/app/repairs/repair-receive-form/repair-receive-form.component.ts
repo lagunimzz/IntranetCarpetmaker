@@ -3,6 +3,7 @@ import { Repair } from '../shared/repair.model';
 import { RepairService } from '../shared/repair.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Auth } from '../../core/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'repair-recive-form',
@@ -75,6 +76,23 @@ export class RepairReceiveFormComponent implements OnInit {
         this.isComplete = false;
         this.repair.expenses = 0;
         this.repair.user = this.auth.userProfile['email'];
+        if(data.repairDate != null){
+          let repairDate = moment(data.repairDate);  
+          this.repair.repairDate = {
+            day: repairDate.day,month: repairDate.month, year: repairDate.year,
+            formatted: repairDate.format('DD/MM/YYYY'),
+            momentObj: repairDate,
+          }
+        }
+        if(data.repairCompleteDate != null){
+          let repairCompleteDate = moment(data.repairCompleteDate);
+          this.repair.repairCompleteDate = {
+            day: repairCompleteDate.day,month: repairCompleteDate.month, year: repairCompleteDate.year,
+            formatted: repairCompleteDate.format('DD/MM/YYYY'),
+            momentObj: repairCompleteDate,
+          }
+        }
+   
         // this.repair
         // this.repair.sparePaths = [{ sparePathsName: '' }];
         // this.repair.userRepair = [{ userName: '' }];
