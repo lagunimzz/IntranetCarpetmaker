@@ -75,6 +75,7 @@ export class RepairReceiveFormComponent implements OnInit {
         this.isComplete = false;
         this.repair.expenses = 0;
         this.repair.user = this.auth.userProfile['email'];
+        // this.repair
         // this.repair.sparePaths = [{ sparePathsName: '' }];
         // this.repair.userRepair = [{ userName: '' }];
       },

@@ -172,11 +172,24 @@
         <button *ngIf="i != 0" type="button" (click)="deleteUserRepair(i)" class="btn btn-danger">ลบ</button>
       </div>-->
     </div>
+
+
+         <!--<div class="form-group row">
+      <label for="wasteDate" class="col-sm-2 col-form-label">วันที่เสีย :</label>
+      <div class="col-sm-3">
+        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
+      </div>
+    </div>-->
+
+
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
-      <div class="col-sm-4">
-        <input class="form-control" id="repairDate" type="text" name="repairDate" [(ngModel)]="repair.repairDate" />
+      <div class="col-sm-3">
+        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairDate" name="repairDate"></ng2-datepicker>
       </div>
+      <!--<div class="col-sm-4">
+        <input class="form-control" id="repairDate" type="text" name="repairDate" [(ngModel)]="repair.repairDate" />
+      </div>-->
    
     
       <label class="col-xs-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
