@@ -69,6 +69,11 @@ export class RepairListComponent implements OnInit {
 
    max: number = 5;
    rate: number = 1;
+   e1: number = 0;
+   e2: number = 0;
+   e3: number = 0;
+   e4: number = 0;
+   e5: number = 0;
 
    overStar: number;
    percent: number;
@@ -96,7 +101,8 @@ export class RepairListComponent implements OnInit {
   }
 
   saveEvaluation() {
-    this.repairService.saveEvaluation(this.selectedRepairNo,this.rate)
+    let evaluation = this.e1.toString()+this.e2.toString()+this.e3.toString()+this.e4.toString()+this.e5.toString();
+    this.repairService.saveEvaluation(this.selectedRepairNo,evaluation)
        .subscribe(
       data => {
         if (data.message === '1') {
