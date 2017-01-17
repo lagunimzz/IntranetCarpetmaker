@@ -4,6 +4,7 @@
     <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
     <option value="ส่งซ่อมภายนอก">ส่งซ่อมภายนอก</option>
     <option value="ดำเนินการเรียบร้อย">ดำเนินการเรียบร้อย</option>
+    <option value="ดำเนินการเรียบร้อย">ประเมินเรียบร้อยแล้ว</option>
   </select>
 <br>
 <table class="table table-bordered table-striped">
@@ -32,7 +33,7 @@
           </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true"> เรียกดูข้อมูล</i></a>
-        <a *ngIf="isAdmin() && (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
+        <a *ngIf="isAdmin() && (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่' || r.status  =='กำลังดำเนินการ' || r.status  =='ส่งซ่อมภายนอก')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
           class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"> รับซ่อม/ตรวจสอบ</i></a>
         <a *ngIf="r.status == 'ดำเนินการเรียบร้อย'" class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true"> ประเมินการซ่อม</i></a>
         <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true"> แก้ไข</i></a>
