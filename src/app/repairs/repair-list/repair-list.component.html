@@ -4,6 +4,7 @@
     <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
     <option value="ส่งซ่อมภายนอก">ส่งซ่อมภายนอก</option>
     <option value="ดำเนินการเรียบร้อย">ดำเนินการเรียบร้อย</option>
+    <option value="ดำเนินการเรียบร้อย">ประเมินเรียบร้อยแล้ว</option>
   </select>
 <br>
 <table class="table table-bordered table-striped">
@@ -32,9 +33,9 @@
           </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true"> เรียกดูข้อมูล</i></a>
-        <a *ngIf="isAdmin() && (r.status != 'ดำเนินการเรียบร้อย')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
+        <a *ngIf="isAdmin() && (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่' || r.status  =='กำลังดำเนินการ' || r.status  =='ส่งซ่อมภายนอก')" class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]"
           class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"> รับซ่อม/ตรวจสอบ</i></a>
-        <a class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true"> ประเมินการซ่อม</i></a>
+        <a *ngIf="r.status == 'ดำเนินการเรียบร้อย'" class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)" class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true"> ประเมินการซ่อม</i></a>
         <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true"> แก้ไข</i></a>
         <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"> ลบรายการ</i></a>
 
@@ -72,13 +73,71 @@
         <h4 class="modal-title">ประเมินการซ่อม : {{selectedRepairNo}}</h4>
       </div>
       <div class="modal-body">
-        <rating style="font-size: 80px" [(ngModel)]="rate" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [titles]="['one','two','three']"
+        <!--<rating style="font-size: 80px" [(ngModel)]="rate" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [titles]="['one','two','three']"
 [ratingStates]="ratingStates">
-</rating>
-<span class="label" [ngClass]="{'btn-warning': percent<30, 'btn-info': percent>=30 && percent<70, 'btn-success': percent>=70}"
-  [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">
+</rating>-->
+<!--<span class="label" [ngClass]="{'btn-warning': percent<30, 'btn-info': percent>=30 && percent<70, 'btn-success': percent>=70}"
+  [ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">-->
   <!--{{percent}}%-->
-  </span>
+  
+  <!--</span>-->
+  <table class="table table-striped table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ข้อ</th>
+      <th>รายการประเมิน</th>
+      <th>คะแนน</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!--servicemind-->
+      <th scope="row">1</th>
+      <td>ให้บริการด้วยความสุภาพ เป็นมิตร ดูแลเอาใจใส่ เต็มใจให้บริการ</td>
+      <td>
+        <rating [(ngModel)]="e1" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"[ratingStates]="ratingStates"></rating>
+        ({{e1}})
+      </td>
+    </tr>
+    <tr>
+      <!--process-->
+      <th scope="row">2</th>
+      <td>กระบวนการและขั้นตอนการให้บริการมีความเหมาะสม</td>
+      <td>
+        <rating [(ngModel)]="e2" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"[ratingStates]="ratingStates"></rating>
+        ({{e2}})
+      </td>
+    </tr>
+    <tr>
+      <!--during-->
+      <th scope="row">3</th>
+      <td>ระยะเวลาการให้บริการมีความเหมาะสม</td>
+      <td>
+        <rating [(ngModel)]="e3" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"[ratingStates]="ratingStates"></rating>
+        ({{e3}})
+      </td>
+    </tr>
+    <tr>
+      <!--performance-->
+      <th scope="row">3</th>
+      <td>ประสิทธิภาพการใช้งานหลังการให้บริการ</td>
+      <td>
+        <rating [(ngModel)]="e4" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"[ratingStates]="ratingStates"></rating>
+        ({{e4}})
+      </td>
+    </tr>
+ <tr>
+   <!--completely-->
+      <th scope="row">3</th>
+      <td>ให้บริการตรงตามความต้องการของผู้ใช้งานได้ครบถ้วน</td>
+      <td>
+        <rating [(ngModel)]="e5" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)"[ratingStates]="ratingStates"></rating>
+        ({{e5}})
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
 </div>
       <div class="modal-footer">
 

@@ -55,7 +55,7 @@ export class RepairService {
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error '));
   }
   
-  saveEvaluation(repairNo:string,rate:number): Observable<any>{
+  saveEvaluation(repairNo:string,rate:string): Observable<any>{
     return this.http.post(this.endPointUrl+"/Evaluation",{
       repairNo,rate
     })
