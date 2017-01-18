@@ -17,6 +17,10 @@ export class RepairDepartmentPipe implements PipeTransform {
     transform(allRepair: Repair[]) {
         if(this.department == 'admin'){
             return allRepair;
+        } else if(this.department == 'adminSupport') {
+            return allRepair.filter(repair=>repair.repairType == 'คอมพิวเตอร์');
+        } else if(this.department == 'adminRepair') {
+            return allRepair.filter(repair=>repair.repairType != 'คอมพิวเตอร์');
         } else {
             return allRepair.filter(repair=>repair.department == this.department);
         }

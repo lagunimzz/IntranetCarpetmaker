@@ -62,4 +62,13 @@ export class RepairService {
     .map((res: Response)=>res.json())
     .catch((error:any) => Observable.throw(error.json().error || ' Server Error ')); 
   }
+  getHistoryMachine(selectedMachine:string) : Observable<Repair[]>{
+    let params = new URLSearchParams();
+    params.set('selectedMachine', selectedMachine); 
+    return this.http.get(this.endPointUrl+"/HistoryMachine",{
+      search : params
+    })
+    .map((res: Response)=>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || ' Server Error ')); 
+  }
 }

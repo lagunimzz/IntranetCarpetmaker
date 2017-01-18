@@ -1,19 +1,36 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
+    <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
+    <li class="breadcrumb-item active">ประวัติการซ่อมเครื่องจักร</li>
+</ol>
+
+
 <table class="table table-bordered">
     <thead class="thead-inverse">
         <tr>
-            <th>Action</th>
-            <th>เลขที่</th>
-            <th>ประเภท</th>
-            <th>ชื่อผู้แจ้ง</th>
-            <th>อุปการณ์</th>
+            <th></th>
+            <th>เลขที่เครื่อง</th>
+            <th>ชื่อเครื่อง</th>
+            <th>วันที่รับเข้า</th>
+            <th>จำนวน</th>
+            <th>ผู้ผลิต</th>
+            <th>รุ่น</th>
+            <th>พลังงาน</th>
+            <th>สถานที่</th>
             <th>หมายเหตุ</th>
-            <th>เบอร์โทร</th>
-            <th>สถานะ</th>
-            <th>สถานะ</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let m of machines ">
+        <tr>
+            <td colspan="10">
+                <input type="text" name="machineKeyword" [(ngModel)]="machineKeyword" placeholder="ค้นหาด้วยชื่อเครื่องจักร" class="form-control" />
+            </td>
+        </tr>
+        <tr *ngIf="(machines | repairMachine:machineKeyword).length == 0" class="well">
+            <td colspan="10" style="text-align: center">ไม่พบข้อมูล</td>
+        </tr>
+        <tr *ngFor="let m of (machines | repairMachine:machineKeyword)">
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="showHistoryModal(m.Machine_No+' / '+m.Machine_Name)">เรียกดูข้อมูล</button></td>
             <td>{{m.Machine_No}}</td>
             <td>{{m.Machine_Name}}</td>
             <td>{{m.DateRecieve}}</td>
@@ -26,3 +43,45 @@
         </tr>
     </tbody>
 </table>
+
+<div class="modal fade" bsModal #historyModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="historyModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">เครื่องจักร : {{selectedMachine}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <thead class="thead-inverse">
+                  <tr>
+                      <th>วันที่เสีย</th>
+                      <th>วันที่ซ่อม</th>
+                      <th>อาการ</th>
+                      <th>การแก้ไข</th>
+                      <th>ผู้ซ่อม</th>
+                  </tr>
+              </thead>
+              <tbody>
+                 <tr *ngIf="historys.length == 0" class="well">
+                    <td colspan="5" style="text-align: center">ไม่พบข้อมูล</td>
+                 </tr>
+                  <tr *ngFor="let h of historys">
+                      <td>{{h.wasteDate}}</td>
+                      <td>{{h.repairDate}}</td>
+                      <td>{{h.symptoms}}</td>
+                      <td>{{h.repairDetail}}</td>
+                      <td>{{h.userRepair}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="historyModal.hide()">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ import { RepairViewComponent } from '../repairs/repair-view/repair-view.componen
 
 import { ProfileComponent } from '../profiles/profile.component';
 import { AuthGuard } from './auth.guard';
-import { AdminComponent } from '../admins/admin.component';
+// import { AdminComponent } from '../admins/admin.component';
 
 
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
@@ -43,11 +43,6 @@ const appRoutes: Routes = [
     {
         path: 'profiles',
         component: ProfileComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'admins',
-        component: AdminComponent,
         canActivate: [AuthGuard]
     },
     {

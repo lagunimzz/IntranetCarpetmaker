@@ -107,16 +107,19 @@
           <tbody>
             <tr>
               <td colspan="2">
-                <input type="text" name="machineKeyword" [(ngModel)]="machineKeyword" class="form-control" />
+                <input type="text" placeholder="ค้นหาด้วยชื่อเครื่องจักร" name="machineKeyword" [(ngModel)]="machineKeyword" class="form-control" />
               </td>
+            </tr>
+              <tr *ngIf="(machines | repairMachine:machineKeyword).length == 0" class="well">
+              <td colspan="2" style="text-align: center">ไม่พบข้อมูล</td>
             </tr>
             <tr *ngFor="let m of (machines | repairMachine:machineKeyword)">
               <td>
                 <a style="color:blue;cursor: pointer; cursor: hand;" (click)="selectedMachine(m.Machine_No+' / '+m.Machine_Name)">{{m.Machine_No}}</a>
-</td>
-<td>{{m.Machine_Name}}</td>
-</tr>
-</tbody>
+            </td>
+            <td>{{m.Machine_Name}}</td>
+            </tr>
+          </tbody>
 </table>
 </div>
 </div>

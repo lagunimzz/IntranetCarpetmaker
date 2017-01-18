@@ -77,6 +77,7 @@ export class RepairReceiveFormComponent implements OnInit {
         this.repair.expenses = 0;
         this.repair.user = this.auth.userProfile['email'];
         if(data.repairDate != null){
+          
           let repairDate = moment(data.repairDate);  
           this.repair.repairDate = {
             day: repairDate.day,month: repairDate.month, year: repairDate.year,

@@ -35,7 +35,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
 import { AuthOption } from './auth.option';
 
-import { AdminComponent } from '../admins/admin.component';
+// import { AdminComponent } from '../admins/admin.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
@@ -54,8 +54,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairStatusPipe,
     RepairMachinePipe,
     MachineReportComponent,
-    ProfileComponent,
-    AdminComponent
+    ProfileComponent
     
   ],
   imports: [
