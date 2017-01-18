@@ -54,7 +54,10 @@ export class RepairCreateFormComponent implements OnInit {
       }
     }
     this.newRepair.name = '';
+    this.newRepair.remark = '';
+    
     this.newRepair.department = this.auth.userProfile['user_metadata']['department'];
+    this.newRepair.equipmentNumber = '';
     this.newRepair.user = this.auth.userProfile['email'];
     this.newRepair.status = 'ส่งข้อมูลให้เจ้าหน้าที่';
     this.getAllEquipmentType(this.newRepair.repairType);
@@ -71,6 +74,7 @@ export class RepairCreateFormComponent implements OnInit {
         break;
       case 'Machine':
         this.newRepair.repairType = 'เครื่องจักร';
+        
         break;
       default:
     }

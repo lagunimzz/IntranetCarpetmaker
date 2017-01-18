@@ -5,27 +5,27 @@
 </ol>
 
 <div class="card">
-    <div class="card-header card-primary" style="color:white">VIEW</div>
+    <div class="card-header card-primary" style="color:white">ข้อมูลการแจ้งซ่อม</div>
 <div class="card-block">
     <!--{{repair.repairNo}}-->
-
-    <legend>ส่วนที่ 1 ข้อมูลพนักงาน</legend>
+<!--<div class="card card-outline-primary mb-3">-->
+    <legend>ส่วนที่ 1 : ข้อมูลพนักงาน</legend>
     <div class="row">
         <!--<div class="col-sm">col-sm</div>-->
-        <div class="col-sm-3">
-            ชื่อแผู้แจ้ง : {{repair.name}}
+        <div class="col-sm-4">
+           ชื่อผู้แจ้ง : {{repair.name}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             เบอร์โทร : {{repair.telephone}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             แผนก : {{repair.department}}
         </div>
 
     </div>
     <div class="row">
         <!--<div class="col-sm">col-sm</div>-->
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             ประเภทอุปกรณ์ : {{repair.equipmenttype}}
         </div>
         <div class="col-sm-4">
@@ -35,10 +35,10 @@
 
     <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             เลขที่เครื่อง : {{repair.equipmentNumber}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             วันที่เสีย : {{repair.wasteDate}}
         </div>
     </div>
@@ -50,22 +50,23 @@
         </div>
 
     </div>
+<!--</div>-->
 
     <hr>
 
-    <legend>ส่วนที่ 2 ผลการดำเนินการซ่อม (ส่วนของเจ้าหน้าที่)</legend>
+    <legend>ส่วนที่ 2 : ผลการดำเนินการซ่อม (ส่วนของเจ้าหน้าที่)</legend>
     <div class="row">
 
         <div class="col-sm-4">
             สาเหตุอาการที่เสีย : {{repair.cause}}
         </div>
-        <div class="col-sm-4">
-            <div class="form-check form-check-inline">
+        <div class="col-sm-6">
+            <div class="form-check form-check-inline disabled">
                 <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ซ่อมเอง" [checked]="repair.repairMethod == 'ซ่อมเอง'"> ซ่อมเอง
             </label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline disabled">
                 <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="ส่งซ่อมภายนอก" [checked]="repair.repairMethod == 'ส่งซ่อมภายนอก'"> ส่งซ่อมภายนอก
             </label>
@@ -82,28 +83,28 @@
 
      <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             รายละเอียดการซ่อม : {{repair.equipmentNumber}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             ผู้ซ่อม : {{repair.wasteDate}}
         </div>
     </div>
     <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             วันที่ซ่อม : {{repair.equipmentNumber}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             วันที่ซ่อมเสร็จ : {{repair.wasteDate}}
         </div>
     </div>
     <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             หมายเหตุ : {{repair.equipmentNumber}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             สถานะ : {{repair.wasteDate}}
         </div>
     </div>
@@ -113,8 +114,8 @@
     <div  *ngIf=" repair.evaluation != 0" class="row">
         <table class="table table-striped table-bordered table-striped">
   <thead>
-    <tr>
-      <th>ข้อ</th>
+    <tr style="text-align: center">
+      <th>ลำดับ</th>
       <th>รายการประเมิน</th>
       <th>คะแนน</th>
     </tr>
@@ -149,7 +150,7 @@
     </tr>
     <tr>
       <!--performance-->
-      <th scope="row">3</th>
+      <th scope="row">4</th>
       <td>ประสิทธิภาพการใช้งานหลังการให้บริการ</td>
       <td>
         <rating [(ngModel)]="e4" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
@@ -158,7 +159,7 @@
     </tr>
  <tr>
    <!--completely-->
-      <th scope="row">3</th>
+      <th scope="row">5</th>
       <td>ให้บริการตรงตามความต้องการของผู้ใช้งานได้ครบถ้วน</td>
       <td>
         <rating [(ngModel)]="e5" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>

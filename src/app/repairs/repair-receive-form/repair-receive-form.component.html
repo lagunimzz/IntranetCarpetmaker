@@ -134,9 +134,10 @@
     
     <div *ngIf="repair.repairMethod == 'ซื้อทดแทน' || repair.repairType == 'เครื่องจักร'" >
       <label class="col-sm-2 col-form-label" for="expenses">ค่าใช้จ่าย(ถ้ามี) :</label>
-      <div class="col-sm-4">
+      <div class="col-sm-2">
         <input type="text" class="form-control" id="expenses" placeholder="ค่าใช้จ่าย" name="expenses" [(ngModel)]="repair.expenses">
       </div>
+       <label class="col-sm-2 col-form-label" for="expenses">บาท</label>
     </div>
 
  

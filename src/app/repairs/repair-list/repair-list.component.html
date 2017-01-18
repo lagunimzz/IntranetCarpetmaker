@@ -51,11 +51,12 @@
   <!--[ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">-->
   <!--<td style="color: lightgreen"-->
   <td [ngStyle]="{ background: 
-    (r.status == 'ดำเนินการเรียบร้อย') ? 'lightseagreen' : 
-    (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่') ? 'lightskyblue' : 
-    (r.status == 'กำลังดำเนินการ') ? 'gold' : 
-    (r.status == 'ประเมินเรียบร้อยแล้ว') ? 'lightgreen' : 
+    (r.status == 'ดำเนินการเรียบร้อย') ? '#C7DE85' : 
+    (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่') ? '#CBECF7' : 
+    (r.status == 'กำลังดำเนินการ') ? '#FAF887' : 
+    (r.status == 'ประเมินเรียบร้อยแล้ว') ? '#F797C9' : 
     'white' }">{{r.status}}</td>
+    
 </tr>
 </tbody>
 </table>
