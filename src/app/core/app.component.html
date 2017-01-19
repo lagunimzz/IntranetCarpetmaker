@@ -49,9 +49,9 @@
         <!-- Logo End -->
         <!-- Mobile Menu Start -->
         <!--<div class="mobile navbar-header">-->
-          <!--<a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">-->
-            <!--<i class="icon-reorder icon-2x"></i>-->
-          <!--</a>
+        <!--<a class="navbar-toggle" data-toggle="collapse" href="http://demo.fifothemes.com/pixma/.navbar-collapse">-->
+        <!--<i class="icon-reorder icon-2x"></i>-->
+        <!--</a>
         </div>-->
         <!-- Mobile Menu End -->
         <!-- Menu Start -->
@@ -59,7 +59,7 @@
           <ul class="nav nav-inline sf-menu">
             <li class="nav-item"><a routerLink="/">หน้าหลัก</a></li>
             <!--*ngIf="auth.authenticated()"-->
-            <li *ngIf="auth.authenticated()" class="nav-item">
+            <!--<li *ngIf="auth.authenticated()" class="nav-item">
               <a routerLink="/" class="sf-with-ul">
                         ระบบภายใน 
                         <span class="sf-sub-indicator">
@@ -68,37 +68,52 @@
                         </a>
               <ul>
                 <li><a href="./#/MeetingRoom" class="sf-with-ul">ระบบจองห้องประชุม</a></li>
-                <!--<li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>-->
-                <li>
-                                <a routerLink="/repairs" class="sf-with-ul"> 
+                <li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>-->
+                <!--<li>
+                  <a routerLink="/repairs" class="sf-with-ul"> 
                                  ระบบซ่อม
                                  <span class="sf-sub-indicator pull-right">
                                  <i class="icon-angle-right "></i>
                                  </span>
                                  </a>
-                                 <ul>
-                                    <li><a routerLink="/report/machine" class="sf-with-ul">ประวัติการซ่อมเครื่องจักร</a></li>
-                                    <li><a href="index.html#" class="sf-with-ul">ทะเบียนอุปกรณ์</a></li>
-                                    <li><a href="index.html#" class="sf-with-ul">ประเมินการซ่อม</a></li>
-                                 </ul>
+                  <ul>
+                    <li><a routerLink="/report/machine" class="sf-with-ul">ประวัติการซ่อมเครื่องจักร</a></li>
+                    <li><a href="index.html#" class="sf-with-ul">ทะเบียนอุปกรณ์</a></li>
+                    <li><a href="index.html#" class="sf-with-ul">ประเมินการซ่อม</a></li>
+                  </ul>
                 </li>
                 <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>
 
               </ul>
-            </li>
-            <!--<li *ngIf="auth.authenticated()" class="nav-item">
+            </li>-->
+
+            <li *ngIf="auth.authenticated()" class="nav-item">
               <a routerLink="/" class="sf-with-ul">
-                        การบริการ
+                        ระบบแจ้งซ่อม
                         <span class="sf-sub-indicator">
                         <i class="icon-angle-down "></i>
                         </span>
                         </a>
               <ul>
-                <li><a href="about.html" class="sf-with-ul">ดาวน์โหลดใบลา</a></li>
-                <li><a href="services.html" class="sf-with-ul">Services</a></li>
+                <li><a [routerLink]="['/repairCreateForm','IT','new']" class="sf-with-ul">แจ้งซ่อมคอมพิวเตอร์</a></li>
+                <li><a [routerLink]="['/repairCreateForm','Public','new']" class="sf-with-ul">แจ้งซ่อมสาธารณูปโภค</a></li>
+                <li><a [routerLink]="['/repairCreateForm','Machine','new']" class="sf-with-ul">
+                แจ้งซ่อมเครื่องจักร
+                 <span class="sf-sub-indicator pull-right">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                 </span>
+                
+                </a>
+                  <ul>
+                    <li><a routerLink="/report/machine" class="sf-with-ul">ประวัติการซ่อมเครื่องจักร</a></li>
+                    <li><a href="index.html#" class="sf-with-ul">ทะเบียนอุปกรณ์</a></li>
+
+                  </ul>
+
+                </li>
 
               </ul>
-            </li>-->
+            </li>
 
 
             <!--<li class="nav-item"><a href="contact.html">ติดต่อ</a></li>-->
@@ -116,10 +131,10 @@
                 <li><a routerLink="/profiles" class="sf-with-ul">ข้อมูลผู้ใช้งาน</a></li>
                 <!--<li><a routerLink="/repairs" class="sf-with-ul">ระบบซ่อม</a></li>
                 <li><a href="pricing-table.html" class="sf-with-ul">ระบบจองรถ</a></li>-->
-                <li><a href="#" class="sf-with-ul" (click)="auth.logout()" >ออกจากระบบ</a></li>
+                <li><a href="#" class="sf-with-ul" (click)="auth.logout()">ออกจากระบบ</a></li>
               </ul>
             </li>
-            
+
           </ul>
         </nav>
         <!-- Menu End -->

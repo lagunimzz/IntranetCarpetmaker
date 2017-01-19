@@ -98,8 +98,8 @@
       </div>
    
     <fieldset class="form-group row">
-      <label *ngIf="repair.repairType != 'สาธารณูปโภค'" class="col-sm-4 col-form-label" for="repairMethod">วิธีการซ่อม/การแก้ไข:</label>
-      <div *ngIf="repair.repairType == 'เครื่องจักร'" class="col-sm-10">
+      <label *ngIf="repair.repairType != 'สาธารณูปโภค'" class="col-sm-4 col-form-label" for="repairMethod">วิธีการซ่อม/การแก้ไข :</label>
+      <div *ngIf="repair.repairType == 'เครื่องจักร'" class="col-sm-8">
         <textarea class="form-control" id="cause" rows="3" name="repairMethod" [(ngModel)]="repair.repairMethod"></textarea>
       </div>
       <div *ngIf="repair.repairType == 'คอมพิวเตอร์'" >
