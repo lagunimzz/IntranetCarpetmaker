@@ -80,7 +80,7 @@ export class RepairReceiveFormComponent implements OnInit {
           
           let repairDate = moment(data.repairDate);  
           this.repair.repairDate = {
-            day: repairDate.day,month: repairDate.month, year: repairDate.year,
+            day: repairDate.format('DD'),month: repairDate.format('MM'), year: repairDate.format('YYYY'),
             formatted: repairDate.format('DD/MM/YYYY'),
             momentObj: repairDate,
           }
@@ -88,7 +88,7 @@ export class RepairReceiveFormComponent implements OnInit {
         if(data.repairCompleteDate != null){
           let repairCompleteDate = moment(data.repairCompleteDate);
           this.repair.repairCompleteDate = {
-            day: repairCompleteDate.day,month: repairCompleteDate.month, year: repairCompleteDate.year,
+            day: repairCompleteDate.format('DD'),month: repairCompleteDate.format('MM'), year: repairCompleteDate.format('YYYY'),
             formatted: repairCompleteDate.format('DD/MM/YYYY'),
             momentObj: repairCompleteDate,
           }
