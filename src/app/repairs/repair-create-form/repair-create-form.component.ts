@@ -148,7 +148,7 @@ export class RepairCreateFormComponent implements OnInit {
         let wasteDate = moment(data.wasteDate);
         this.newRepair.user = this.auth.userProfile['email'];
         this.newRepair.wasteDate = {
-          day: wasteDate.day,month: wasteDate.month, year: wasteDate.year,
+          day: wasteDate.format('DD'),month: wasteDate.format('MM'), year: wasteDate.format('YYYY'),
           formatted: wasteDate.format('DD/MM/YYYY'),
           momentObj: wasteDate,
         }
