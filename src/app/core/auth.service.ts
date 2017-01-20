@@ -12,6 +12,19 @@ export class Auth {
   lock = new Auth0Lock('AEEwMkFmD1nJSB5Ftbdz5d7Aaq3nvXdV', 'infocmt.auth0.com', this.authOption.options);
   userProfile: Object;
 
+//  thing: any;
+
+
+  // getThing() {
+  //   this.authHttp.get('http://example.com/api/thing')
+  //     .subscribe(
+  //       data => this.thing = data,
+  //       err => console.log(err),
+  //       () => console.log('Request Complete')
+  //     );
+  // }
+
+
   constructor(private authOption:AuthOption) {
 
     // Add callback for lock `authenticated` event
