@@ -34,9 +34,9 @@ import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
 import { AuthOption } from './auth.option';
-
+import { InputTextModule } from 'primeng/primeng';
 // import { AdminComponent } from '../admins/admin.component';
-
+import {CalendarModule} from 'primeng/primeng';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
 }
@@ -55,7 +55,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairMachinePipe,
     MachineReportComponent,
     ProfileComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -66,6 +66,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ModalModule.forRoot(),
     DatePickerModule,
     RatingModule.forRoot(),
+    InputTextModule,
+    CalendarModule
   ],
   providers: [
     {
@@ -73,7 +75,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
     },
-    
     DepartmentService,
     RepairService,
     EquipmentTypeService,

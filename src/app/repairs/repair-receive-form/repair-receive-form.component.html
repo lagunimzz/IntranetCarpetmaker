@@ -186,7 +186,8 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="repairDate">วันที่ซ่อม :</label>
       <div class="col-sm-4">
-        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairDate" name="repairDate"></ng2-datepicker>
+         <p-calendar yearRange="2016:2100" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="repair.repairDate" [locale]="locale" dateFormat="dd/mm/yy" [showIcon]="true" [readonlyInput]="true" name="repairDate"></p-calendar>
+        <!--<ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairDate" name="repairDate"></ng2-datepicker>-->
       </div>
       <!--<div class="col-sm-4">
         <input class="form-control" id="repairDate" type="text" name="repairDate" [(ngModel)]="repair.repairDate" />
@@ -195,7 +196,8 @@
     
       <label class="col-xs-2 col-form-label" for="repairCompleteDate">วันที่ซ่อมเสร็จ :</label>
       <div class="col-sm-4">
-        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairCompleteDate" name="repairCompleteDate"></ng2-datepicker>
+        <p-calendar yearRange="2016:2100" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="repair.repairCompleteDate" [locale]="locale" dateFormat="dd/mm/yy" [showIcon]="true" [readonlyInput]="true" name="repairCompleteDate"></p-calendar>
+        <!--<ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="repair.repairCompleteDate" name="repairCompleteDate"></ng2-datepicker>-->
       </div>
       <!--<div class="col-sm-3">
         <input class="form-control" id="repairCompleteDate" type="text" name="repairCompleteDate" [(ngModel)]="repair.repairCompleteDate"/>

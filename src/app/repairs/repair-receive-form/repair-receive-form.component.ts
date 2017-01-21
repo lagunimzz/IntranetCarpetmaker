@@ -3,6 +3,8 @@ import { Repair } from '../shared/repair.model';
 import { RepairService } from '../shared/repair.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Auth } from '../../core/auth.service';
+import { CalendarModule } from 'primeng/primeng';
+import { th } from '../../shared/calendar-localization';
 import * as moment from 'moment';
 
 @Component({
@@ -13,6 +15,8 @@ import * as moment from 'moment';
 export class RepairReceiveFormComponent implements OnInit {
   repair = new Repair();
   isComplete: boolean = false;
+  locale: any;
+
   constructor(
     private repairService: RepairService,
     private route: ActivatedRoute,
@@ -24,6 +28,7 @@ export class RepairReceiveFormComponent implements OnInit {
 
   ngOnInit() {
     this.getRepair(this.route.snapshot.params['repairNo']);
+    this.locale = th;
   }
   // addSparePaths() {
   //   this.repair.sparePaths.push({ sparePathsName: '' });
@@ -57,6 +62,10 @@ export class RepairReceiveFormComponent implements OnInit {
   }
 
   editRepair(repair: Repair) {
+    let repairDate = moment(repair.repairDate);
+    repair.repairDate = repairDate.format('YYYY-MM-DD');
+    let repairCompleteDate = moment(repair.repairCompleteDate);
+    repair.repairCompleteDate = repairCompleteDate.format('YYYY-MM-DD');
     this.repairService.editRepair(repair)
       .subscribe(
       data => {
@@ -72,26 +81,29 @@ export class RepairReceiveFormComponent implements OnInit {
     this.repairService.getRepair(repairNo)
       .subscribe(
       data => {
+        
         this.repair = data
         this.isComplete = false;
         this.repair.expenses = 0;
-        this.repair.user = this.auth.userProfile['email'];
+        this.repair.user = this.auth.userProfile['email'];     
+        
         if(data.repairDate != null){
-          
-          let repairDate = moment(data.repairDate);  
-          this.repair.repairDate = {
-            day: repairDate.format('DD'),month: repairDate.format('MM'), year: repairDate.format('YYYY'),
-            formatted: repairDate.format('DD/MM/YYYY'),
-            momentObj: repairDate,
-          }
+          this.repair.repairDate = moment(data.repairDate).toDate();
+          // let repairDate = moment(data.repairDate);  
+          // this.repair.repairDate = {
+          //   day: repairDate.format('DD'),month: repairDate.format('MM'), year: repairDate.format('YYYY'),
+          //   formatted: repairDate.format('DD/MM/YYYY'),
+          //   momentObj: repairDate,
+          // }
         }
         if(data.repairCompleteDate != null){
-          let repairCompleteDate = moment(data.repairCompleteDate);
-          this.repair.repairCompleteDate = {
-            day: repairCompleteDate.format('DD'),month: repairCompleteDate.format('MM'), year: repairCompleteDate.format('YYYY'),
-            formatted: repairCompleteDate.format('DD/MM/YYYY'),
-            momentObj: repairCompleteDate,
-          }
+          this.repair.repairCompleteDate = moment(data.repairCompleteDate).toDate();
+          // let repairCompleteDate = moment(data.repairCompleteDate);
+          // this.repair.repairCompleteDate = {
+          //   day: repairCompleteDate.format('DD'),month: repairCompleteDate.format('MM'), year: repairCompleteDate.format('YYYY'),
+          //   formatted: repairCompleteDate.format('DD/MM/YYYY'),
+          //   momentObj: repairCompleteDate,
+          // }
         }
    
         // this.repair

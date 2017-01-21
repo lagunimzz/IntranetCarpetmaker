@@ -64,8 +64,9 @@
 
     <div class="form-group row">
       <label for="wasteDate" class="col-sm-2 col-form-label">วันที่เสีย :</label>
-      <div class="col-sm-3">
-        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
+      <div class="col-sm-4">
+        <!--<ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>-->
+        <p-calendar yearRange="2016:2100" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="newRepair.wasteDate" [locale]="locale" dateFormat="dd/mm/yy" [showIcon]="true" [readonlyInput]="true" name="wasteDate"></p-calendar>
       </div>
     </div>
     

@@ -3,12 +3,14 @@ import { Repair } from '../shared/repair.model';
 import { EquipmentType } from '../shared/equipment-type.model';
 import { MachineType } from '../shared/machine.model';
 import { RepairService } from '../shared/repair.service';
+import { th } from '../../shared/calendar-localization';
 import { MachineTypeService } from '../shared/machine.service';
 import { EquipmentTypeService } from '../shared/equipment-type.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Auth } from '../../core/auth.service';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { ModalDirective } from 'ng2-bootstrap';
+import { CalendarModule } from 'primeng/primeng';
 import * as moment from 'moment';
 
 @Component({
@@ -18,6 +20,7 @@ import * as moment from 'moment';
 })
 export class RepairCreateFormComponent implements OnInit {
   @ViewChild('machineModal') public machineModal: ModalDirective;
+  locale: any;
   summitted = false;
   newRepair = new Repair();
   equipmentTypes: EquipmentType[] = [];
@@ -32,10 +35,23 @@ export class RepairCreateFormComponent implements OnInit {
     private auth: Auth,
     private router: Router
   ) {
-    (this.minDate = new Date()).setDate(this.minDate.getDate() - 1000);
-  }
+    (
+      this.minDate = new Date()).setDate(this.minDate.getDate() - 1000
 
+      )
+    //this.locale = calendarLocalization.th;
+
+  }
   ngOnInit() {
+    this.locale = th;
+    // {
+    //         firstDayOfWeek: 0,
+    //         dayNames: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"],
+    //         dayNamesShort: ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."],
+    //         dayNamesMin: ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."],
+    //         monthNames: ["มกราคม", "กุมภาพันธ์ ", "มีนาคม", "เมษายน ", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+    //         monthNamesShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."]
+    //     };
     this.newRepair.repairNo = this.route.snapshot.params['repairNo'];
     this.newRepair.repairType = this.route.snapshot.params['repairType'];
     if (this.newRepair.repairNo != 'new') {
@@ -55,7 +71,7 @@ export class RepairCreateFormComponent implements OnInit {
     }
     this.newRepair.name = '';
     this.newRepair.remark = '';
-    
+
     this.newRepair.department = this.auth.userProfile['user_metadata']['department'];
     this.newRepair.equipmentNumber = '';
     this.newRepair.user = this.auth.userProfile['email'];
@@ -74,7 +90,7 @@ export class RepairCreateFormComponent implements OnInit {
         break;
       case 'Machine':
         this.newRepair.repairType = 'เครื่องจักร';
-        
+
         break;
       default:
     }
@@ -122,7 +138,8 @@ export class RepairCreateFormComponent implements OnInit {
   }
 
   createRepair(repair: Repair) {
-
+    let wasteDate = moment(repair.wasteDate);
+    repair.wasteDate = wasteDate.format('YYYY-MM-DD');
     this.repairService.createRepair(repair).subscribe(
       data => {
         if (data.message === '1') {
@@ -133,25 +150,22 @@ export class RepairCreateFormComponent implements OnInit {
     );
   }
 
-  // this.testDate = new DateModel ({
-	// 	day: "28",
-	// 	month: "12",
-	// 	year: "2016",
-	// 	formatted: "2016-12-28",
-	// 	momentObj: this.yesterday
-	// });
   getRepair(repairNo: string) {
     this.repairService.getRepair(repairNo)
       .subscribe(
       data => {
         this.newRepair = data;
-        let wasteDate = moment(data.wasteDate);
+        // let wasteDate = moment(data.wasteDate);
         this.newRepair.user = this.auth.userProfile['email'];
-        this.newRepair.wasteDate = {
-          day: wasteDate.format('DD'),month: wasteDate.format('MM'), year: wasteDate.format('YYYY'),
-          formatted: wasteDate.format('DD/MM/YYYY'),
-          momentObj: wasteDate,
-        }
+        // console.log(data.wasteDate);
+        // (//moment(data.wasteDate).toISOString());
+
+        this.newRepair.wasteDate = moment(data.wasteDate).toDate();
+        // {
+        //   day: wasteDate.format('DD'), month: wasteDate.format('MM'), year: wasteDate.format('YYYY'),
+        //   formatted: wasteDate.format('DD/MM/YYYY'),
+        //   momentObj: wasteDate,
+        // }
 
         //= moment(data.wasteDate);
 
@@ -160,6 +174,9 @@ export class RepairCreateFormComponent implements OnInit {
       );
   }
   editRepair(repair: Repair) {
+    
+    let wasteDate = moment(repair.wasteDate);
+    repair.wasteDate = wasteDate.format('YYYY-MM-DD');
     this.repairService.editRepair(repair)
       .subscribe(
       data => {
