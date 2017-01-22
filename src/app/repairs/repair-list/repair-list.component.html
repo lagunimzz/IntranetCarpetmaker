@@ -7,7 +7,7 @@
     <option value="ดำเนินการเรียบร้อย">ประเมินเรียบร้อยแล้ว</option>
   </select>
 <br>
-<table class="table table-bordered table-striped">
+<!--<table class="table table-bordered table-striped">
   <thead class="thead-inverse">
     <tr>
       <th></th>
@@ -49,8 +49,6 @@
  
   <td>{{r.remark}}</td>
   <td>{{r.telephone}}</td>
-  <!--[ngStyle]="{ display: (overStar && !isReadonly) ? 'inline' : 'none'}">-->
-  <!--<td style="color: lightgreen"-->
   <td [ngStyle]="{ background: 
     (r.status == 'ดำเนินการเรียบร้อย') ? '#C7DE85' : 
     (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่') ? '#CBECF7' : 
@@ -60,8 +58,46 @@
     
 </tr>
 </tbody>
-</table>
-<!--<ngb-pagination [collectionSize]="repairs.length" [(page)]="page"></ngb-pagination>-->
+</table>-->
+
+
+<p-dataTable [style]="{'margin-top':'20px'}" [value]="repairs | repairDepartment | repairStatus:statusSearch" [rows]="10" [paginator]="true" [pageLinks]="3" [responsive]="true">
+    <!--appendTo="body"-->
+    <p-column styleClass="col-button">
+      <template let-repair="rowData" pTemplate="body">
+        <p-splitButton appendTo="body" label="Save" icon="fa-check" (onClick)="save()" [model]="items"></p-splitButton>
+      </template>
+    </p-column>
+    <p-column field="repairNo" header="เลขที่ใบแจ้งซ่อม"></p-column>
+    <p-column field="equipmentType" header="ประเภทอุปกรณ์"></p-column>
+    <p-column field="name" header="ชื่อผู้แจ้ง"></p-column>
+    <p-column field="symptoms" header="ปัญหา/อาการที่พบ"></p-column>
+    <p-column field="remark" header="หมายเหตุ"></p-column>
+    <p-column field="telephone" header="เบอร์โทร"></p-column>
+    <p-column field="status" header="สถานะ">
+      <template let-col let-repair="rowData" pTemplate="body">
+            <span [ngStyle]="{ background: 
+              (repair[col.field] == 'ดำเนินการเรียบร้อย') ? '#C7DE85' : 
+              (repair[col.field] == 'ส่งข้อมูลให้เจ้าหน้าที่') ? '#CBECF7' : 
+              (repair[col.field] == 'กำลังดำเนินการ') ? '#FAF887' : 
+              (repair[col.field] == 'ประเมินเรียบร้อยแล้ว') ? '#F797C9' : 
+              'white' }">
+              {{repair[col.field]}}
+            </span>
+        </template>
+    </p-column>
+    <p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="fa-refresh"></button>
+        </template>
+        <template let-car="rowData" pTemplate="body">
+            <button type="button" (click)="showDialog()" pButton icon="fa-search"></button>
+        </template>
+        <!--(click)="selectCar(car)" -->
+    </p-column>
+</p-dataTable>
+
+
 
 <!--<button type="button" class="btn btn-primary" >ประเมินการซ่อม</button>-->
 <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -168,3 +204,4 @@
     </div>
   </div>
 </div>
+

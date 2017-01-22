@@ -3,7 +3,7 @@ import { Repair } from '../shared/repair.model';
 import { RepairService } from '../shared/repair.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Auth } from '../../core/auth.service';
-import { CalendarModule } from 'primeng/primeng';
+// import { CalendarModule } from 'primeng/primeng';
 import { th } from '../../shared/calendar-localization';
 import * as moment from 'moment';
 

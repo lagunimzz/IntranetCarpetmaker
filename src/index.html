@@ -14,4 +14,70 @@
   <div class="loader d-block m-t-2"></div>
   </app-root>
 </body>
+<script>
+  document.addEventListener("mousemove", function (event) {
+    var target = $(event.target);
+    if (target.is("path")) {
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    event.cancelBubble = true;
+}, true);
+
+document.addEventListener("mouseout", function (event) {
+    var target = $(event.target);
+    if (target.is("rect")) {
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    event.cancelBubble = true;
+}, true);
+
+document.addEventListener("scroll", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.cancelBubble = true;
+}, true);
+
+
+document.addEventListener("mouseover", function (event) {
+    var target = $(event.target);
+    if (target.is("a") || target.is("img") || target.is("rect")) {
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+}, true);
+
+document.addEventListener("mouseenter", function (event) {
+    var target = $(event.target);
+    if (target.hasClass('ui-autocomplete-list-item') || target.hasClass('ui-dropdown-item')) {
+        return;
+    }
+    var relatedTarget = $(event.relatedTarget);
+    if (relatedTarget.hasClass('ui-autocomplete-list-item') || relatedTarget.hasClass('ui-dropdown-item')) {
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+}, true);
+
+document.addEventListener("mouseleave", function (event) {
+    var target = $(event.target);
+    if (target.is("a") || target.is("img") || target.is("rect")) {
+        return;
+    }
+    if (target.hasClass('ui-autocomplete-list-item') || target.hasClass('ui-dropdown-item')) {
+        return;
+    }
+    var relatedTarget = $(event.relatedTarget);
+    if (relatedTarget.hasClass('ui-autocomplete-list-item') || relatedTarget.hasClass('ui-dropdown-item')) {
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+}, true);
+</script>
 </html>

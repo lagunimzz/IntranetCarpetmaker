@@ -35,8 +35,15 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
 import { AuthOption } from './auth.option';
 import { InputTextModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng';
 // import { AdminComponent } from '../admins/admin.component';
 import {CalendarModule} from 'primeng/primeng';
+import {PaginatorModule} from 'primeng/primeng';
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {SplitButtonModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
 }
@@ -54,7 +61,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairStatusPipe,
     RepairMachinePipe,
     MachineReportComponent,
-    ProfileComponent
+    ProfileComponent,
+    
 
   ],
   imports: [
@@ -67,7 +75,15 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DatePickerModule,
     RatingModule.forRoot(),
     InputTextModule,
-    CalendarModule
+    DropdownModule,
+    CalendarModule,
+    InputTextareaModule,
+    PanelModule,
+    DataTableModule,SharedModule,
+    PaginatorModule,
+    SplitButtonModule,
+    DialogModule
+    
   ],
   providers: [
     {

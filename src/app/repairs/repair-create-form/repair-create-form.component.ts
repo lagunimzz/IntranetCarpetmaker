@@ -11,6 +11,8 @@ import { Auth } from '../../core/auth.service';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { ModalDirective } from 'ng2-bootstrap';
 import { CalendarModule } from 'primeng/primeng';
+import { InputTextModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
 import * as moment from 'moment';
 
 @Component({

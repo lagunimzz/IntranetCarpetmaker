@@ -12,6 +12,7 @@ import { ModalDirective } from 'ng2-bootstrap';
 export class RepairListComponent implements OnInit {
   repairs: Repair[] = [];
   statusSearch = 'ทั้งหมด';
+  items:any = [];
   constructor(
     private repairService: RepairService,
     private auth: Auth
@@ -29,6 +30,10 @@ export class RepairListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRepair();
+    this.items = [
+            {label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+            {label: 'Theming', icon: 'fa-paint-brush', routerLink: ['/theming']}
+        ];
   }
 
   getAllRepair() {
