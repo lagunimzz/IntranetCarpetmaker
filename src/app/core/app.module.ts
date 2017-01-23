@@ -21,6 +21,7 @@ import { RepairViewComponent } from '../repairs/repair-view/repair-view.componen
 import { RepairDepartmentPipe } from '../repairs/shared/repair-department.pipe';
 import { RepairStatusPipe } from '../repairs/shared/repair-status.pipe';
 import { RepairMachinePipe } from '../repairs/shared/repair-machine.pipe';
+import { RepairGlobalPipe } from '../repairs/shared/repair-global.pipe';
 
 
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
@@ -60,6 +61,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairViewComponent,
     RepairStatusPipe,
     RepairMachinePipe,
+    RepairGlobalPipe,
     MachineReportComponent,
     ProfileComponent,
     
