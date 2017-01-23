@@ -34,9 +34,16 @@ import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard';
 import { AuthOption } from './auth.option';
-
+import { InputTextModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng';
 // import { AdminComponent } from '../admins/admin.component';
-
+import {CalendarModule} from 'primeng/primeng';
+import {PaginatorModule} from 'primeng/primeng';
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {SplitButtonModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
 }
@@ -54,8 +61,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairStatusPipe,
     RepairMachinePipe,
     MachineReportComponent,
-    ProfileComponent
+    ProfileComponent,
     
+
   ],
   imports: [
     BrowserModule,
@@ -66,6 +74,16 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ModalModule.forRoot(),
     DatePickerModule,
     RatingModule.forRoot(),
+    InputTextModule,
+    DropdownModule,
+    CalendarModule,
+    InputTextareaModule,
+    PanelModule,
+    DataTableModule,SharedModule,
+    PaginatorModule,
+    SplitButtonModule,
+    DialogModule
+    
   ],
   providers: [
     {
@@ -73,7 +91,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
     },
-    
     DepartmentService,
     RepairService,
     EquipmentTypeService,

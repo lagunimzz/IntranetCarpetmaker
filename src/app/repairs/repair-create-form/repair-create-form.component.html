@@ -3,6 +3,35 @@
   <li class="breadcrumb-item"><a routerLink="/repairs">ระบบซ่อม</a></li>
   <li class="breadcrumb-item active">บันทึกแจ้งซ่อม {{newRepair.repairType}}</li>
 </ol>
+
+
+
+<!--<p-panel header="บันทึกแจ้งซ่อม : {{newRepair.repairType}}">
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+            <div class="ui-grid-col-4">
+                ชื่อผู้แจ้ง
+            </div>
+            <div class="ui-grid-col-8">
+                <input name="name" pInputText [(ngModel)]="name" id="name" required/>
+            </div>
+        </div>
+        <div class="ui-grid-col-8">
+            <div class="ui-grid-col-4">
+                ปัญหา
+            </div>
+            <div class="ui-grid-col-8">
+                <textarea pInputTextarea type="text"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</p-panel>-->
+
+
+
+
 <div class="card">
   <div class="card-header card-primary" style="color:white"> บันทึกแจ้งซ่อม : {{newRepair.repairType}}</div>
 <form (ngSubmit)="onSubmit()" #repairForm="ngForm">
@@ -12,21 +41,24 @@
       <label for="name" class="col-sm-2 col-form-label">ชื่อผู้แจ้ง :</label>
 
       <div class="col-md-3">
-        <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>
+        <input name="name" pInputText [(ngModel)]="newRepair.name" id="name" required/>
+        <!--<input name="name" type="text" class="form-control" id="name" [(ngModel)]="newRepair.name" required>-->
       </div>
       <label *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทอุปกรณ์ :</label>
       <label *ngIf="newRepair.repairType == 'สาธารณูปโภค'" for="equipmentType" class="col-sm-2 col-form-label">ประเภทการซ่อม :</label>
       <div *ngIf="newRepair.repairType != 'เครื่องจักร'"  class="col-md-3">
-        <select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
+        <p-dropdown  [style]="{'width':'200px'}" [options]="equipmentTypes" [(ngModel)]="newRepair.equipmentType" name="equipmentType"></p-dropdown>
+        <!--<select name="equipmentType" class="form-control" [(ngModel)]="newRepair.equipmentType" required>
               <option *ngFor="let e of equipmentTypes" [value]="e.TypeName">{{e.TypeName}}</option>
-        </select>
+        </select>-->
       </div>
     </div>
-
 
     <div class="form-group row">
       <label for="symptoms" class="col-sm-2 col-form-label">ปัญหา/อาการที่พบ :</label>
       <div class="col-lg-6">
+        <!--<textarea rows="3" col="30" pInputTextarea [(ngModel)]="newRepair.symptoms" id="symptoms" name="symptoms"></textarea>-->
+        <!--<textarea pInputTextarea [(ngModel)]="newRepair.symptoms" id="symptoms" name="symptoms"/>-->
         <textarea rows="3" class="form-control" id="symptoms" name="symptoms" [(ngModel)]="newRepair.symptoms" required>"</textarea>
       </div>
     </div>
@@ -34,8 +66,9 @@
     <div *ngIf="newRepair.repairType == 'คอมพิวเตอร์'" class="form-group row">
       <label for="equipmentNumber" class="col-sm-2 col-form-label">เลขที่เครื่อง :</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"
-          required>
+        <input name="name" pInputText id="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber" name="equipmentNumber" required/>
+        <!--<input type="text" class="form-control" id="equipmentNumber" name="equipmentNumber" [(ngModel)]="newRepair.equipmentNumber"-->
+          <!--required>-->
       </div>
       <label style="color: red;" class="col-sm-6 col-form-label">* กรุณากรอกหมายเลขเครื่องที่ติดหน้า CPU เช่น IT-56-002</label>
     </div>
@@ -43,14 +76,16 @@
     <div *ngIf="newRepair.repairType == 'สาธารณูปโภค'" class="form-group row">
       <label for="place" class="col-sm-2 col-form-label">สถานที่ :</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>
+         <input name="place" pInputText [(ngModel)]="place" id="place" required/>
+        <!--<input type="text" class="form-control" id="place" name="place" [(ngModel)]="newRepair.place" required/>-->
       </div>
     </div>
     
     <div class="form-group row">
       <label for="telephone" class="col-sm-2 col-form-label">เบอร์โทร :</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required/>
+         <input name="telephone" pInputText [(ngModel)]="newRepair.telephone" id="telephone" required/>
+        <!--<input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newRepair.telephone" required/>-->
       </div>
     </div>
 
@@ -64,14 +99,16 @@
 
     <div class="form-group row">
       <label for="wasteDate" class="col-sm-2 col-form-label">วันที่เสีย :</label>
-      <div class="col-sm-3">
-        <ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>
+      <div class="col-sm-4">
+        <!--<ng2-datepicker [options]="{ autoApply:true, firstWeekdaySunday: true, format:'DD/MM/YYYY',isReadOnly:true }" [(ngModel)]="newRepair.wasteDate" name="wasteDate"></ng2-datepicker>-->
+        <p-calendar yearRange="2016:2100" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="newRepair.wasteDate" [locale]="locale" dateFormat="dd/mm/yy" [showIcon]="true" [readonlyInput]="true" name="wasteDate"></p-calendar>
       </div>
     </div>
     
 <div class="form-group row">
   <label for="remark" class="col-sm-2 col-form-label">หมายเหตุ :</label>
   <div class="col-sm-6">
+    <!--<textarea rows="3" col="300"  autoResize="autoResize"  pInputTextarea [(ngModel)]="newRepair.remark" id="remark" name="remark"></textarea>-->
     <textarea rows="3" class="form-control" id="remark" name="remark" [(ngModel)]="newRepair.remark"></textarea>
   </div>
 </div>

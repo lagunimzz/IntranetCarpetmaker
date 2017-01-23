@@ -18,9 +18,12 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+                "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/ionicons/dist/css/ionicons.min.css",
+
         "../src/assets/css/superfish.css",
         "../src/assets/css/prettyPhoto.css",
         "../src/assets/css/animations.css",

@@ -16,12 +16,13 @@ export class AuthOption {
         languageDictionary: {
             title: "บริษัทคาร์เปทเมกเกอร์ (ประเทศไทย) จำกัด"
         },
-        allowedConnections: ['Username-Password-Authentication', 'facebook'],
+        usernameStyle: 'username',
+        allowedConnections: ['Username-Password-Authentication'],
         additionalSignUpFields: [{
             name: "department",
             placeholder: "enter your department",
             // The following properties are optional
-            icon: "https://example.com/assests/address_icon.png",
+            // icon: "https://example.com/assests/address_icon.png",
             validator: function (department) {
                 return {
                     valid: department.length > 0,
