@@ -21,7 +21,7 @@ export class RepairListComponent implements OnInit {
   }
 
   isAdmin() {
-    if (this.auth.userProfile['user_metadata']['department'] == 'admin') {
+    if (this.auth.userProfile['user_metadata']['department'] == 'admin' ||this.auth.userProfile['user_metadata']['department'] == 'adminRepair' || this.auth.userProfile['user_metadata']['department'] == 'adminSupport'   ) {
       return true;
     } else {
       return false;
