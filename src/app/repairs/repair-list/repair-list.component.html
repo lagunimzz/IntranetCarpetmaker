@@ -38,7 +38,7 @@
         <a class="dropdown-item" [routerLink]="['/repairView',r.repairNo]"><i class="fa fa-eye" aria-hidden="true"> เรียกดูข้อมูล</i></a>
         <a *ngIf="isAdmin() && (r.status == 'ส่งข้อมูลให้เจ้าหน้าที่' || r.status  =='กำลังดำเนินการ' || r.status  =='ส่งซ่อมภายนอก')"
           class="dropdown-item" [routerLink]="['/repairReceiveForm',r.repairNo]" class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"> รับซ่อม/ตรวจสอบ</i></a>
-        <a *ngIf="r.status == 'ดำเนินการเรียบร้อย'" class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)"
+        <a *ngIf="r.status == 'ดำเนินการเรียบร้อย' && !isAdmin()" class="dropdown-item" [routerLink]="'#'" (click)="showChildModal(r.repairNo)"
           class="dropdown-item"><i class="fa fa-check-square-o" aria-hidden="true"> ประเมินการซ่อม</i></a>
         <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" class="dropdown-item" [routerLink]="['/repairCreateForm',r.repairType,r.repairNo]"><i class="fa fa-pencil-square-o" aria-hidden="true"> แก้ไข</i></a>
         <a *ngIf="r.status == 'ส่งข้อมูลให้เจ้าหน้าที่'" [routerLink]="'#'" (click)="showDeleteModal(r.repairNo)" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"> ลบรายการ</i></a>
