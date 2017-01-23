@@ -14,7 +14,7 @@ export class AuthOption {
             logo: "../../favicon.png",
         },
         languageDictionary: {
-            title: "Carpet Maker (Thailand)"
+            title: "บริษัทคาร์เปทเมกเกอร์ (ประเทศไทย) จำกัด"
         },
         allowedConnections: ['Username-Password-Authentication', 'facebook'],
         additionalSignUpFields: [{
