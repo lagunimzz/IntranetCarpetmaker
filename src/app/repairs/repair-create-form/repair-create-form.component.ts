@@ -78,6 +78,8 @@ export class RepairCreateFormComponent implements OnInit {
     this.newRepair.equipmentNumber = '';
     this.newRepair.user = this.auth.userProfile['email'];
     this.newRepair.status = 'ส่งข้อมูลให้เจ้าหน้าที่';
+    this.newRepair.equipmentType = '';
+    this.newRepair.place = '';
     this.getAllEquipmentType(this.newRepair.repairType);
     this.getAllMachine();
 
