@@ -11,10 +11,10 @@ export class AuthOption {
         this.getAllDepartment();
         this.options = {
         theme: {
-            logo: "../../favicon.png",
+            logo: "assets/img/favicon.png",
         },
         languageDictionary: {
-            title: "บริษัทคาร์เปทเมกเกอร์ (ประเทศไทย) จำกัด"
+            title: "บริษัทคาร์เปทเมกเกอร์"
         },
         usernameStyle: 'username',
         allowedConnections: ['Username-Password-Authentication'],

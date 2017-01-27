@@ -12,6 +12,7 @@ import { ProfileComponent } from '../profiles/profile.component';
 import { AuthGuard } from './auth.guard';
 // import { AdminComponent } from '../admins/admin.component';
 
+import {DashboardPdfComponent} from '../dashboard/dashboard-pdf.component';
 
 import { MachineReportComponent } from '../repairs/machine-report/machine-report.component';
 
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
     {
         path: '',
         component: DashboardComponent
+    },
+    {
+        path: 'pdf',
+        component: DashboardPdfComponent
     },
     {
         path: 'repairs',

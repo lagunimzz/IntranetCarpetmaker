@@ -1,7 +1,7 @@
 <table class="table table-bordered table-striped">
   <thead class="thead-inverse">
     <tr>
-      <th></th>
+      <th style="text-align: center;">จัดการข้อมูล</th>
       <th style="text-align: center;">เลขที่ใบแจ้งซ่อม</th>
 <th style="text-align: center;">ประเภทอุปกรณ์</th>
 <th style="text-align: center; width: 100px;">ชื่อผู้แจ้ง</th>
@@ -13,7 +13,7 @@
 </thead>
 <tbody>
   <tr>
-    <td colspan="7"><input class="form-control" type="text" [(ngModel)]="repairGlobalSearch" name="repairGlobalSearch" placeholder="ค้นหา" /></td>
+    <td colspan="7"><input class="form-control" type="text" [(ngModel)]="repairGlobalSearch" name="repairGlobalSearch" placeholder="ค้นหา เลขที่ใบแจ้งซ่อม/ชื่อผู้แจ้ง" /></td>
     <td>
       <select name="statusSearch" class="form-control" [(ngModel)]="statusSearch">
     <option value="ทั้งหมด">ทั้งหมด</option>
@@ -121,12 +121,15 @@
         <!--{{percent}}%-->
 
         <!--</span>-->
+        <div class="col-md-12">
+         เกณฑ์การประเมิน : ดีมาก(5),ดี(4),ปานกลาง(3),พอใช้(2),ควรปรับปรุง(1)
+        </div>
         <table class="table table-striped table-bordered table-striped">
           <thead>
-            <tr>
-              <th>ข้อ</th>
-              <th>รายการประเมิน</th>
-              <th>คะแนน</th>
+            <tr style="background-color: skyblue;">
+              <th style="text-align: center">ลำดับ</th>
+              <th style="text-align: center">รายการประเมิน</th>
+              <th style="text-align: center; width: 150px;" >คะแนน</th>
             </tr>
           </thead>
           <tbody>
@@ -159,7 +162,7 @@
             </tr>
             <tr>
               <!--performance-->
-              <th scope="row">3</th>
+              <th scope="row">4</th>
               <td>ประสิทธิภาพการใช้งานหลังการให้บริการ</td>
               <td>
                 <rating [(ngModel)]="e4" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [ratingStates]="ratingStates"></rating>
@@ -168,7 +171,7 @@
             </tr>
             <tr>
               <!--completely-->
-              <th scope="row">3</th>
+              <th scope="row">5</th>
               <td>ให้บริการตรงตามความต้องการของผู้ใช้งานได้ครบถ้วน</td>
               <td>
                 <rating [(ngModel)]="e5" [max]="max" [readonly]="false" (onHover)="hoveringOver($event)" (onLeave)="resetStar($event)" [ratingStates]="ratingStates"></rating>

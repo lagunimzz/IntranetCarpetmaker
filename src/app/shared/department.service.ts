@@ -10,7 +10,7 @@ export class DepartmentService {
 
   }
   
-  endPointUrl = 'http://localhost:8080/CarpetmakerApi';
+  endPointUrl = 'http://192.168.0.35/CarpetmakerApi';
 
   getDepartments(): Observable<Department[]> {
     return this.http.get(this.endPointUrl+"/Departments")

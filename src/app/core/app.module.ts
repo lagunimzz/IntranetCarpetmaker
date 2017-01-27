@@ -45,6 +45,8 @@ import {PaginatorModule} from 'primeng/primeng';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {SplitButtonModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
+import { PdfViewerComponent } from 'ng2-pdf-viewer';
+import {DashboardPdfComponent} from '../dashboard/dashboard-pdf.component';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
 }
@@ -53,6 +55,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   declarations: [
     AppComponent,
     DashboardComponent,
+    DashboardPdfComponent,
     RepairComponent,
     RepairListComponent,
     RepairCreateFormComponent,
@@ -64,7 +67,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RepairGlobalPipe,
     MachineReportComponent,
     ProfileComponent,
-    
+    PdfViewerComponent
 
   ],
   imports: [

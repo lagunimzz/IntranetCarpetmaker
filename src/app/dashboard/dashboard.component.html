@@ -1,9 +1,19 @@
 <!--<link rel="stylesheet" href="../src/assets/css/style.css" >-->
 <!--<link rel="stylesheet" href="css/bootstrap.css">-->
-<div class="row" style="margin-top: 5px">
-  <div class='col-sm-4'>
+<marquee direction="left"><i class="fa fa-smile-o" aria-hidden="true"></i>:: ยินดีต้อนรับเข้าสู่ระบบการแจ้งซ่อม หากมีข้อสงสัย สอบถามได้ที่เบอร์โทร <i class="fa fa-phone" aria-hidden="true"></i> 108 แผนก เทคโนโลยีสารสนเทศ ::</marquee>
+<hr>
+<img src="assets/img/home1.png" class="img-fluid" alt="Responsive image">
+<hr>
+<!--ปุ่มข้างล่างภาพ main-->
+<div class="row" style="margin-left: 45%">
+ <a  *ngIf="auth.authenticated()" routerLink="/repairs" class="btn btn-primary">เข้าสู่ระบบแจ้งซ่อม</a> <a style="text-align: center;" *ngIf="!auth.authenticated()" routerLink="/"  class="btn btn-warning">กรุณา Login</a>
+</div>
+
+<!--End main-->
+<div class="row" style="margin-top: 5px; ">
+  <!--<div class='col-sm-4'>
     <div class="card">
-      <img class="card-img-top" src="../../assets/img/meetingroom.jpg" style=" width:100%;" alt="Card image cap">
+      <img class="card-img-top" src="assets/img/meetingroom.jpg" style=" width:100%;" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">ระบบจองห้องประชุม</h4>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -11,34 +21,30 @@
         <a *ngIf="!auth.authenticated()" routerLink="/" class="btn btn-warning">กรุณา Login</a>
       </div>
     </div>
-  </div>
-  <div class='col-sm-4'>
+  </div>-->
+  <!--<div class='col-sm-4'>
     <div class="card">
-      <img class="card-img-top" src="../../assets/img/repair.jpg" style=" width:100%;" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">ระบบแจ้งซ่อม</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <img class="card-img-top" src="assets/img/repair.jpg" style=" width:100%;" alt="Card image cap">-->
+       <!--<img class="card-img-top" src="assets/img/home1.png" style=" width:100%;" alt="Card image cap">-->
+      <!--<div class="card-block">
+        <h4 style="text-align: center;" class="card-title">ระบบแจ้งซ่อม</h4>
+        <p class="card-text">ระบบแจ้งซ่อมคอมพิวเตอร์/ระบบแจ้งซ่อมสาธารณูปโภค/ระบบแจ้งซ่อมเครื่องจักร</p>
         <a  *ngIf="auth.authenticated()" routerLink="/repairs" class="btn btn-primary">ระบบแจ้งซ่อม</a>
-        <a *ngIf="!auth.authenticated()" routerLink="/"  class="btn btn-warning">กรุณา Login</a>
+        <a style="text-align: center;" *ngIf="!auth.authenticated()" routerLink="/"  class="btn btn-warning">กรุณา Login</a>
       </div>
     </div>      
-  </div>
-  <div class='col-sm-4'>
-    <!--<div class="card">
+  </div>-->
+  <!--<div class='col-sm-4'>
+    <div class="card">
       <img class="card-img-top" src="../../assets/img/car.jpg" style=" width:100%;" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-    </div> -->
-     <div class="accordion-item">
-                              <h4 class="title">Valid HTML Files</h4>
-                              <section class="accordion-inner panel-body">
-                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                 </p>
-                              </section>
-                           </div>
-  </div>
+    </div> 
+    
+
+</div>-->
+
 </div>

@@ -8,174 +8,232 @@
     <div class="card-header card-primary" style="color:white">ข้อมูลการแจ้งซ่อม</div>
 <div class="card-block">
     <!--{{repair.repairNo}}-->
-<!--<div class="card card-outline-primary mb-3">-->
+    <!--<div class="card card-outline-primary mb-3">-->
     <legend>ส่วนที่ 1 : ข้อมูลพนักงาน</legend>
     <div class="row">
         <!--<div class="col-sm">col-sm</div>-->
-        <div class="col-sm-4">
-           ชื่อผู้แจ้ง : {{repair.name}}
-        </div>
-        <div class="col-sm-4">
+        <div class="col-md-2" style="font-weight: bold; color: darkblue"> ชื่อผู้แจ้ง :
+</div>
+<div class="col-sm-4">{{repair.name}}</div>
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> เบอร์โทร :
+</div>
+<div class="col-sm-4">{{repair.telephone}}</div>
+<!--<div class="col-sm-4">
             เบอร์โทร : {{repair.telephone}}
-        </div>
-        <div class="col-sm-4">
+        </div>-->
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> แผนก :
+</div>
+<div class="col-sm-4">{{repair.department}}</div>
+<!--<div class="col-sm-4">
             แผนก : {{repair.department}}
-        </div>
+        </div>-->
 
-    </div>
-    <div class="row">
-        <!--<div class="col-sm">col-sm</div>-->
-        <div class="col-sm-4">
+</div>
+<div class="row">
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> ประเภทอุปกรณ์ :
+</div>
+<div class="col-sm-4">{{repair.equipmenttype}}</div>
+<!--<div class="col-sm-4">
             ประเภทอุปกรณ์ : {{repair.equipmenttype}}
-        </div>
-        <div class="col-sm-4">
+        </div>-->
+
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> ปัญหา/อาการที่พบ :
+</div>
+<div class="col-sm-4">{{repair.symptoms}}</div>
+<!--<div class="col-sm-4">
             ปัญหา/อาการที่พบ : {{repair.symptoms}}
-        </div>
-    </div>
+        </div>-->
+</div>
 
-    <div class="row">
+<div class="row">
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> เลขที่เครื่อง :
+</div>
+<div class="col-sm-4">{{repair.equipmentNumber}}</div>
+<!--<div class="col-sm-4">
+    เลขที่เครื่อง : {{repair.equipmentNumber}}
+</div>-->
 
-        <div class="col-sm-4">
-            เลขที่เครื่อง : {{repair.equipmentNumber}}
-        </div>
-        <div class="col-sm-4">
-            วันที่เสีย : {{repair.wasteDate}}
-        </div>
-    </div>
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> วันที่เสีย :
+</div>
+<div class="col-sm-4">{{repair.wasteDate}}</div>
+<!--<div class="col-sm-4">
+    วันที่เสีย : {{repair.wasteDate}}
+</div>-->
+</div>
 
-    <div class="row">
+<div class="row">
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> หมายเหตุ :
+</div>
+<div class="col-sm-4">{{repair.remark}}</div>
 
-        <div class="col-sm-5">
-            หมายเหตุ : {{repair.remark}}
-        </div>
+<!--<div class="col-sm-5">
+        หมายเหตุ : {{repair.remark}}
+    </div>-->
 
-    </div>
+</div>
 <!--</div>-->
 
-    <hr>
+<hr>
 
-    <legend>ส่วนที่ 2 : ผลการดำเนินการซ่อม (ส่วนของเจ้าหน้าที่)</legend>
-    <div class="row">
+<legend>ส่วนที่ 2 : ผลการดำเนินการซ่อม (ส่วนของเจ้าหน้าที่)</legend>
+<div class="row">
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> สาเหตุอาการที่เสีย :
+</div>
+<div class="col-sm-4">{{repair.cause}}</div>
 
-        <div class="col-sm-4">
-            สาเหตุอาการที่เสีย : {{repair.cause}}
-        </div>
-        <div class="col-sm-6">
-            <div class="form-check form-check-inline disabled">
-                <label class="form-check-label">
+
+<!--<div class="col-sm-4">
+        สาเหตุอาการที่เสีย : {{repair.cause}}
+    </div>-->
+<div class="col-sm-6">
+    <div class="form-check form-check-inline disabled">
+        <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ซ่อมเอง" [checked]="repair.repairMethod == 'ซ่อมเอง'"> ซ่อมเอง
             </label>
-            </div>
-            <div class="form-check form-check-inline disabled">
-                <label class="form-check-label">
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="ส่งซ่อมภายนอก" [checked]="repair.repairMethod == 'ส่งซ่อมภายนอก'"> ส่งซ่อมภายนอก
             </label>
-            </div>
-            <div class="form-check form-check-inline disabled">
-                <label class="form-check-label">
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="ซื้อทดแทน" [checked]="repair.repairMethod == 'ซื้อทดแทน'"> ซื้อทดแทน
             </label>
-            </div>
-
-        </div>
-
     </div>
 
-     <div class="row">
-
-        <div class="col-sm-4">
-            รายละเอียดการซ่อม : {{repair.equipmentNumber}}
-        </div>
-        <div class="col-sm-4">
-            ผู้ซ่อม : {{repair.userRepair}}
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-sm-4">
-            วันที่ซ่อม : {{repair.repairDate}}
-        </div>
-        <div class="col-sm-4">
-            วันที่ซ่อมเสร็จ : {{repair.wasteDate}}
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-sm-4">
-            หมายเหตุ : {{repair.equipmentNumber}}
-        </div>
-        <div class="col-sm-4">
-            สถานะ : {{repair.status}}
-        </div>
-    </div>
-    <hr>
-
-    <legend> ส่วนที่ 3 : ประเมินการซ่อม</legend>
-    <div  *ngIf=" repair.evaluation != 0" class="row">
-        <table class="table table-striped table-bordered table-striped">
-  <thead>
-    <tr style="text-align: center">
-      <th>ลำดับ</th>
-      <th>รายการประเมิน</th>
-      <th>คะแนน</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <!--servicemind-->
-      <th scope="row">1</th>
-      <td>ให้บริการด้วยความสุภาพ เป็นมิตร ดูแลเอาใจใส่ เต็มใจให้บริการ</td>
-      <td>
-        <rating [(ngModel)]="e1" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
-        ({{e1}})
-      </td>
-    </tr>
-    <tr>
-      <!--process-->
-      <th scope="row">2</th>
-      <td>กระบวนการและขั้นตอนการให้บริการมีความเหมาะสม</td>
-      <td>
-        <rating [(ngModel)]="e2" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
-        ({{e2}})
-      </td>
-    </tr>
-    <tr>
-      <!--during-->
-      <th scope="row">3</th>
-      <td>ระยะเวลาการให้บริการมีความเหมาะสม</td>
-      <td>
-        <rating [(ngModel)]="e3" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
-        ({{e3}})
-      </td>
-    </tr>
-    <tr>
-      <!--performance-->
-      <th scope="row">4</th>
-      <td>ประสิทธิภาพการใช้งานหลังการให้บริการ</td>
-      <td>
-        <rating [(ngModel)]="e4" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
-        ({{e4}})
-      </td>
-    </tr>
- <tr>
-   <!--completely-->
-      <th scope="row">5</th>
-      <td>ให้บริการตรงตามความต้องการของผู้ใช้งานได้ครบถ้วน</td>
-      <td>
-        <rating [(ngModel)]="e5" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
-        ({{e5}})
-      </td>
-    </tr>
-   
-  </tbody>
-</table>
-    </div>
-    <!--ถ้ายังไม่ประเมินให้ขึ้นข้อความว่า ยังไม่ประเมินการซ่อม บ้อก-->
-<hr>
-   
 </div>
- <div class="card-footer text-mute">
-        <div class="pull-right">
-            <button type="button" (click)="genPDF()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> PDF</button>
-        </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> รายละเอียดการซ่อม :
+</div>
+<div class="col-sm-4">{{repair.equipmentNumber}}</div>
+
+<!--<div class="col-sm-4">
+        รายละเอียดการซ่อม : {{repair.equipmentNumber}}
+    </div>-->
+
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> ผู้ซ่อม :
+</div>
+<div class="col-sm-4">{{repair.userRepair}}</div>
+
+
+<!--<div class="col-sm-4">
+        ผู้ซ่อม : {{repair.userRepair}}
+    </div>-->
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> ค่าใช้จ่าย :
+</div>
+<div class="col-sm-4">{{repair.Expenses}}</div>
+<!--<div class="col-sm-4">
+        ค่าใช้จ่าย : {{repair.Expenses}}
+    </div>-->
+</div>
+<div class="row">
+
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> วันที่ซ่อม :
+</div>
+<div class="col-sm-4">{{repair.wasteDate}}</div>
+
+<!--<div class="col-sm-4">
+        วันที่ซ่อม : {{repair.wasteDate}}
+    </div>-->
+
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> วันที่ซ่อมเสร็จ :
+</div>
+<div class="col-sm-4">{{repair.repairDate}}</div>
+
+<!--<div class="col-sm-4">
+        วันที่ซ่อมเสร็จ : {{repair.repairDate}}
+    </div>-->
+</div>
+<div class="row">
+
+    <div class="col-md-2" style="font-weight: bold; color: darkblue"> หมายเหตุ :
+</div>
+<div class="col-sm-4">{{repair.equipmentNumber}}</div>
+
+<!--<div class="col-sm-4">
+        หมายเหตุ : {{repair.equipmentNumber}}
+    </div>-->
+
+<div class="col-md-2" style="font-weight: bold; color: darkblue"> สถานะ :
+</div>
+<div class="col-sm-4">{{repair.status}}</div>
+
+<!--<div class="col-sm-4">
+        สถานะ : {{repair.status}}
+    </div>-->
+</div>
+<hr>
+
+<legend> ส่วนที่ 3 : ประเมินการซ่อม</legend>
+<div *ngIf=" repair.evaluation != 0" class="row">
+    <table class="table table-striped table-bordered table-striped">
+        <thead>
+            <tr style="text-align: center" class="table-info">
+<th style="text-align: center;">ลำดับ</th>
+<th style="text-align: center;">รายการประเมิน</th>
+<th style="text-align: center;">คะแนน</th>
+</tr>
+</thead>
+<tbody>
+    <tr>
+        <!--servicemind-->
+        <th scope="row">1</th>
+        <td>ให้บริการด้วยความสุภาพ เป็นมิตร ดูแลเอาใจใส่ เต็มใจให้บริการ</td>
+        <td>
+            <rating [(ngModel)]="e1" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
+            ({{e1}})
+        </td>
+    </tr>
+    <tr>
+        <!--process-->
+        <th scope="row">2</th>
+        <td>กระบวนการและขั้นตอนการให้บริการมีความเหมาะสม</td>
+        <td>
+            <rating [(ngModel)]="e2" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
+            ({{e2}})
+        </td>
+    </tr>
+    <tr>
+        <!--during-->
+        <th scope="row">3</th>
+        <td>ระยะเวลาการให้บริการมีความเหมาะสม</td>
+        <td>
+            <rating [(ngModel)]="e3" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
+            ({{e3}})
+        </td>
+    </tr>
+    <tr>
+        <!--performance-->
+        <th scope="row">4</th>
+        <td>ประสิทธิภาพการใช้งานหลังการให้บริการ</td>
+        <td>
+            <rating [(ngModel)]="e4" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
+            ({{e4}})
+        </td>
+    </tr>
+    <tr>
+        <!--completely-->
+        <th scope="row">5</th>
+        <td>ให้บริการตรงตามความต้องการของผู้ใช้งานได้ครบถ้วน</td>
+        <td>
+            <rating [(ngModel)]="e5" [max]="max" [readonly]="true" [ratingStates]="ratingStates"></rating>
+            ({{e5}})
+        </td>
+    </tr>
+
+</tbody>
+</table>
+</div>
+<!--ถ้ายังไม่ประเมินให้ขึ้นข้อความว่า ยังไม่ประเมินการซ่อม บ้อก-->
+<hr>
+
+</div>
+<div class="card-footer text-mute">
+    <div class="pull-right">
+        <button type="button" (click)="genPDF()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> PDF</button>
     </div>
+</div>

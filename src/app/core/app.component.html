@@ -57,7 +57,7 @@
         <!-- Menu Start -->
         <nav class="navbar menu">
           <ul class="nav nav-inline sf-menu">
-            <li class="nav-item"><a routerLink="/">หน้าหลัก</a></li>
+            <li class="nav-item"><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;หน้าหลัก</a></li>
             <!--*ngIf="auth.authenticated()"-->
             <!--<li *ngIf="auth.authenticated()" class="nav-item">
               <a routerLink="/" class="sf-with-ul">
@@ -88,8 +88,8 @@
             </li>-->
 
             <li *ngIf="auth.authenticated()" class="nav-item">
-              <a routerLink="/" class="sf-with-ul">
-                        ระบบแจ้งซ่อม
+              <a routerLink="/repairs" class="sf-with-ul">
+                        <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;ระบบแจ้งซ่อม
                         <span class="sf-sub-indicator">
                         <i class="icon-angle-down "></i>
                         </span>
@@ -114,12 +114,13 @@
 
               </ul>
             </li>
+            <li class="nav-item"><a routerLink="/pdf"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;คำแนะนำการใช้งาน</a></li>
 
 
             <!--<li class="nav-item"><a href="contact.html">ติดต่อ</a></li>-->
             <!--<li *ngIf="auth.authenticated()" class="nav-item"><a href="./#/AdminSystem">ส่วนเจ้าหน้าที่</a></li>-->
             <!--<li class="nav-item"><a routerLink="/login" >เข้าสู่ระบบ</a></li>-->
-            <li class="nav-item"><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">เข้าสู่ระบบ</a></li>
+            <li class="nav-item"><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;เข้าสู่ระบบ</a></li>
             <li *ngIf="auth.authenticated()" class="nav-item">
               <a href="#" class="sf-with-ul">
                         {{auth.userProfile.username}} - {{auth.userProfile.user_metadata.department}}

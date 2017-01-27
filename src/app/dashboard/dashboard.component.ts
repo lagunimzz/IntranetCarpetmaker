@@ -9,6 +9,8 @@ export class DashboardComponent implements OnInit {
 
   
   constructor(private auth: Auth){}
+  pdfSrc: string = 'assets/pdf/rptpclprint.pdf';
+  page: number = 1;
   ngOnInit() {
   }
 

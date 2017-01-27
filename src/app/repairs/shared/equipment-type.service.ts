@@ -10,7 +10,7 @@ export class EquipmentTypeService {
 
   }
   
-  endPointUrl = 'http://localhost:8080/CarpetmakerApi';
+  endPointUrl = 'http://192.168.0.35/CarpetmakerApi';
 
   getEquipments(type:string): Observable<EquipmentType[]> {
      let params = new URLSearchParams();

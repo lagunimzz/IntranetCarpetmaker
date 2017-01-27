@@ -1,18 +1,21 @@
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="">หน้าหลัก</a></li>
-    <li class="breadcrumb-item active">ระบบซ่อม</li>
+    <li class="breadcrumb-item"><a routerLink=""><i class="fa fa-home" aria-hidden="true"></i>&nbsp;หน้าหลัก</a></li>
+    <li class="breadcrumb-item active">ระบบแจ้งซ่อม</li>
 </ol>
+
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     แจ้งซ่อม
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a [routerLink]="['/repairCreateForm','IT','new']" class="dropdown-item">แจ้งซ่อมคอมพิวเตอร์</a>
-    <a [routerLink]="['/repairCreateForm','Public','new']"  class="dropdown-item">แจ้งซ่อมสาธรณูปโภค</a>
-    <a [routerLink]="['/repairCreateForm','Machine','new']"  class="dropdown-item">แจ้งซ่อมเครื่องจักร</a>
+    <a [routerLink]="['/repairCreateForm','IT','new']" class="dropdown-item"><i class="fa fa-laptop" aria-hidden="true"></i>&nbsp;แจ้งซ่อมคอมพิวเตอร์</a>
+    <a [routerLink]="['/repairCreateForm','Public','new']"  class="dropdown-item"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;แจ้งซ่อมสาธารณูปโภค</a>
+    <a [routerLink]="['/repairCreateForm','Machine','new']"  class="dropdown-item"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;แจ้งซ่อมเครื่องจักร</a>
     </div>
 </div>
 <br>
+<!--<h3 style="text-align: center;">รายการแจ้งซ่อม</h3>-->
+<!--<hr>-->
 <repair-list></repair-list>
 <br>
 <br>
