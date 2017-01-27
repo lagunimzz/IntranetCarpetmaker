@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http,Response,URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { MachineType } from './machine.model';
-
+import { apiConfig } from '../../shared/apiconfig'
 @Injectable()
 export class MachineTypeService {
 
@@ -10,7 +10,7 @@ export class MachineTypeService {
 
   }
   
-  endPointUrl = 'http://192.168.0.35/CarpetmakerApi';
+  endPointUrl = apiConfig.endPointUrl;
 
   getMachines(): Observable<MachineType[]> {
     return this.http.get(this.endPointUrl+"/Machines")

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http,Response,URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Repair } from './repair.model';
-
+import { apiConfig } from '../../shared/apiconfig'
 @Injectable()
 export class RepairService {
 
@@ -10,7 +10,7 @@ export class RepairService {
 
   }
   
-  endPointUrl = 'http://192.168.0.35/CarpetmakerApi';
+  endPointUrl = apiConfig.endPointUrl;
 
 
   getRepair(repairNo:string): Observable<Repair>{

@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http,Response,URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { EquipmentType } from './equipment-type.model';
-
+import { apiConfig } from '../../shared/apiconfig'
 @Injectable()
 export class EquipmentTypeService {
 
   constructor(private http: Http) { 
 
   }
-  
-  endPointUrl = 'http://192.168.0.35/CarpetmakerApi';
+  endPointUrl = apiConfig.endPointUrl;
 
   getEquipments(type:string): Observable<EquipmentType[]> {
      let params = new URLSearchParams();
