@@ -7,28 +7,22 @@ import { Auth } from '../core/auth.service';
   template: `
   <a href="http://www.google.co.th" class="btn btn-primary">Download</a>
   <pdf-viewer [src]="pdfSrc" 
-              [page]="page" 
-              [original-size]="true" 
               style="display: block;"
+              [show-all]="true"
               [zoom]="2"
   ></pdf-viewer>
   
   `
 })
-//  <div>
-//       <label>PDF src</label>
-//       <input type="text" placeholder="PDF src" [(ngModel)]="pdfSrc">
-//   </div>
-//   <div>
-//       <label>Page:</label>
-//       <input type="number" placeholder="Page" [(ngModel)]="page">
-//   </div>
+ 
 export class DashboardPdfComponent implements OnInit {
 
   
   constructor(){}
-  pdfSrc: string = 'assets/pdf/rptpclprint.pdf';
-  page: number = 1;
+  // pdfSrc: string = 'https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf'; 
+  pdfSrc: string = 'assets/pdf/rptpclprint.pdf'; 
+  //'assets/pdf/rptpclprint.pdf';
+  // page: number = 1;
   ngOnInit() {
   }
 
